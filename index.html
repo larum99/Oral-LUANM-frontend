@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ORAL LUANM - Clínica odontológica premium. Ofrecemos servicios de ortodoncia, odontología general, diseño de sonrisa e implantes con tecnología avanzada y profesionales especializados. ¡Agenda tu cita hoy!">
+  <meta name="keywords" content="clínica dental, odontología, dentista, ortodoncia, blanqueamiento dental, diseño de sonrisa, implantes dentales, ORAL LUANM, salud dental, clínica premium">
+  <meta name="author" content="ORAL LUANM">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://oralluanm.com/">
+  <meta property="og:title" content="ORAL LUANM | Clínica Odontológica Premium">
+  <meta property="og:description" content="Salud dental de vanguardia con un trato cálido y profesional. Especialistas en ortodoncia, estética e implantes dentales.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&h=630&q=80">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://oralluanm.com/">
+  <meta property="twitter:title" content="ORAL LUANM | Clínica Odontológica Premium">
+  <meta property="twitter:description" content="Salud dental de vanguardia con un trato cálido y profesional. Especialistas en ortodoncia, estética e implantes dentales.">
+  <meta property="twitter:image" content="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&h=630&q=80">
+
+  <title>ORAL LUANM | Clínica Odontológica Premium</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- LocalBusiness Structured Data (JSON-LD) for SEO -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Dentist",
+      "name": "ORAL LUANM",
+      "image": "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80",
+      "@id": "https://oralluanm.com/#dentist",
+      "url": "https://oralluanm.com",
+      "telephone": "+573001234567",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Av. Principal Nro 123-45",
+        "addressLocality": "Bogotá",
+        "addressRegion": "Cundinamarca",
+        "postalCode": "110111",
+        "addressCountry": "CO"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 4.60971,
+        "longitude": -74.08175
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "08:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:00",
+          "closes": "13:00"
+        }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/oralluanm",
+        "https://www.instagram.com/oralluanm"
+      ]
+    }
+  </script>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       Header / Navigation
+       ========================================================================== -->
+  <header>
+    <nav class="navbar navbar-expand-lg fixed-top" aria-label="Menú principal de navegación">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <i class="bi bi-heart-pulse-fill text-primary" aria-hidden="true"></i>
+          ORAL<span> LUANM</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegación">
+          <i class="bi bi-list fs-2 text-dark"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="nosotros.html">Nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="servicios.html">Servicios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="galeria.html">Galería</a>
+            </li>
+            <li class="nav-item me-lg-3">
+              <a class="nav-link" href="contacto.html">Contacto</a>
+            </li>
+            <li class="nav-item mt-3 mt-lg-0">
+              <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#appointmentModal" id="btnNavAppointment">
+                Agendar Cita
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==========================================================================
+       Hero Section
+       ========================================================================== -->
+  <main>
+    <section class="hero-section" id="hero">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6 reveal-on-scroll">
+            <div class="hero-badge">
+              <i class="bi bi-stars" aria-hidden="true"></i>
+              <span>Tecnología Dental de Vanguardia</span>
+            </div>
+            <h1 class="hero-title">Tu sonrisa merece el cuidado de <span>verdaderos profesionales</span></h1>
+            <p class="lead mb-4 text-muted">En ORAL LUANM combinamos experiencia, calidez humana y tecnología de punta para ofrecerte tratamientos odontológicos premium en un ambiente higiénico y moderno.</p>
+            <div class="d-flex flex-wrap gap-3">
+              <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#appointmentModal" id="btnHeroAppointment">
+                Agendar Cita <i class="bi bi-calendar-event ms-2" aria-hidden="true"></i>
+              </button>
+              <a href="servicios.html" class="btn btn-outline-primary btn-lg" id="btnHeroServices">
+                Conocer Servicios
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-6 reveal-on-scroll reveal-delay-2">
+            <div class="hero-image-container">
+              <!-- Background design blob -->
+              <div class="hero-image-card">
+                <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80" alt="Odontólogo profesional atendiendo a una paciente sonriente" class="img-fluid w-100">
+              </div>
+              
+              <!-- Floating Card 1 -->
+              <div class="hero-floating-card hero-fc-1">
+                <div class="card-icon-container mb-0" style="width: 45px; height: 45px; font-size: 1.2rem;">
+                  <i class="bi bi-shield-fill-check" aria-hidden="true"></i>
+                </div>
+                <div>
+                  <h6 class="mb-0 fw-bold text-dark">100% Bioseguro</h6>
+                  <small class="text-muted">Protocolo estricto</small>
+                </div>
+              </div>
+              
+              <!-- Floating Card 2 -->
+              <div class="hero-floating-card hero-fc-2">
+                <div class="card-icon-container mb-0" style="width: 45px; height: 45px; font-size: 1.2rem; background-color: rgba(56, 189, 248, 0.1); color: var(--accent);">
+                  <i class="bi bi-emoji-smile-fill" aria-hidden="true"></i>
+                </div>
+                <div>
+                  <h6 class="mb-0 fw-bold text-dark">+5,000 Pacientes</h6>
+                  <small class="text-muted">Sonrisas perfectas</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Servicios Principales Section
+         ========================================================================== -->
+    <section class="section-padding section-bg-white" id="featured-services" aria-labelledby="services-title">
+      <div class="container">
+        <div class="text-center reveal-on-scroll">
+          <span class="section-tag">Nuestras Especialidades</span>
+          <h2 class="section-title text-center" id="services-title">Servicios Principales</h2>
+        </div>
+        <div class="row g-4 justify-content-center">
+          
+          <!-- Card Ortodoncia -->
+          <div class="col-md-6 col-lg-4 reveal-on-scroll">
+            <div class="custom-card p-4">
+              <div class="card-icon-container">
+                <i class="bi bi-activity" aria-hidden="true"></i>
+              </div>
+              <h3 class="h5 fw-bold mb-3 text-dark">Ortodoncia</h3>
+              <p class="text-muted mb-4">Alineación perfecta de tus dientes utilizando brackets estéticos y alineadores invisibles de última generación.</p>
+              <a href="servicios.html" class="btn btn-outline-primary w-100" id="btnServiceOrt">Ver Detalles</a>
+            </div>
+          </div>
+
+          <!-- Card Odontología General -->
+          <div class="col-md-6 col-lg-4 reveal-on-scroll reveal-delay-1">
+            <div class="custom-card p-4">
+              <div class="card-icon-container">
+                <i class="bi bi-shield-check" aria-hidden="true"></i>
+              </div>
+              <h3 class="h5 fw-bold mb-3 text-dark">Odontología General</h3>
+              <p class="text-muted mb-4">Limpiezas profunda por ultrasonido, resinas estéticas y cuidado integral para mantener tu boca sana.</p>
+              <a href="servicios.html" class="btn btn-outline-primary w-100" id="btnServiceGen">Ver Detalles</a>
+            </div>
+          </div>
+
+          <!-- Card Blanqueamiento Dental -->
+          <div class="col-md-6 col-lg-4 reveal-on-scroll reveal-delay-2">
+            <div class="custom-card p-4">
+              <div class="card-icon-container">
+                <i class="bi bi-brightness-high-fill" aria-hidden="true"></i>
+              </div>
+              <h3 class="h5 fw-bold mb-3 text-dark">Blanqueamiento Dental</h3>
+              <p class="text-muted mb-4">Recupera la blancura natural de tus dientes en solo una sesión con tecnología LED de luz fría.</p>
+              <a href="servicios.html" class="btn btn-outline-primary w-100" id="btnServiceBla">Ver Detalles</a>
+            </div>
+          </div>
+          
+        </div>
+        <div class="text-center mt-5 reveal-on-scroll">
+          <a href="servicios.html" class="btn btn-primary" id="btnAllServices">Ver Todos los Servicios <i class="bi bi-arrow-right ms-2" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Beneficios Section
+         ========================================================================== -->
+    <section class="section-padding section-bg-light" id="benefits" aria-labelledby="benefits-title">
+      <div class="container">
+        <div class="text-center reveal-on-scroll">
+          <span class="section-tag">Por Qué Elegirnos</span>
+          <h2 class="section-title text-center" id="benefits-title">Beneficios Exclusivos</h2>
+        </div>
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-5 reveal-on-scroll">
+            <img src="https://images.unsplash.com/photo-1579684389782-64d84b5e901a?auto=format&fit=crop&w=600&q=80" alt="Instalaciones odontológicas premium de ORAL LUANM" class="img-fluid rounded-4 shadow-md w-100">
+          </div>
+          <div class="col-lg-7 reveal-on-scroll reveal-delay-1">
+            <div class="d-flex align-items-start gap-4 mb-4">
+              <div class="card-icon-container mb-0 flex-shrink-0" style="width: 50px; height: 50px; font-size: 1.5rem;">
+                <i class="bi bi-cpu" aria-hidden="true"></i>
+              </div>
+              <div>
+                <h3 class="h5 fw-bold mb-2">Tecnología Dental Avanzada</h3>
+                <p class="text-muted">Utilizamos equipos digitales en 3D, cámaras intraorales y blanqueamiento LED, minimizando las molestias y garantizando diagnósticos exactos.</p>
+              </div>
+            </div>
+            
+            <div class="d-flex align-items-start gap-4 mb-4">
+              <div class="card-icon-container mb-0 flex-shrink-0" style="width: 50px; height: 50px; font-size: 1.5rem;">
+                <i class="bi bi-people" aria-hidden="true"></i>
+              </div>
+              <div>
+                <h3 class="h5 fw-bold mb-2">Especialistas Certificados</h3>
+                <p class="text-muted">Nuestro equipo está compuesto por odontólogos egresados de las mejores universidades, con capacitaciones continuas en sus respectivas áreas.</p>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-start gap-4">
+              <div class="card-icon-container mb-0 flex-shrink-0" style="width: 50px; height: 50px; font-size: 1.5rem;">
+                <i class="bi bi-heartpulse" aria-hidden="true"></i>
+              </div>
+              <div>
+                <h3 class="h5 fw-bold mb-2">Bioseguridad de Nivel Hospitalario</h3>
+                <p class="text-muted">Implementamos rigurosos protocolos de esterilización y desinfección en todas nuestras salas e instrumental para garantizar tu tranquilidad.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Testimonios Section (Carousel)
+         ========================================================================== -->
+    <section class="section-padding testimonials-section" id="testimonials" aria-labelledby="testimonials-title">
+      <div class="container">
+        <div class="text-center reveal-on-scroll">
+          <span class="section-tag" style="color: var(--accent);">Opiniones de Pacientes</span>
+          <h2 class="section-title text-center text-white" id="testimonials-title">Testimonios de Confianza</h2>
+        </div>
+        
+        <div id="testimonialCarousel" class="carousel slide carousel-fade reveal-on-scroll reveal-delay-1" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            
+            <!-- Slide 1 -->
+            <div class="carousel-item active" data-bs-interval="6000">
+              <div class="testimonial-card text-center">
+                <p class="testimonial-text">"La atención en ORAL LUANM fue increíble. Yo le tenía pánico a los dentistas, pero el trato del doctor y la tecnología que usan hicieron que mi tratamiento de diseño de sonrisa fuera completamente indoloro y con resultados espectaculares."</p>
+                <div class="testimonial-author">
+                  <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Retrato de la paciente Carolina Gómez">
+                  <div class="testimonial-info text-start">
+                    <h4>Carolina Gómez</h4>
+                    <span>Diseño de Sonrisa</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="carousel-item" data-bs-interval="6000">
+              <div class="testimonial-card text-center">
+                <p class="testimonial-text">"Llevé a mi hijo para su tratamiento de odontopediatría y quedé maravillado. Tienen una paciencia inmensa y las instalaciones están diseñadas para que los niños se sientan en confianza. ¡Mi hijo ahora adora ir al dentista!"</p>
+                <div class="testimonial-author">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Retrato del paciente Roberto Suárez">
+                  <div class="testimonial-info text-start">
+                    <h4>Roberto Suárez</h4>
+                    <span>Odontopediatría</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="carousel-item" data-bs-interval="6000">
+              <div class="testimonial-card text-center">
+                <p class="testimonial-text">"Me realicé un implante dental y un blanqueamiento LED. En todo momento me explicaron cada paso con claridad. Son sumamente profesionales e higiénicos. Recomiendo ORAL LUANM a cualquier persona que busque excelencia."</p>
+                <div class="testimonial-author">
+                  <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80" alt="Retrato de la paciente Andrea Restrepo">
+                  <div class="testimonial-info text-start">
+                    <h4>Andrea Restrepo</h4>
+                    <span>Implantes e Estética</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          
+          <!-- Carousel Controls -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Llamado a la Acción (CTA) Section
+         ========================================================================== -->
+    <section class="section-padding section-bg-white" id="cta-action" aria-labelledby="cta-title">
+      <div class="container">
+        <div class="cta-banner text-center reveal-on-scroll">
+          <h2 class="h1 fw-bold mb-3" id="cta-title">¿Listo para transformar tu sonrisa?</h2>
+          <p class="lead mb-4 mx-auto" style="max-width: 600px;">Agenda una cita de evaluación hoy mismo y descubre por qué somos la clínica odontológica premium de referencia en la ciudad.</p>
+          <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <button class="btn btn-secondary btn-lg" data-bs-toggle="modal" data-bs-target="#appointmentModal" id="btnCtaAppointment">
+              Agendar Cita Online
+            </button>
+            <a href="contacto.html" class="btn btn-outline-light btn-lg" id="btnCtaContact">
+              Hablar con un Asesor
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       Footer Section
+       ========================================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-4">
+        
+        <!-- Brand & Description -->
+        <div class="col-md-6 col-lg-4">
+          <a class="navbar-brand text-white mb-3" href="index.html">
+            <i class="bi bi-heart-pulse-fill text-primary" aria-hidden="true"></i>
+            ORAL<span class="text-primary"> LUANM</span>
+          </a>
+          <p class="small text-muted mt-2">Clínica dental de categoría premium enfocada en brindar tratamientos con excelencia clínica, ética profesional y tecnología médica innovadora.</p>
+          <div class="social-icons mt-4">
+            <a href="https://facebook.com/oralluanm" class="social-btn" aria-label="Facebook de ORAL LUANM"><i class="bi bi-facebook" aria-hidden="true"></i></a>
+            <a href="https://instagram.com/oralluanm" class="social-btn" aria-label="Instagram de ORAL LUANM"><i class="bi bi-instagram" aria-hidden="true"></i></a>
+            <a href="https://twitter.com/oralluanm" class="social-btn" aria-label="Twitter de ORAL LUANM"><i class="bi bi-twitter-x" aria-hidden="true"></i></a>
+            <a href="https://wa.me/573001234567" class="social-btn" aria-label="WhatsApp de ORAL LUANM"><i class="bi bi-whatsapp" aria-hidden="true"></i></a>
+          </div>
+        </div>
+
+        <!-- Sitemap Links -->
+        <div class="col-6 col-lg-2 offset-lg-1">
+          <h4>Navegación</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="galeria.html">Galería</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+
+        <!-- Services Sitemap Links -->
+        <div class="col-6 col-lg-2">
+          <h4>Servicios</h4>
+          <ul class="footer-links">
+            <li><a href="servicios.html">Ortodoncia</a></li>
+            <li><a href="servicios.html">Odontología General</a></li>
+            <li><a href="servicios.html">Blanqueamiento</a></li>
+            <li><a href="servicios.html">Diseño de Sonrisa</a></li>
+            <li><a href="servicios.html">Implantes Dentales</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact & Opening Hours -->
+        <div class="col-md-6 col-lg-3">
+          <h4>Horarios & Contacto</h4>
+          <ul class="footer-links text-muted small p-0">
+            <li class="d-flex gap-2 mb-2">
+              <i class="bi bi-geo-alt-fill text-primary" aria-hidden="true"></i>
+              <span>Av. Principal Nro 123-45, Centro Médico Premium, Bogotá.</span>
+            </li>
+            <li class="d-flex gap-2 mb-2">
+              <i class="bi bi-telephone-fill text-primary" aria-hidden="true"></i>
+              <span>+57 300 123 4567</span>
+            </li>
+            <li class="d-flex gap-2 mb-3">
+              <i class="bi bi-envelope-fill text-primary" aria-hidden="true"></i>
+              <span>citas@oralluanm.com</span>
+            </li>
+            <li class="d-flex gap-2">
+              <i class="bi bi-clock-fill text-primary" aria-hidden="true"></i>
+              <div>
+                <span>Lunes - Viernes: 8:00 AM - 6:00 PM</span><br>
+                <span>Sábados: 9:00 AM - 1:00 PM</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+      
+      <!-- Copyright and Legals -->
+      <div class="footer-bottom text-center">
+        <p class="mb-0">&copy; 2026 ORAL LUANM. Todos los derechos reservados. Diseñado con altos estándares de accesibilidad.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       Modal: Agendar Cita
+       ========================================================================== -->
+  <div class="modal fade" id="appointmentModal" tabindex="-1" aria-labelledby="appointmentModalLabel" aria-hidden="true" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg" style="border-radius: var(--border-radius-md);">
+        
+        <div class="modal-header border-bottom-0 pb-0" style="padding: 1.5rem 1.5rem 0 1.5rem;">
+          <h2 class="modal-title h5 fw-bold d-flex align-items-center gap-2" id="appointmentModalLabel">
+            <i class="bi bi-calendar-check text-primary" aria-hidden="true"></i> Agendar Cita Médica
+          </h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar modal"></button>
+        </div>
+        
+        <div class="modal-body" style="padding: 1.5rem;">
+          <form class="needs-validation" novalidate id="formModalAppointment">
+            <div class="mb-3">
+              <label for="modalName" class="form-label fw-semibold">Nombre Completo <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="modalName" placeholder="Ej. Juan Pérez" required>
+              <div class="invalid-feedback">Por favor, ingresa tu nombre completo.</div>
+            </div>
+            
+            <div class="row mb-3 g-3">
+              <div class="col-sm-6">
+                <label for="modalPhone" class="form-label fw-semibold">Teléfono <span class="text-danger">*</span></label>
+                <input type="tel" class="form-control" id="modalPhone" placeholder="Ej. 3001234567" required pattern="[0-9]{7,15}">
+                <div class="invalid-feedback">Ingresa un número telefónico válido (mínimo 7 dígitos).</div>
+              </div>
+              <div class="col-sm-6">
+                <label for="modalEmail" class="form-label fw-semibold">Correo Electrónico <span class="text-danger">*</span></label>
+                <input type="email" class="form-control" id="modalEmail" placeholder="juan@correo.com" required>
+                <div class="invalid-feedback">Ingresa un correo electrónico válido.</div>
+              </div>
+            </div>
+
+            <div class="row mb-3 g-3">
+              <div class="col-sm-6">
+                <label for="modalService" class="form-label fw-semibold">Servicio Requerido <span class="text-danger">*</span></label>
+                <select class="form-select" id="modalService" required>
+                  <option value="" disabled selected>Selecciona...</option>
+                  <option value="ortodoncia">Ortodoncia</option>
+                  <option value="general">Odontología General</option>
+                  <option value="blanqueamiento">Blanqueamiento Dental</option>
+                  <option value="sonrisa">Diseño de Sonrisa</option>
+                  <option value="endodoncia">Endodoncia</option>
+                  <option value="odontopediatria">Odontopediatría</option>
+                  <option value="implantes">Implantes Dentales</option>
+                </select>
+                <div class="invalid-feedback">Selecciona un servicio odontológico.</div>
+              </div>
+              <div class="col-sm-6">
+                <label for="modalDate" class="form-label fw-semibold">Fecha Preferida <span class="text-danger">*</span></label>
+                <input type="date" class="form-control" id="modalDate" required>
+                <div class="invalid-feedback">Selecciona una fecha para tu cita.</div>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <label for="modalMessage" class="form-label fw-semibold">Notas Adicionales (Opcional)</label>
+              <textarea class="form-control" id="modalMessage" rows="3" placeholder="Cuéntanos sobre algún síntoma o preferencia de horario..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100" id="btnSubmitAppointment">Confirmar Solicitud de Cita</button>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 Bundle JS with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  
+  <!-- Custom JS -->
+  <script src="js/main.js"></script>
+</body>
+</html>

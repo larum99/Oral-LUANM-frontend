@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explora la galería de ORAL LUANM. Conoce nuestras instalaciones premium, casos de antes y después, eventos y el día a día de nuestra clínica odontológica.">
+  <meta name="keywords" content="antes y después dental, consultorio dental fotos, clínica dental moderna, casos clínicos odontología, ORAL LUANM">
+  <meta name="author" content="ORAL LUANM">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://oralluanm.com/galeria.html">
+  <meta property="og:title" content="Galería de Fotos | ORAL LUANM">
+  <meta property="og:description" content="Visualiza nuestras modernas instalaciones y espectaculares resultados de antes y después.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&h=630&q=80">
+
+  <title>Galería Dental | ORAL LUANM</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       Header / Navigation
+       ========================================================================== -->
+  <header>
+    <nav class="navbar navbar-expand-lg fixed-top" aria-label="Menú principal de navegación">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <i class="bi bi-heart-pulse-fill text-primary" aria-hidden="true"></i>
+          ORAL<span> LUANM</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegación">
+          <i class="bi bi-list fs-2 text-dark"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="nosotros.html">Nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="servicios.html">Servicios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="galeria.html">Galería</a>
+            </li>
+            <li class="nav-item me-lg-3">
+              <a class="nav-link" href="contacto.html">Contacto</a>
+            </li>
+            <li class="nav-item mt-3 mt-lg-0">
+              <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#appointmentModal" id="btnNavAppointment">
+                Agendar Cita
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==========================================================================
+       Main Content
+       ========================================================================== -->
+  <main style="padding-top: 5rem;">
+    
+    <!-- Hero Header -->
+    <section class="section-padding text-center bg-white border-bottom" style="padding: 5rem 0 3rem 0;">
+      <div class="container">
+        <span class="section-tag">Registro Visual</span>
+        <h1 class="display-4 fw-extrabold text-dark mb-3">Galería Institucional</h1>
+        <p class="lead text-muted mx-auto" style="max-width: 650px;">Explora nuestras modernas instalaciones de bioseguridad, casos de éxito clínico y actividades que realizamos día a día.</p>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section-padding section-bg-light" id="galeria-fotos" aria-labelledby="galeria-title">
+      <div class="container">
+        <h2 class="visually-hidden" id="galeria-title">Galería de Imágenes</h2>
+        
+        <!-- Filter Controls -->
+        <div class="d-flex flex-wrap justify-content-center gap-2 mb-5 reveal-on-scroll">
+          <button class="gallery-filter-btn active" data-filter="all" id="btnFilterAll">Todos</button>
+          <button class="gallery-filter-btn" data-filter="antes-despues" id="btnFilterAntesDespues">Antes y Después</button>
+          <button class="gallery-filter-btn" data-filter="instalaciones" id="btnFilterInstalaciones">Instalaciones</button>
+          <button class="gallery-filter-btn" data-filter="casos" id="btnFilterCasos">Casos Clínicos</button>
+          <button class="gallery-filter-btn" data-filter="eventos" id="btnFilterEventos">Eventos</button>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="row g-4 justify-content-center">
+          
+          <!-- Item 1 - Antes y Después -->
+          <div class="col-sm-6 col-md-4 col-lg-3 gallery-item-wrapper" data-category="antes-despues">
+            <div class="gallery-item reveal-on-scroll" data-bs-toggle="modal" data-bs-target="#lightboxModal" id="galleryItem1">
+              <img src="https://images.unsplash.com/photo-1579684389782-64d84b5e901a?auto=format&fit=crop&w=600&h=600&q=80" alt="Comparativa de diseño de sonrisa exitoso antes y después">
+              <div class="gallery-overlay">
+                <span class="gallery-category">Antes y Después</span>
+                <h3 class="gallery-title">Diseño de Sonrisa Digital</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2 - Instalaciones -->
+          <div class="col-sm-6 col-md-4 col-lg-3 gallery-item-wrapper" data-category="instalaciones">
+            <div class="gallery-item reveal-on-scroll reveal-delay-1" data-bs-toggle="modal" data-bs-target="#lightboxModal" id="galleryItem2">
+              <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=600&h=600&q=80" alt="Consultorio dental principal higiénico y moderno">
+              <div class="gallery-overlay">
+                <span class="gallery-category">Instalaciones</span>
+                <h3 class="gallery-title">Consultorio Principal</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 3 - Casos Clínicos -->
+          <div class="col-sm-6 col-md-4 col-lg-3 gallery-item-wrapper" data-category="casos">
+            <div class="gallery-item reveal-on-scroll reveal-delay-2" data-bs-toggle="modal" data-bs-target="#lightboxModal" id="galleryItem3">
+              <img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=600&h=600&q=80" alt="Diagnóstico con instrumental quirúrgico digital">
+              <div class="gallery-overlay">
+                <span class="gallery-category">Casos Clínicos</span>
+                <h3 class="gallery-title">Tratamiento de Endodoncia</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 4 - Eventos -->
+          <div class="col-sm-6 col-md-4 col-lg-3 gallery-item-wrapper" data-category="eventos">
+            <div class="gallery-item reveal-on-scroll reveal-delay-3" data-bs-toggle="modal" data-bs-target="#lightboxModal" id="galleryItem4">
+              <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&h=600&q=80" alt="Taller de capacitación en bioseguridad del staff odontológico">
+              <div class="gallery-overlay">
+                <span class="gallery-category">Eventos</span>
+                <h3 class="gallery-title">Capacitación de Bioseguridad</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 5 - Antes y Después -->
+          <div class="col-sm-6 col-md-4 col-lg-3 gallery-item-wrapper" data-category="antes-despues">
+            <div class="gallery-item reveal-on-scroll" data-bs-toggle="modal" data-bs-target="#lightboxModal" id="galleryItem5">
+              <img src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=600&h=600&q=80" alt="Alineación dental mediante ortodoncia brackets estéticos">
+              <div class="gallery-overlay">
+                <span class="gallery-category">Antes y Después</span>
+                <h3 class="gallery-title">Ortodoncia Autoligable</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 6 - Instalaciones -->
+          <div class="col-sm-6 col-md-4 col-lg-3 gallery-item-wrapper" data-category="instalaciones">
+            <div class="gallery-item reveal-on-scroll reveal-delay-1" data-bs-toggle="modal" data-bs-target="#lightboxModal" id="galleryItem6">
+              <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=600&h=600&q=80" alt="Sillón odontológico ergonómico de última tecnología">
+              <div class="gallery-overlay">
+                <span class="gallery-category">Instalaciones</span>
+                <h3 class="gallery-title">Sala de Procedimientos LED</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 7 - Casos Clínicos -->
+          <div class="col-sm-6 col-md-4 col-lg-3 gallery-item-wrapper" data-category="casos">
+            <div class="gallery-item reveal-on-scroll reveal-delay-2" data-bs-toggle="modal" data-bs-target="#lightboxModal" id="galleryItem7">
+              <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&h=600&q=80" alt="Diagnóstico interactivo mediante tomografía 3D digital">
+              <div class="gallery-overlay">
+                <span class="gallery-category">Casos Clínicos</span>
+                <h3 class="gallery-title">Planificación de Implante 3D</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 8 - Eventos -->
+          <div class="col-sm-6 col-md-4 col-lg-3 gallery-item-wrapper" data-category="eventos">
+            <div class="gallery-item reveal-on-scroll reveal-delay-3" data-bs-toggle="modal" data-bs-target="#lightboxModal" id="galleryItem8">
+              <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&w=600&h=600&q=80" alt="Reunión del equipo administrativo y odontológico de ORAL LUANM">
+              <div class="gallery-overlay">
+                <span class="gallery-category">Eventos</span>
+                <h3 class="gallery-title">Aniversario ORAL LUANM</h3>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       Footer Section
+       ========================================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-4">
+        
+        <!-- Brand & Description -->
+        <div class="col-md-6 col-lg-4">
+          <a class="navbar-brand text-white mb-3" href="index.html">
+            <i class="bi bi-heart-pulse-fill text-primary" aria-hidden="true"></i>
+            ORAL<span class="text-primary"> LUANM</span>
+          </a>
+          <p class="small text-muted mt-2">Clínica dental de categoría premium enfocada en brindar tratamientos con excelencia clínica, ética profesional y tecnología médica innovadora.</p>
+          <div class="social-icons mt-4">
+            <a href="https://facebook.com/oralluanm" class="social-btn" aria-label="Facebook de ORAL LUANM"><i class="bi bi-facebook" aria-hidden="true"></i></a>
+            <a href="https://instagram.com/oralluanm" class="social-btn" aria-label="Instagram de ORAL LUANM"><i class="bi bi-instagram" aria-hidden="true"></i></a>
+            <a href="https://twitter.com/oralluanm" class="social-btn" aria-label="Twitter de ORAL LUANM"><i class="bi bi-twitter-x" aria-hidden="true"></i></a>
+            <a href="https://wa.me/573001234567" class="social-btn" aria-label="WhatsApp de ORAL LUANM"><i class="bi bi-whatsapp" aria-hidden="true"></i></a>
+          </div>
+        </div>
+
+        <!-- Sitemap Links -->
+        <div class="col-6 col-lg-2 offset-lg-1">
+          <h4>Navegación</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="galeria.html">Galería</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+
+        <!-- Services Sitemap Links -->
+        <div class="col-6 col-lg-2">
+          <h4>Servicios</h4>
+          <ul class="footer-links">
+            <li><a href="servicios.html">Ortodoncia</a></li>
+            <li><a href="servicios.html">Odontología General</a></li>
+            <li><a href="servicios.html">Blanqueamiento</a></li>
+            <li><a href="servicios.html">Diseño de Sonrisa</a></li>
+            <li><a href="servicios.html">Implantes Dentales</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact & Opening Hours -->
+        <div class="col-md-6 col-lg-3">
+          <h4>Horarios & Contacto</h4>
+          <ul class="footer-links text-muted small p-0">
+            <li class="d-flex gap-2 mb-2">
+              <i class="bi bi-geo-alt-fill text-primary" aria-hidden="true"></i>
+              <span>Av. Principal Nro 123-45, Centro Médico Premium, Bogotá.</span>
+            </li>
+            <li class="d-flex gap-2 mb-2">
+              <i class="bi bi-telephone-fill text-primary" aria-hidden="true"></i>
+              <span>+57 300 123 4567</span>
+            </li>
+            <li class="d-flex gap-2 mb-3">
+              <i class="bi bi-envelope-fill text-primary" aria-hidden="true"></i>
+              <span>citas@oralluanm.com</span>
+            </li>
+            <li class="d-flex gap-2">
+              <i class="bi bi-clock-fill text-primary" aria-hidden="true"></i>
+              <div>
+                <span>Lunes - Viernes: 8:00 AM - 6:00 PM</span><br>
+                <span>Sábados: 9:00 AM - 1:00 PM</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+      
+      <!-- Copyright and Legals -->
+      <div class="footer-bottom text-center">
+        <p class="mb-0">&copy; 2026 ORAL LUANM. Todos los derechos reservados. Diseñado con altos estándares de accesibilidad.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       Modal: Lightbox Gallery View
+       ========================================================================== -->
+  <div class="modal fade" id="lightboxModal" tabindex="-1" aria-labelledby="lightboxModalLabel" aria-hidden="true" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content bg-transparent border-0">
+        
+        <div class="modal-header border-0 pb-0 justify-content-end">
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar vista de imagen"></button>
+        </div>
+        
+        <div class="modal-body text-center p-0">
+          <img src="" alt="Cargando imagen ampliada..." class="img-fluid rounded modal-lightbox-img max-vh-75" style="box-shadow: var(--shadow-lg); max-height: 80vh;">
+          <div class="mt-3 p-3 bg-dark bg-opacity-75 rounded text-start text-white">
+            <span class="modal-lightbox-category badge bg-primary mb-1 text-uppercase">Categoría</span>
+            <h2 class="modal-lightbox-title h5 fw-bold mb-0" id="lightboxModalLabel">Título de la imagen</h2>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       Modal: Agendar Cita
+       ========================================================================== -->
+  <div class="modal fade" id="appointmentModal" tabindex="-1" aria-labelledby="appointmentModalLabel" aria-hidden="true" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg" style="border-radius: var(--border-radius-md);">
+        
+        <div class="modal-header border-bottom-0 pb-0" style="padding: 1.5rem 1.5rem 0 1.5rem;">
+          <h2 class="modal-title h5 fw-bold d-flex align-items-center gap-2" id="appointmentModalLabel">
+            <i class="bi bi-calendar-check text-primary" aria-hidden="true"></i> Agendar Cita Médica
+          </h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar modal"></button>
+        </div>
+        
+        <div class="modal-body" style="padding: 1.5rem;">
+          <form class="needs-validation" novalidate id="formModalAppointment">
+            <div class="mb-3">
+              <label for="modalName" class="form-label fw-semibold">Nombre Completo <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="modalName" placeholder="Ej. Juan Pérez" required>
+              <div class="invalid-feedback">Por favor, ingresa tu nombre completo.</div>
+            </div>
+            
+            <div class="row mb-3 g-3">
+              <div class="col-sm-6">
+                <label for="modalPhone" class="form-label fw-semibold">Teléfono <span class="text-danger">*</span></label>
+                <input type="tel" class="form-control" id="modalPhone" placeholder="Ej. 3001234567" required pattern="[0-9]{7,15}">
+                <div class="invalid-feedback">Ingresa un número telefónico válido (mínimo 7 dígitos).</div>
+              </div>
+              <div class="col-sm-6">
+                <label for="modalEmail" class="form-label fw-semibold">Correo Electrónico <span class="text-danger">*</span></label>
+                <input type="email" class="form-control" id="modalEmail" placeholder="juan@correo.com" required>
+                <div class="invalid-feedback">Ingresa un correo electrónico válido.</div>
+              </div>
+            </div>
+
+            <div class="row mb-3 g-3">
+              <div class="col-sm-6">
+                <label for="modalService" class="form-label fw-semibold">Servicio Requerido <span class="text-danger">*</span></label>
+                <select class="form-select" id="modalService" required>
+                  <option value="" disabled selected>Selecciona...</option>
+                  <option value="ortodoncia">Ortodoncia</option>
+                  <option value="general">Odontología General</option>
+                  <option value="blanqueamiento">Blanqueamiento Dental</option>
+                  <option value="sonrisa">Diseño de Sonrisa</option>
+                  <option value="endodoncia">Endodoncia</option>
+                  <option value="odontopediatria">Odontopediatría</option>
+                  <option value="implantes">Implantes Dentales</option>
+                </select>
+                <div class="invalid-feedback">Selecciona un servicio odontológico.</div>
+              </div>
+              <div class="col-sm-6">
+                <label for="modalDate" class="form-label fw-semibold">Fecha Preferida <span class="text-danger">*</span></label>
+                <input type="date" class="form-control" id="modalDate" required>
+                <div class="invalid-feedback">Selecciona una fecha para tu cita.</div>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <label for="modalMessage" class="form-label fw-semibold">Notas Adicionales (Opcional)</label>
+              <textarea class="form-control" id="modalMessage" rows="3" placeholder="Cuéntanos sobre algún síntoma o preferencia de horario..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100" id="btnSubmitAppointment">Confirmar Solicitud de Cita</button>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 Bundle JS with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  
+  <!-- Custom JS -->
+  <script src="js/main.js"></script>
+</body>
+</html>

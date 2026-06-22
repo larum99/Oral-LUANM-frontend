@@ -24,6 +24,67 @@
   --weight-bold: 700;
 
   /* Escala de tamaños recomendada (Rem) */
+  --size-xs: 0.75rem;   /* 12px - Datos breves / Pie de página */
+  --size-sm: 0.875rem;  /* 14px - Botones / Textos pequeños */
+  --size-base: 1rem;    /* 16px - Párrafos / Información clínica */
+  --size-lg: 1.25rem;   /* 20px - Subtítulos */
+  --size-xl: 1.75rem;   /* 28px - Títulos de secciones */
+  --size-xxl: 2.5rem;   /* 40px - Títulos principales / Presentaciones */
+}
+
+/* TESTIMONIOS */
+.testimonios {
+  background-color: var(--color-primary-light); 
+  padding: 60px 20px;
+  text-align: center;
+  font-family: var(--font-body);
+}
+
+.testimonios h2 {
+  font-size: var(--size-xl);
+  margin-bottom: 40px;
+  color: var(--color-primary); 
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+}
+
+.testimonios-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.testimonio-card {
+  background: var(--color-white);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px var(--color-silver);
+  max-width: 300px;
+  flex: 1 1 250px;
+  font-size: var(--size-base);
+  color: var(--color-text-main);
+}
+
+.testimonio-card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%; 
+  object-fit: cover;
+  margin-bottom: 15px;
+  border: 2px solid var(--color-primary-dark); 
+}
+
+.testimonio-card p {
+  font-style: italic;
+  margin-bottom: 10px;
+  color: var(--color-text-muted);
+}
+
+.testimonio-card span {
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-main);
+}
   --size-xs: 0.75rem; /* 12px - Datos breves / Pie de página */
   --size-sm: 0.875rem; /* 14px - Botones / Textos pequeños */
   --size-base: 1rem; /* 16px - Párrafos / Información clínica */

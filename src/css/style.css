@@ -85,16 +85,14 @@
   font-weight: var(--weight-semibold);
   color: var(--color-text-main);
 }
-  --size-xs: 0.75rem; /* 12px - Datos breves / Pie de página */
-  --size-sm: 0.875rem; /* 14px - Botones / Textos pequeños */
-  --size-base: 1rem; /* 16px - Párrafos / Información clínica */
-  --size-lg: 1.25rem; /* 20px - Subtítulos */
-  --size-xl: 1.75rem; /* 28px - Títulos de secciones */
-  --size-xxl: 2.5rem; /* 40px - Títulos principales / Presentaciones */
+
+* {
+  box-sizing: border-box;
 }
 
 body {
   font-family: var(--font-body);
+<<<<<<< HEAD
   color: var(--color-text-muted);
   background-color: var(--color-white);
   line-height: 1.7;
@@ -292,3 +290,194 @@ a:hover {
 }
 
 
+=======
+  color: var(--color-text-main);
+  margin: 0;
+}
+
+/* ===== TOPBAR ===== */
+.topbar {
+  background-color: var(--color-text-main);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 0;
+  font-size: var(--size-sm);
+}
+
+/* ===== HEADER ===== */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+  border-bottom: 1px solid var(--color-silver);
+}
+
+.logo img {
+  height: 70px;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: var(--color-text-main);
+  font-family: var(--font-ui);
+  font-size: var(--size-sm);
+  font-weight: var(--weight-semibold);
+}
+
+header nav ul li a:hover {
+  color: var(--color-primary);
+}
+
+/* ===== BADGE / SUBTITULO PEQUEÑO ===== */
+.subtitulo-peque {
+  display: inline-block;
+  background-color: var(--color-primary-light);
+  font-size: var(--size-xs);
+  padding: 7px 12px;
+  color: var(--color-text-main);
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+/* ===== HERO ===== */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+  padding: 60px 40px;
+}
+
+.hero-left {
+  flex: 1;
+  max-width: 550px;
+}
+
+.titular h1 {
+  font-family: var(--font-display);
+  font-size: var(--size-xxl);
+  font-weight: var(--weight-bold);
+  line-height: 1.2;
+  margin: 0 0 20px 0;
+}
+
+.titular p {
+  font-family: var(--font-body);
+  font-size: var(--size-base);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0 0 25px 0;
+}
+
+/* ===== BOTONES ===== */
+.botones {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.botones a {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-family: var(--font-ui);
+  font-size: var(--size-sm);
+  font-weight: var(--weight-semibold);
+}
+
+.btn-primario {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: 1px solid var(--color-primary);
+}
+
+.btn-primario:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.btn-secundario {
+  background-color: var(--color-white);
+  color: var(--color-text-main);
+  border: 1px solid var(--color-silver);
+}
+
+.btn-secundario:hover {
+  background-color: var(--color-primary-light);
+}
+
+/* ===== DIVISOR ===== */
+.titular hr {
+  border: none;
+  border-top: 1px dashed var(--color-silver);
+  margin-bottom: 25px;
+}
+
+/* ===== ESTADISTICAS ===== */
+.stats {
+  display: flex;
+  gap: 35px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-numero {
+  font-family: var(--font-display);
+  font-size: var(--size-lg);
+  font-weight: var(--weight-bold);
+  color: var(--color-text-main);
+}
+
+.stat-label {
+  font-family: var(--font-ui);
+  font-size: var(--size-xs);
+  color: var(--color-text-muted);
+}
+
+/* ===== HERO RIGHT (IMAGEN) ===== */
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-right img {
+  width: 100%;
+  max-width: 480px;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 8px;
+  background-color: var(--color-primary-light);
+}
+
+/* ===== RESPONSIVE BASICO ===== */
+@media (max-width: 900px) {
+  header {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .hero {
+    flex-direction: column;
+  }
+
+  .hero-left {
+    max-width: 100%;
+  }
+}
+>>>>>>> origin/feature/nicolas-pirajan

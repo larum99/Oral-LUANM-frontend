@@ -1,0 +1,73 @@
+<footer class="footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4">
+        <a class="navbar-brand footer-brand mb-3" href="{{CONTACT_PATH}}">
+          <i class="bi bi-heart-pulse-fill text-primary" aria-hidden="true"></i>
+          ORAL<span> LUANM</span>
+        </a>
+        <p class="small mt-3">Clinica dental enfocada en brindar tratamientos con excelencia clinica, etica profesional y tecnologia medica innovadora.</p>
+        <div class="social-icons mt-4">
+          <a href="https://facebook.com/oralluanm" class="social-btn" aria-label="Facebook"><i class="bi bi-facebook" aria-hidden="true"></i></a>
+          <a href="https://instagram.com/oralluanm" class="social-btn" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a>
+          <a href="https://wa.me/573001234567" class="social-btn" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-2 offset-lg-1">
+        <h4>Navegacion</h4>
+        <ul class="footer-links">
+          <li><a href="{{CONTACT_PATH}}">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="col-md-6 col-lg-3">
+        <h4>Horarios & Contacto</h4>
+        <ul class="footer-links footer-contact">
+          <li><i class="bi bi-geo-alt-fill text-primary" aria-hidden="true"></i><span>Av. Principal Nro 123-45, Bogota.</span></li>
+          <li><i class="bi bi-telephone-fill text-primary" aria-hidden="true"></i><span>+57 300 123 4567</span></li>
+          <li><i class="bi bi-envelope-fill text-primary" aria-hidden="true"></i><span>citas@oralluanm.com</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom text-center">
+      <p class="mb-0">&copy; 2026 ORAL LUANM. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="modal fade" id="appointmentModal" tabindex="-1" aria-labelledby="appointmentModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow-lg">
+      <div class="modal-header border-bottom-0 pb-0">
+        <h2 class="modal-title h5 fw-bold d-flex align-items-center gap-2" id="appointmentModalLabel">
+          <i class="bi bi-calendar-check text-primary" aria-hidden="true"></i> Agendar Cita
+        </h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar modal"></button>
+      </div>
+      <div class="modal-body">
+        <form class="needs-validation" novalidate id="formModalAppointment">
+          <div class="mb-3">
+            <label for="modalName" class="form-label fw-semibold">Nombre Completo <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="modalName" required>
+            <div class="invalid-feedback">Por favor, ingresa tu nombre completo.</div>
+          </div>
+          <div class="row mb-3 g-3">
+            <div class="col-sm-6">
+              <label for="modalPhone" class="form-label fw-semibold">Telefono <span class="text-danger">*</span></label>
+              <input type="tel" class="form-control" id="modalPhone" required pattern="[0-9]{7,15}">
+              <div class="invalid-feedback">Ingresa un telefono valido.</div>
+            </div>
+            <div class="col-sm-6">
+              <label for="modalEmail" class="form-label fw-semibold">Correo <span class="text-danger">*</span></label>
+              <input type="email" class="form-control" id="modalEmail" required>
+              <div class="invalid-feedback">Ingresa un correo valido.</div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Confirmar Solicitud</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

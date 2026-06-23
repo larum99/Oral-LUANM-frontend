@@ -1,0 +1,39 @@
+:root {
+    /*paleta colores */
+    --color-primary: #7A13C7;
+    /* Morado principal */
+    --color-primary-dark: #6C0FB3;
+    /* Morado profundo (ideal para hovers o estados activos) */
+    --color-primary-light: #EFE6F8;
+    /* Lavanda claro (fondos, tarjetas, alertas) */
+    --color-silver: #B9B9B9;
+    /* Plata / Gris (bordes, líneas divisorias) */
+    --color-text-muted: #7B7B7B;
+    /* Gris texto (párrafos secundarios, subtítulos cortos) */
+    --color-text-main: #1A1A1A;
+    /* Gris muy oscuro/negro para legibilidad base */
+    --color-white: #FFFFFF;
+    /* Blanco puro para contrastes altos */
+    /* tipografia*/
+    /* Fuentes base */
+    --font-display: 'Georgia', serif;
+    --font-body: 'Aptos', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-ui: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    /* Pesos tipográficos */
+    --weight-regular: 400;
+    --weight-semibold: 600;
+    --weight-bold: 700;
+    /* Escala de tamaños recomendada (Rem) */
+    --size-xs: 0.75rem;
+    /* 12px - Datos breves / Pie de página */
+    --size-sm: 0.875rem;
+    /* 14px - Botones / Textos pequeños */
+    --size-base: 1rem;
+    /* 16px - Párrafos / Información clínica */
+    --size-lg: 1.25rem;
+    /* 20px - Subtítulos */
+    --size-xl: 1.75rem;
+    /* 28px - Títulos de secciones */
+    --size-xxl: 2.5rem;
+    /* 40px - Títulos principales / Presentaciones */
+}

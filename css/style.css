@@ -1,0 +1,113 @@
+
+
+/*--------------------------------- css Ramiro apertura---------------------------- */
+
+.navbar {
+  padding: 1rem 0;
+  transition: var(--transition-smooth);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.navbar-scrolled {
+  padding: 0.6rem 0;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-sm);
+  border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+}
+
+.navbar-brand {
+  font-family: var(--font-headings);
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: var(--secondary) !important;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar-brand span {
+  color: var(--primary);
+}
+
+.nav-link {
+  font-weight: 500;
+  color: var(--text-main) !important;
+  padding: 0.5rem 1.2rem !important;
+  border-radius: var(--border-radius-sm);
+  transition: var(--transition-smooth);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--primary) !important;
+  background-color: var(--primary-light);
+}
+
+.navbar-toggler {
+  border: none;
+  padding: 0.5rem;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+/*----------------------- Button Ramiro------------------- */
+.btn {
+  padding: 0.8rem 1.8rem;
+  font-weight: 600;
+  border-radius: 50px;
+  transition: var(--transition-bounce);
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--bg-white);
+  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.25);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+  color: var(--bg-white);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.35);
+}
+
+.btn-secondary {
+  background-color: var(--secondary);
+  border-color: var(--secondary);
+  color: var(--bg-white);
+  box-shadow: 0 4px 14px rgba(15, 23, 66, 0.15);
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+  background-color: var(--secondary-hover);
+  border-color: var(--secondary-hover);
+  color: var(--bg-white);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(15, 23, 66, 0.25);
+}
+
+.btn-outline-primary {
+  color: var(--primary);
+  border-color: var(--primary);
+  border-width: 2px;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--bg-white);
+  transform: translateY(-2px);
+}
+
+/*--------------------------------- css Ramiro CIERRE---------------------------- */

@@ -2,17 +2,22 @@ const getBasePath = () => {
   const depth = window.location.pathname
     .split("/")
     .filter(Boolean)
-    .filter((part) => !part.endsWith(".html")).length;
+    .filter((part) =>
+      part !== "Odonto-luanm-frontend" &&
+      !part.endsWith(".html")
+    ).length;
 
   return depth === 0 ? "./" : "../".repeat(depth);
 };
 
 const fillTemplate = (html) => {
   const contactPath = `${getBasePath()}contactanos/`;
+  const servicePath = `${getBasePath()}servicios/`;
 
   return html
     .replaceAll("{{BASE_PATH}}", getBasePath())
-    .replaceAll("{{CONTACT_PATH}}", contactPath);
+    .replaceAll("{{CONTACT_PATH}}", contactPath)
+    .replaceAll("{{SERVICE_PATH}}", servicePath);
 };
 
 const loadComponent = async (target) => {
@@ -81,11 +86,38 @@ const initFormValidation = () => {
   });
 };
 
+const initServices = () => {
+  const container = document.getElementById("servicios-container");
+
+  if (!container || typeof SERVICES === "undefined") return;
+
+  SERVICES.forEach((service, index) => {
+    const isReverse = index % 2 !== 0;
+
+    const card = document.createElement("div");
+    card.className = `servicio-card ${isReverse ? "reverse" : ""}`;
+
+    card.innerHTML = `
+      <div class="servicio-card__content">
+        <h2 class="servicio-card__title">${service.titulo}</h2>
+        <p class="servicio-card__text">${service.descripcion}</p>
+      </div>
+
+      <div class="servicio-card__image">
+        <img src="${service.imagen}" alt="${service.titulo}">
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
+};
+
 const initApp = async () => {
   await loadComponents();
   initNavbar();
   initRevealAnimations();
   initFormValidation();
+  initServices();
 };
 
 initApp().catch((error) => {

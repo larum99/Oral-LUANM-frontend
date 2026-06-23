@@ -1,0 +1,61 @@
+/* ==========================================================================
+   SERVICIOS
+   ========================================================================== */
+
+.servicio-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  background: var(--bg-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.servicio-card__content {
+  flex: 1;
+  min-width: 280px;
+}
+
+.servicio-card__title {
+  font-size: 1.5rem;
+  margin-bottom: 0.8rem;
+  color: var(--text-dark);
+}
+
+.servicio-card__text {
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.servicio-card__image {
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  justify-content: center;
+}
+
+.servicio-card__image img {
+  width: 100%;
+  max-width: 320px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  object-fit: cover;
+}
+
+/* alternancia */
+.servicio-card.reverse {
+  flex-direction: row-reverse;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .servicio-card,
+  .servicio-card.reverse {
+    flex-direction: column;
+    text-align: center;
+  }
+}

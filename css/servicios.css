@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SERVICIOS
+  SERVICIOS
    ========================================================================== */
 
 .servicio-card {
@@ -51,8 +51,67 @@
   flex-direction: row-reverse;
 }
 
+/* ==========================================================================
+  SERVICIOS
+   ========================================================================== */
+
+.especialistas__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.especialista-card {
+  background: var(--bg-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: .3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.especialista-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.especialista-card__image {
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+}
+
+.especialista-card__image img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top;
+  border: 5px solid var(--primary-light);
+  box-shadow: var(--shadow-sm);
+}
+
+.especialista-card__body {
+  padding: 1.75rem;
+  text-align: center;
+  flex: 1;
+}
+
+.especialista-card__name {
+  margin-bottom: .5rem;
+  color: var(--text-dark);
+}
+
+.especialista-card__specialty {
+  color: var(--primary);
+  font-weight: 600;
+}
+
 /* responsive */
 @media (max-width: 768px) {
+
   .servicio-card,
   .servicio-card.reverse {
     flex-direction: column;

@@ -56,6 +56,21 @@ body {
   overflow-x: hidden;
 }
 
+body::before {
+  background-color: rgba(15, 23, 42, 0.45);
+  content: "";
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  transition: opacity 0.25s ease;
+  z-index: 1020;
+}
+
+body.nav-menu-open::before {
+  opacity: 1;
+}
+
 h1,
 h2,
 h3,
@@ -97,6 +112,7 @@ a:hover {
   background-color: rgba(255, 255, 255, 0.9) !important;
   border-bottom: 1px solid rgba(122, 19, 199, 0.1);
   transition: 0.3s ease;
+  z-index: 1030;
 }
 
 .navbar-scrolled {
@@ -119,6 +135,14 @@ a:hover {
   color: var(--primary);
 }
 
+.navbar-brand > span[data-html] {
+  color: var(--secondary);
+}
+
+.footer-brand > span[data-html] {
+  color: var(--bg-white);
+}
+
 .nav-link {
   font-weight: 600;
   color: var(--text-main) !important;
@@ -138,6 +162,26 @@ a:hover {
 
 .navbar-toggler:focus {
   box-shadow: none;
+}
+
+.header-session-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 150px;
+  padding: 0.15rem 0;
+}
+
+.header-session-info span {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  line-height: 1.2;
+}
+
+.header-session-info strong {
+  color: var(--text-dark);
+  font-size: 0.9rem;
+  line-height: 1.2;
 }
 
 /* ==========================================================================
@@ -311,8 +355,588 @@ a:hover {
   box-shadow: 0 0 0 4px rgba(122, 19, 199, 0.15);
 }
 
+.auth-link {
+  display: inline-flex;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
 /* ==========================================================================
    FIN: Formularios
+   ========================================================================== */
+
+/* ==========================================================================
+   INICIO: Paneles internos
+   ========================================================================== */
+.admin-page .section-padding {
+  padding: 4rem 0;
+}
+
+.admin-session-box,
+.dashboard-metric,
+.admin-panel,
+.auth-recovery {
+  background-color: var(--bg-white);
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.admin-session-box {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 220px;
+  padding: 1rem;
+}
+
+.dashboard-metric {
+  text-align: left;
+  width: 100%;
+  min-height: 150px;
+  padding: 1.4rem;
+}
+
+.dashboard-metric-button {
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  color: inherit;
+  transition: 0.3s ease;
+}
+
+.dashboard-metric-button:hover,
+.dashboard-metric-button.is-active {
+  border-color: rgba(122, 19, 199, 0.35);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.dashboard-metric i {
+  align-items: center;
+  background-color: var(--primary-light);
+  border-radius: 50%;
+  color: var(--primary);
+  display: inline-flex;
+  font-size: 1.35rem;
+  height: 46px;
+  justify-content: center;
+  margin-bottom: 1rem;
+  width: 46px;
+}
+
+.dashboard-metric span {
+  color: var(--text-muted);
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.dashboard-metric strong {
+  color: var(--text-dark);
+  display: block;
+  font-family: var(--font-headings);
+  font-size: 2rem;
+  line-height: 1.1;
+}
+
+.admin-panel {
+  padding: 1.5rem;
+}
+
+.admin-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: minmax(260px, 340px) 1fr;
+}
+
+.admin-inline-form {
+  background-color: var(--bg-light);
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  border-radius: var(--radius-sm);
+  display: grid;
+  gap: 0.9rem;
+  padding: 1rem;
+}
+
+.admin-inline-form h3 {
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
+.panel-heading {
+  align-items: flex-start;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.panel-heading h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.2rem;
+}
+
+.panel-heading p {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  margin-bottom: 0;
+}
+
+.admin-table {
+  margin-bottom: 0;
+}
+
+.admin-table th {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.admin-table td {
+  color: var(--text-main);
+}
+
+.admin-table td strong,
+.admin-table td span {
+  display: block;
+}
+
+.admin-table td span:not(.status-pill) {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.appointment-row {
+  cursor: pointer;
+}
+
+.appointment-row:hover,
+.appointment-row.is-selected {
+  background-color: var(--primary-light);
+}
+
+.appointment-actions {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.btn-outline-danger {
+  border-color: #dc2626;
+  color: #dc2626;
+}
+
+.btn-outline-danger:hover,
+.btn-outline-danger:focus {
+  background-color: #dc2626;
+  border-color: #dc2626;
+  color: var(--bg-white);
+}
+
+.status-pill {
+  border-radius: 999px;
+  display: inline-flex !important;
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 0.3rem 0.75rem;
+}
+
+.status-active {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.status-pending {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.permission-list,
+.appointment-list,
+.availability-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.permission-list label,
+.appointment-list div,
+.availability-grid span {
+  background-color: var(--bg-light);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1rem;
+}
+
+.permission-list label {
+  align-items: center;
+  display: flex;
+  font-weight: 700;
+  gap: 0.65rem;
+}
+
+.permission-list input {
+  accent-color: var(--primary);
+}
+
+.appointment-list strong,
+.appointment-list span {
+  display: block;
+}
+
+.appointment-list span {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.availability-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.availability-grid span {
+  color: var(--text-dark);
+  font-weight: 700;
+}
+
+.auth-recovery {
+  max-width: 560px;
+  padding: 2rem;
+}
+
+/* ==========================================================================
+   FIN: Paneles internos
+   ========================================================================== */
+
+/* ==========================================================================
+   INICIO: Pagina registro
+   ========================================================================== */
+.registro-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2.5rem 4rem;
+}
+
+.registro {
+  align-items: flex-start;
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  gap: 2rem;
+  margin-top: 3rem;
+  padding: 2rem;
+}
+
+.registro-formulario {
+  flex: 2;
+  min-width: 0;
+}
+
+.registro-info {
+  flex: 1;
+  min-width: 280px;
+  position: sticky;
+  top: 90px;
+}
+
+.registro .card {
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 1rem;
+  padding: 1.5rem;
+}
+
+.crear-cuenta > img {
+  display: block;
+  height: auto;
+  margin: 0 auto 1rem;
+  width: 80px;
+}
+
+.crear-cuenta > h2 {
+  color: var(--primary);
+  font-size: var(--size-xl);
+  margin-bottom: 0.25rem;
+  text-align: center;
+}
+
+.crear-cuenta > p {
+  color: var(--text-muted);
+  font-size: var(--size-sm);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.social-login {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.google,
+.facebook {
+  align-items: center;
+  background-color: var(--bg-white);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-main);
+  cursor: pointer;
+  display: flex;
+  flex: 1;
+  font-family: var(--font-body);
+  font-size: var(--size-sm);
+  font-weight: var(--weight-semibold);
+  gap: 0.5rem;
+  justify-content: center;
+  padding: 0.7rem 1rem;
+  transition: 0.2s ease;
+}
+
+.google:hover,
+.facebook:hover {
+  background-color: var(--primary-light);
+  border-color: var(--primary);
+}
+
+.pasos {
+  background-color: var(--bg-white);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-md);
+  display: flex;
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+.pasos span {
+  background-color: var(--bg-white);
+  border-right: 1px solid var(--border-color);
+  color: var(--text-muted);
+  flex: 1;
+  font-size: var(--size-sm);
+  font-weight: var(--weight-semibold);
+  padding: 0.6rem 0.5rem;
+  text-align: center;
+}
+
+.pasos span:first-child {
+  background-color: var(--primary);
+  color: var(--bg-white);
+}
+
+.pasos span:last-child {
+  border-right: 0;
+}
+
+.datos-personales,
+.datos-acceso {
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 1.25rem;
+  padding: 1.5rem;
+}
+
+.datos-personales h3,
+.datos-acceso h3 {
+  border-bottom: 1.5px solid var(--primary-light);
+  color: var(--primary);
+  font-size: var(--size-lg);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+}
+
+.fila {
+  display: flex;
+  gap: 1rem;
+}
+
+.fila .campo {
+  flex: 1;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+
+.campo label,
+.terminos label {
+  color: var(--text-main);
+  font-size: var(--size-sm);
+  font-weight: var(--weight-semibold);
+}
+
+.campo input,
+.campo select {
+  background-color: var(--bg-light);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-dark);
+  font-family: var(--font-body);
+  font-size: var(--size-base);
+  padding: 0.7rem 0.9rem;
+  transition: 0.2s ease;
+  width: 100%;
+}
+
+.campo input:focus,
+.campo select:focus {
+  background-color: var(--bg-white);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(122, 19, 199, 0.15);
+  outline: none;
+}
+
+.seguridad-contrasena {
+  align-items: center;
+  color: var(--text-muted);
+  display: flex;
+  font-size: var(--size-sm);
+  font-weight: var(--weight-semibold);
+  gap: 0.4rem;
+  margin-bottom: 0.25rem;
+}
+
+.seguridad-contrasena::after {
+  background: linear-gradient(to right, #7a13c7 40%, #d1c9de 40%);
+  border-radius: 3px;
+  content: "";
+  display: inline-block;
+  height: 5px;
+  width: 60px;
+}
+
+.minimo-contrasena {
+  color: var(--text-muted);
+  display: block;
+  font-size: var(--size-xs);
+  margin-bottom: 1rem;
+}
+
+.terminos {
+  background-color: var(--primary-light);
+  border: 1px solid #d8c5f0;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin: 1.25rem 0;
+  padding: 1rem 1.25rem;
+}
+
+.terminos label {
+  align-items: flex-start;
+  cursor: pointer;
+  display: flex;
+  font-weight: var(--weight-regular);
+  gap: 0.6rem;
+}
+
+.terminos input[type="checkbox"] {
+  accent-color: var(--primary);
+  cursor: pointer;
+  height: 16px;
+  margin-top: 2px;
+  min-width: 16px;
+  width: 16px;
+}
+
+.btn-crear-cuenta {
+  background-color: var(--primary);
+  border: 0;
+  border-radius: var(--radius-md);
+  color: var(--bg-white);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: var(--size-base);
+  font-weight: var(--weight-bold);
+  padding: 0.9rem;
+  transition: 0.2s ease;
+  width: 100%;
+}
+
+.btn-crear-cuenta:hover {
+  background-color: var(--primary-hover);
+  box-shadow: 0 4px 14px rgba(122, 19, 199, 0.3);
+}
+
+.login-link {
+  align-items: center;
+  color: var(--text-muted);
+  display: flex;
+  font-size: var(--size-sm);
+  gap: 0.4rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.login-link p {
+  margin: 0;
+}
+
+.beneficios-cuenta h2 {
+  font-size: var(--size-lg);
+  margin-bottom: 1rem;
+}
+
+.beneficios-cuenta ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.beneficios-cuenta li,
+.confirmar-seguridad {
+  align-items: flex-start;
+  display: flex;
+  gap: 0.6rem;
+}
+
+.beneficios-cuenta i,
+.confirmar-seguridad i {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.testimonios h3 {
+  margin-bottom: 0.6rem;
+}
+
+.estrellas {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 0.6rem;
+}
+
+.estrellas i {
+  color: var(--warning);
+}
+
+.testimonios p {
+  color: var(--text-main);
+  font-size: var(--size-sm);
+  font-style: italic;
+  line-height: 1.5;
+  margin-bottom: 0.4rem;
+}
+
+.testimonios span,
+.confirmar-seguridad span {
+  color: var(--text-muted);
+  font-size: var(--size-sm);
+}
+
+/* ==========================================================================
+   FIN: Pagina registro
    ========================================================================== */
 
 /* ==========================================================================
@@ -445,8 +1069,74 @@ a:hover {
     padding: 1rem;
   }
 
+  .navbar-collapse .navbar-nav {
+    align-items: stretch !important;
+    display: grid !important;
+    gap: 0;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .navbar-collapse .nav-link-item {
+    grid-column: 1 / -1 !important;
+    width: 100%;
+  }
+
+  .navbar-collapse .nav-link-item .nav-link {
+    background-color: var(--primary-light);
+    border-radius: var(--radius-sm);
+    display: block;
+    padding: 0.85rem 1rem !important;
+    width: 100%;
+  }
+
+  .navbar-collapse .nav-link-item + .nav-link-item .nav-link {
+    border-top: 2px solid var(--bg-white);
+  }
+
+  .navbar-collapse .nav-action-item {
+    margin-top: 0.85rem !important;
+  }
+
+  .navbar-collapse .nav-action-item .btn {
+    min-height: 48px;
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
+    width: 100%;
+  }
+
+  .navbar-collapse .nav-action-item + .nav-action-item {
+    padding-left: 0.75rem;
+  }
+
+  [data-header-session] {
+    grid-column: 1 / -1;
+  }
+
+  @media (min-width: 576px) {
+    .navbar-collapse {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 75%;
+    }
+  }
+
   .section-padding {
     padding: 4rem 0;
+  }
+
+  .registro {
+    flex-direction: column;
+    padding: 1.5rem 1.25rem;
+  }
+
+  .registro-info {
+    min-width: unset;
+    position: static;
+  }
+
+  .social-login,
+  .fila {
+    flex-direction: column;
   }
 }
 
@@ -466,6 +1156,31 @@ a:hover {
 
   .map-container {
     height: 320px;
+  }
+
+  .panel-heading {
+    flex-direction: column;
+  }
+
+  .availability-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .appointment-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .registro-wrapper {
+    padding: 1.5rem 1rem;
+  }
+
+  .pasos span {
+    font-size: var(--size-xs);
+    padding: 0.5rem 0.25rem;
   }
 }
 

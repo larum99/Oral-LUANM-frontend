@@ -1,0 +1,77 @@
+{
+  "brand": {
+    "name": "ORAL LUANM",
+    "logoHtml": "ORAL<span> LUANM</span>",
+    "description": "Clinica dental enfocada en brindar tratamientos con excelencia clinica, etica profesional y tecnologia medica innovadora.",
+    "copyright": "&copy; 2026 ORAL LUANM. Todos los derechos reservados."
+  },
+  "navigation": {
+    "contact": "Contacto",
+    "services": "Servicios"
+  },
+  "buttons": {
+    "login": "Iniciar Sesion",
+    "logout": "Cerrar Sesion",
+    "appointment": "Agendar Cita",
+    "submitAppointment": "Confirmar Solicitud",
+    "loginSubmit": "Ingresar",
+    "register": "Registrarse",
+    "sendMessage": "Enviar Mensaje",
+    "goContact": "Ir a contacto"
+  },
+  "session": {
+    "active": "Sesion activa"
+  },
+  "contact": {
+    "addressShort": "Av. Principal Nro 123-45, Bogota.",
+    "addressLong": "Av. Principal Nro 123-45, Centro Medico Premium, Consultorio 502, Bogota, Colombia.",
+    "phone": "+57 300 123 4567",
+    "phoneLinesHtml": "PBX: (601) 123-4567<br>Movil: +57 300 123 4567",
+    "email": "oral.luanm@gmail.com",
+    "emailLinesHtml": "citas@oralluanm.com<br>info@oralluanm.com",
+    "scheduleHtml": "Lunes a Viernes: 8:00 AM - 6:00 PM<br>Sabados: 9:00 AM - 1:00 PM",
+    "mapTitle": "Mapa interactivo de ubicacion de la clinica ORAL LUANM"
+  },
+  "home": {
+    "tag": "ORAL LUANM",
+    "title": "Atencion odontologica cercana y profesional",
+    "lead": "Encuentra nuestros canales de atencion, horarios, ubicacion y formulario de contacto."
+  },
+  "contactPage": {
+    "tag": "Canales de Atencion",
+    "title": "Ponte en Contacto",
+    "lead": "Tienes dudas, sugerencias o deseas agendar una consulta personalizada? Estamos listos para ayudarte a dar el primer paso.",
+    "generalTitle": "Informacion General",
+    "generalText": "Visitanos en nuestra sede o comunicate por cualquiera de nuestros canales de atencion al paciente.",
+    "addressTitle": "Nuestra Sede",
+    "phoneTitle": "Lineas de Atencion",
+    "emailTitle": "Correo Electronico",
+    "scheduleTitle": "Horarios de Consulta",
+    "formTitle": "Envianos un Mensaje",
+    "mapTag": "Ubicacion",
+    "mapHeading": "Encuentranos facilmente"
+  },
+  "forms": {
+    "name": "Nombre Completo",
+    "email": "Correo Electronico",
+    "emailLower": "Correo electronico",
+    "phone": "Telefono",
+    "contactPhone": "Telefono de Contacto",
+    "password": "Contrasena",
+    "message": "Mensaje o Consulta",
+    "forgotPassword": "Olvide mi contrasena",
+    "fullNamePlaceholder": "Ej. Juan Perez",
+    "emailPlaceholder": "Ej. juan@correo.com",
+    "phonePlaceholder": "Ej. 3001234567",
+    "messagePlaceholder": "Escribe aqui tus dudas detalladamente..."
+  },
+  "modals": {
+    "loginTitle": "Iniciar Sesion",
+    "registerTitle": "Registra Tu Cuenta",
+    "appointmentTitle": "Agendar Cita"
+  },
+  "footer": {
+    "navigationTitle": "Navegacion",
+    "scheduleContactTitle": "Horarios & Contacto"
+  }
+}

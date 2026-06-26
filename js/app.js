@@ -15,14 +15,17 @@ const fillTemplate = (html) => {
   const servicePath = `${getBasePath()}servicios/`;
   const adminPath = `${getBasePath()}registro/admin/`;
   const secretaryPath = `${getBasePath()}registro/secretario/`;
-
+  const homePath = `${getBasePath()}home/`;
+  console.log(homePath);
+  
   return html
     .replaceAll("{{BASE_PATH}}", getBasePath())
     .replaceAll("{{CONTACT_PATH}}", contactPath)
     .replaceAll("{{SERVICE_PATH}}", servicePath)
     .replaceAll("{{ADMIN_PATH}}", adminPath)
-    .replaceAll("{{SECRETARY_PATH}}", secretaryPath);
-};
+    .replaceAll("{{SECRETARY_PATH}}", secretaryPath)
+    .replaceAll("{{HOME_PATH}}",homePath);
+}
 
 let siteData = {};
 

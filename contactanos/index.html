@@ -16,9 +16,9 @@
   <main class="page-main">
     <section class="section-padding text-center section-bg-white border-bottom">
       <div class="container reveal-on-scroll">
-        <span class="section-tag">Canales de Atencion</span>
-        <h1 class="display-4 fw-bold text-dark mb-3">Ponte en Contacto</h1>
-        <p class="lead text-muted mx-auto contact-lead">Tienes dudas, sugerencias o deseas agendar una consulta personalizada? Estamos listos para ayudarte a dar el primer paso.</p>
+        <span class="section-tag" data-text="contactPage.tag">Canales de Atencion</span>
+        <h1 class="display-4 fw-bold text-dark mb-3" data-text="contactPage.title">Ponte en Contacto</h1>
+        <p class="lead text-muted mx-auto contact-lead" data-text="contactPage.lead">Tienes dudas, sugerencias o deseas agendar una consulta personalizada? Estamos listos para ayudarte a dar el primer paso.</p>
       </div>
     </section>
 
@@ -29,35 +29,35 @@
           <div class="col-lg-5 reveal-on-scroll">
             <div class="contact-info-box d-flex flex-column gap-4">
               <div>
-                <h3 class="h4 fw-bold text-dark mb-3">Informacion General</h3>
-                <p class="text-muted small mb-0">Visitanos en nuestra sede o comunicate por cualquiera de nuestros canales de atencion al paciente.</p>
+                <h3 class="h4 fw-bold text-dark mb-3" data-text="contactPage.generalTitle">Informacion General</h3>
+                <p class="text-muted small mb-0" data-text="contactPage.generalText">Visitanos en nuestra sede o comunicate por cualquiera de nuestros canales de atencion al paciente.</p>
               </div>
               <div class="d-flex align-items-start gap-3">
                 <div class="contact-icon"><i class="bi bi-geo-alt-fill" aria-hidden="true"></i></div>
                 <div>
-                  <h4 class="h6 fw-bold mb-1">Nuestra Sede</h4>
-                  <p class="text-muted small mb-0">Av. Principal Nro 123-45, Centro Medico Premium, Consultorio 502, Bogota, Colombia.</p>
+                  <h4 class="h6 fw-bold mb-1" data-text="contactPage.addressTitle">Nuestra Sede</h4>
+                  <p class="text-muted small mb-0" data-text="contact.addressLong">Av. Principal Nro 123-45, Centro Medico Premium, Consultorio 502, Bogota, Colombia.</p>
                 </div>
               </div>
               <div class="d-flex align-items-start gap-3">
                 <div class="contact-icon"><i class="bi bi-telephone-fill" aria-hidden="true"></i></div>
                 <div>
-                  <h4 class="h6 fw-bold mb-1">Lineas de Atencion</h4>
-                  <p class="text-muted small mb-0">PBX: (601) 123-4567<br>Movil: +57 300 123 4567</p>
+                  <h4 class="h6 fw-bold mb-1" data-text="contactPage.phoneTitle">Lineas de Atencion</h4>
+                  <p class="text-muted small mb-0" data-html="contact.phoneLinesHtml">PBX: (601) 123-4567<br>Movil: +57 300 123 4567</p>
                 </div>
               </div>
               <div class="d-flex align-items-start gap-3">
                 <div class="contact-icon"><i class="bi bi-envelope-fill" aria-hidden="true"></i></div>
                 <div>
-                  <h4 class="h6 fw-bold mb-1">Correo Electronico</h4>
-                  <p class="text-muted small mb-0">citas@oralluanm.com<br>info@oralluanm.com</p>
+                  <h4 class="h6 fw-bold mb-1" data-text="contactPage.emailTitle">Correo Electronico</h4>
+                  <p class="text-muted small mb-0" data-html="contact.emailLinesHtml">citas@oralluanm.com<br>info@oralluanm.com</p>
                 </div>
               </div>
               <div class="d-flex align-items-start gap-3">
                 <div class="contact-icon"><i class="bi bi-clock-fill" aria-hidden="true"></i></div>
                 <div>
-                  <h4 class="h6 fw-bold mb-1">Horarios de Consulta</h4>
-                  <p class="text-muted small mb-0">Lunes a Viernes: 8:00 AM - 6:00 PM<br>Sabados: 9:00 AM - 1:00 PM</p>
+                  <h4 class="h6 fw-bold mb-1" data-text="contactPage.scheduleTitle">Horarios de Consulta</h4>
+                  <p class="text-muted small mb-0" data-html="contact.scheduleHtml">Lunes a Viernes: 8:00 AM - 6:00 PM<br>Sabados: 9:00 AM - 1:00 PM</p>
                 </div>
               </div>
             </div>
@@ -65,31 +65,31 @@
 
           <div class="col-lg-7 reveal-on-scroll reveal-delay-2">
             <div class="contact-form-box mb-4">
-              <h3 class="h4 fw-bold text-dark mb-4">Envianos un Mensaje</h3>
+              <h3 class="h4 fw-bold text-dark mb-4" data-text="contactPage.formTitle">Envianos un Mensaje</h3>
               <form class="needs-validation" novalidate id="formPageContact">
                 <div class="row g-3 mb-3">
                   <div class="col-md-6">
-                    <label for="contactName" class="form-label fw-semibold">Nombre Completo <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="contactName" placeholder="Ej. Juan Perez" required>
+                    <label for="contactName" class="form-label fw-semibold"><span data-text="forms.name">Nombre Completo</span> <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="contactName" placeholder="Ej. Juan Perez" data-placeholder="forms.fullNamePlaceholder" required>
                     <div class="invalid-feedback">Por favor, ingresa tu nombre.</div>
                   </div>
                   <div class="col-md-6">
-                    <label for="contactPhone" class="form-label fw-semibold">Telefono de Contacto <span class="text-danger">*</span></label>
-                    <input type="tel" class="form-control" id="contactPhone" placeholder="Ej. 3001234567" required pattern="[0-9]{7,15}">
+                    <label for="contactPhone" class="form-label fw-semibold"><span data-text="forms.contactPhone">Telefono de Contacto</span> <span class="text-danger">*</span></label>
+                    <input type="tel" class="form-control" id="contactPhone" placeholder="Ej. 3001234567" data-placeholder="forms.phonePlaceholder" required pattern="[0-9]{7,15}">
                     <div class="invalid-feedback">Ingresa un numero de telefono valido.</div>
                   </div>
                 </div>
                 <div class="mb-3">
-                  <label for="contactEmail" class="form-label fw-semibold">Correo Electronico <span class="text-danger">*</span></label>
-                  <input type="email" class="form-control" id="contactEmail" placeholder="juan@correo.com" required>
+                  <label for="contactEmail" class="form-label fw-semibold"><span data-text="forms.email">Correo Electronico</span> <span class="text-danger">*</span></label>
+                  <input type="email" class="form-control" id="contactEmail" placeholder="juan@correo.com" data-placeholder="forms.emailPlaceholder" required>
                   <div class="invalid-feedback">Ingresa una direccion de correo valida.</div>
                 </div>
                 <div class="mb-4">
-                  <label for="contactMessage" class="form-label fw-semibold">Mensaje o Consulta <span class="text-danger">*</span></label>
-                  <textarea class="form-control" id="contactMessage" rows="5" placeholder="Escribe aqui tus dudas detalladamente..." required></textarea>
+                  <label for="contactMessage" class="form-label fw-semibold"><span data-text="forms.message">Mensaje o Consulta</span> <span class="text-danger">*</span></label>
+                  <textarea class="form-control" id="contactMessage" rows="5" placeholder="Escribe aqui tus dudas detalladamente..." data-placeholder="forms.messagePlaceholder" required></textarea>
                   <div class="invalid-feedback">Escribe el contenido de tu mensaje.</div>
                 </div>
-                <button type="submit" class="btn btn-primary w-100">Enviar Mensaje</button>
+                <button type="submit" class="btn btn-primary w-100" data-text="buttons.sendMessage">Enviar Mensaje</button>
               </form>
             </div>
           </div>
@@ -97,11 +97,11 @@
 
         <div class="contact-map-section reveal-on-scroll">
           <div class="map-heading">
-            <span class="section-tag">Ubicacion</span>
-            <h3>Encuentranos facilmente</h3>
+            <span class="section-tag" data-text="contactPage.mapTag">Ubicacion</span>
+            <h3 data-text="contactPage.mapHeading">Encuentranos facilmente</h3>
           </div>
           <div class="map-container">
-            <iframe src="https://www.google.com/maps?q=Titan%20Plaza%20Bogota%20Colombia&output=embed" title="Mapa interactivo de ubicacion de la clinica ORAL LUANM" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps?q=Titan%20Plaza%20Bogota%20Colombia&output=embed" title="Mapa interactivo de ubicacion de la clinica ORAL LUANM" data-label="contact.mapTitle" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </div>
       </div>

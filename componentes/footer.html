@@ -4,9 +4,9 @@
       <div class="col-md-6 col-lg-4">
         <a class="navbar-brand footer-brand mb-3" href="{{CONTACT_PATH}}">
           <i class="bi bi-heart-pulse-fill text-primary" aria-hidden="true"></i>
-          ORAL<span> LUANM</span>
+          <span data-html="brand.logoHtml">ORAL<span> LUANM</span></span>
         </a>
-        <p class="small mt-3">Clinica dental enfocada en brindar tratamientos con excelencia clinica, etica profesional y tecnologia medica innovadora.</p>
+        <p class="small mt-3" data-text="brand.description">Clinica dental enfocada en brindar tratamientos con excelencia clinica, etica profesional y tecnologia medica innovadora.</p>
         <div class="social-icons mt-4">
           <a href="https://facebook.com/oralluanm" class="social-btn" aria-label="Facebook"><i class="bi bi-facebook" aria-hidden="true"></i></a>
           <a href="https://instagram.com/oral.luanm" class="social-btn" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a>
@@ -15,57 +15,128 @@
       </div>
 
       <div class="col-md-6 col-lg-2 offset-lg-1">
-        <h4>Navegacion</h4>
+        <h4 data-text="footer.navigationTitle">Navegacion</h4>
         <ul class="footer-links">
-          <li><a href="{{CONTACT_PATH}}">Contacto</a></li>
+          <li><a href="{{CONTACT_PATH}}" data-text="navigation.contact">Contacto</a></li>
         </ul>
       </div>
 
       <div class="col-md-6 col-lg-3">
-        <h4>Horarios & Contacto</h4>
+        <h4 data-text="footer.scheduleContactTitle">Horarios & Contacto</h4>
         <ul class="footer-links footer-contact">
-          <li><i class="bi bi-geo-alt-fill text-primary" aria-hidden="true"></i><span>Av. Principal Nro 123-45, Bogota.</span></li>
-          <li><i class="bi bi-telephone-fill text-primary" aria-hidden="true"></i><span>+57 300 123 4567</span></li>
-          <li><i class="bi bi-envelope-fill text-primary" aria-hidden="true"></i><span>oral.luanm@gmail.com</span></li>
+          <li><i class="bi bi-geo-alt-fill text-primary" aria-hidden="true"></i><span data-text="contact.addressShort">Av. Principal Nro 123-45, Bogota.</span></li>
+          <li><i class="bi bi-telephone-fill text-primary" aria-hidden="true"></i><span data-text="contact.phone">+57 300 123 4567</span></li>
+          <li><i class="bi bi-envelope-fill text-primary" aria-hidden="true"></i><span data-text="contact.email">oral.luanm@gmail.com</span></li>
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom text-center">
-      <p class="mb-0">&copy; 2026 ORAL LUANM. Todos los derechos reservados.</p>
+      <p class="mb-0" data-html="brand.copyright">&copy; 2026 ORAL LUANM. Todos los derechos reservados.</p>
     </div>
   </div>
 </footer>
+
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow-lg">
+      <div class="modal-header border-bottom-0 pb-0">
+        <h2 class="modal-title h5 fw-bold d-flex align-items-center gap-2" id="loginModalLabel">
+          <i class="bi bi-person-circle text-primary" aria-hidden="true"></i> <span data-text="modals.loginTitle">Iniciar Sesion</span>
+        </h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar modal"></button>
+      </div>
+      <div class="modal-body">
+        <form class="needs-validation auth-form" novalidate id="formModalLogin">
+          <div class="mb-3">
+            <label for="loginEmail" class="form-label fw-semibold"><span data-text="forms.emailLower">Correo electronico</span> <span class="text-danger">*</span></label>
+            <input type="email" class="form-control" id="loginEmail" placeholder="Ej. juan@correo.com" data-placeholder="forms.emailPlaceholder" required>
+            <div class="invalid-feedback">Por favor, ingresa tu correo electronico.</div>
+          </div>
+          <div class="mb-3">
+            <label for="loginPassword" class="form-label fw-semibold"><span data-text="forms.password">Contrasena</span> <span class="text-danger">*</span></label>
+            <input type="password" class="form-control" id="loginPassword" placeholder="********" required>
+            <div class="invalid-feedback">Por favor, ingresa tu contrasena.</div>
+          </div>
+          <a class="auth-link" href="{{BASE_PATH}}registro/olvide-contrasena/" data-text="forms.forgotPassword">Olvide mi contrasena</a>
+          <button type="submit" class="btn btn-primary w-100" data-text="buttons.loginSubmit">Ingresar</button>
+        </form>
+        <button type="button" class="btn btn-outline-primary w-100 mt-3" id="btnOpenRegister">
+          <i class="bi bi-person-plus" aria-hidden="true"></i>
+          <span data-text="buttons.register">Registrarse</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow-lg">
+      <div class="modal-header border-bottom-0 pb-0">
+        <h2 class="modal-title h5 fw-bold d-flex align-items-center gap-2" id="registerModalLabel">
+          <i class="bi bi-person-vcard text-primary" aria-hidden="true"></i> <span data-text="modals.registerTitle">Registra Tu Cuenta</span>
+        </h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar modal"></button>
+      </div>
+      <div class="modal-body">
+        <form class="needs-validation auth-form" novalidate id="formModalRegister">
+          <div class="mb-3">
+            <label for="registerName" class="form-label fw-semibold">Nombre completo <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="registerName" placeholder="Ej. Juan Perez" required>
+            <div class="invalid-feedback">Por favor, ingresa tu nombre completo.</div>
+          </div>
+          <div class="mb-3">
+            <label for="registerEmail" class="form-label fw-semibold">Correo electronico <span class="text-danger">*</span></label>
+            <input type="email" class="form-control" id="registerEmail" placeholder="Ej. juan@correo.com" required>
+            <div class="invalid-feedback">Por favor, ingresa tu correo electronico.</div>
+          </div>
+          <div class="mb-3">
+            <label for="registerPhone" class="form-label fw-semibold">Telefono <span class="text-danger">*</span></label>
+            <input type="tel" class="form-control" id="registerPhone" placeholder="Ej. 3001234567" required pattern="[0-9]{7,15}">
+            <div class="invalid-feedback">Por favor, ingresa un telefono valido.</div>
+          </div>
+          <div class="mb-3">
+            <label for="registerPassword" class="form-label fw-semibold">Contrasena <span class="text-danger">*</span></label>
+            <input type="password" class="form-control" id="registerPassword" placeholder="********" required>
+            <div class="invalid-feedback">Por favor, ingresa tu contrasena.</div>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Registrarse</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="modal fade" id="appointmentModal" tabindex="-1" aria-labelledby="appointmentModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content border-0 shadow-lg">
       <div class="modal-header border-bottom-0 pb-0">
         <h2 class="modal-title h5 fw-bold d-flex align-items-center gap-2" id="appointmentModalLabel">
-          <i class="bi bi-calendar-check text-primary" aria-hidden="true"></i> Agendar Cita
+                <i class="bi bi-calendar-check text-primary" aria-hidden="true"></i> <span data-text="modals.appointmentTitle">Agendar Cita</span>
         </h2>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar modal"></button>
       </div>
       <div class="modal-body">
         <form class="needs-validation" novalidate id="formModalAppointment">
           <div class="mb-3">
-            <label for="modalName" class="form-label fw-semibold">Nombre Completo <span class="text-danger">*</span></label>
+            <label for="modalName" class="form-label fw-semibold"><span data-text="forms.name">Nombre Completo</span> <span class="text-danger">*</span></label>
             <input type="text" class="form-control" id="modalName" required>
             <div class="invalid-feedback">Por favor, ingresa tu nombre completo.</div>
           </div>
           <div class="row mb-3 g-3">
             <div class="col-sm-6">
-              <label for="modalPhone" class="form-label fw-semibold">Telefono <span class="text-danger">*</span></label>
+              <label for="modalPhone" class="form-label fw-semibold"><span data-text="forms.phone">Telefono</span> <span class="text-danger">*</span></label>
               <input type="tel" class="form-control" id="modalPhone" required pattern="[0-9]{7,15}">
               <div class="invalid-feedback">Ingresa un telefono valido.</div>
             </div>
             <div class="col-sm-6">
-              <label for="modalEmail" class="form-label fw-semibold">Correo <span class="text-danger">*</span></label>
+              <label for="modalEmail" class="form-label fw-semibold"><span data-text="forms.emailLower">Correo electronico</span> <span class="text-danger">*</span></label>
               <input type="email" class="form-control" id="modalEmail" required>
               <div class="invalid-feedback">Ingresa un correo valido.</div>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary w-100">Confirmar Solicitud</button>
+          <button type="submit" class="btn btn-primary w-100" data-text="buttons.submitAppointment">Confirmar Solicitud</button>
         </form>
       </div>
     </div>

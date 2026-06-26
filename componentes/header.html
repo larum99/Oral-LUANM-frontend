@@ -3,17 +3,26 @@
     <div class="container">
       <a class="navbar-brand" href="{{CONTACT_PATH}}">
         <i class="bi bi-heart-pulse-fill text-primary" aria-hidden="true"></i>
-        ORAL<span> LUANM</span>
+        <span data-html="brand.logoHtml">ORAL<span> LUANM</span></span>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegacion">
         <i class="bi bi-list fs-2 text-dark"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
-          <li class="nav-item me-lg-3"><a class="nav-link active" aria-current="page" href="{{CONTACT_PATH}}">Contacto</a></li>
-          <li class="nav-item me-lg-3"><a class="nav-link active" aria-current="page" href="{{SERVICE_PATH}}">Servicios</a></li>
-          <li class="nav-item mt-3 mt-lg-0">
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#appointmentModal">Agendar Cita</button>
+          <li class="nav-item nav-link-item me-lg-3"><a class="nav-link active" aria-current="page" href="{{CONTACT_PATH}}" data-text="navigation.contact">Contacto</a></li>
+          <li class="nav-item nav-link-item me-lg-3"><a class="nav-link active" aria-current="page" href="{{SERVICE_PATH}}" data-text="navigation.services">Servicios</a></li>
+          <li class="nav-item nav-action-item mt-3 mt-lg-0 me-lg-3">
+            <button class="btn btn-outline-primary" data-auth-login-button data-bs-toggle="modal" data-bs-target="#loginModal" data-text="buttons.login">Iniciar Sesion</button>
+          </li>
+          <li class="nav-item nav-action-item mt-3 mt-lg-0">
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#appointmentModal" data-text="buttons.appointment">Agendar Cita</button>
+          </li>
+          <li class="nav-item mt-3 mt-lg-0 ms-lg-3 d-none" data-header-session>
+            <div class="header-session-info">
+              <span data-text="session.active">Sesion activa</span>
+              <strong data-session-name></strong>
+            </div>
           </li>
         </ul>
       </div>

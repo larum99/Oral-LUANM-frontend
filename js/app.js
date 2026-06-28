@@ -3,7 +3,7 @@ const getBasePath = () => {
     .split("/")
     .filter(Boolean)
     .filter((part) =>
-      part !== "Odonto-luanm-frontend" &&
+      part !== "Oral-LUANM-frontend" &&
       !part.endsWith(".html")
     ).length;
 
@@ -17,14 +17,17 @@ const fillTemplate = (html) => {
   const secretaryPath = `${getBasePath()}registro/secretario/`;
   const homePath = `${getBasePath()}home/`;
   console.log(homePath);
-  
+
+  const whatsappPhone = siteData.contact.phone.replace(/\D/g, "");
+
   return html
     .replaceAll("{{BASE_PATH}}", getBasePath())
     .replaceAll("{{CONTACT_PATH}}", contactPath)
     .replaceAll("{{SERVICE_PATH}}", servicePath)
     .replaceAll("{{ADMIN_PATH}}", adminPath)
     .replaceAll("{{SECRETARY_PATH}}", secretaryPath)
-    .replaceAll("{{HOME_PATH}}",homePath);
+    .replaceAll("{{HOME_PATH}}", homePath)
+    .replaceAll("{{WHATSAPP_PHONE}}", whatsappPhone);
 }
 
 let siteData = {};
@@ -902,6 +905,8 @@ const initServices = () => {
     const card = document.createElement("article");
     card.className = `servicio-card ${isReverse ? "reverse" : ""}`;
 
+    card.id = service.id;
+
     card.innerHTML = `
       <div class="servicio-card__content">
         <h2 class="servicio-card__title">${service.titulo}</h2>
@@ -948,6 +953,21 @@ const initSpecialists = () => {
   });
 };
 
+const scrollToHash = () => {
+  const hash = window.location.hash;
+
+  if (!hash) return;
+
+  const target = document.querySelector(hash);
+
+  if (target) {
+    target.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }
+};
+
 const initApp = async () => {
   await loadSiteData();
   await loadComponents();
@@ -961,6 +981,7 @@ const initApp = async () => {
   initAdminDashboard();
   initServices();
   initSpecialists();
+  scrollToHash();
 };
 
 initApp().catch((error) => {

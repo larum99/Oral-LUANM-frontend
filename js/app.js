@@ -18,13 +18,16 @@ const fillTemplate = (html) => {
   const homePath = `${getBasePath()}home/`;
   console.log(homePath);
 
+  const whatsappPhone = siteData.contact.phone.replace(/\D/g, "");
+
   return html
     .replaceAll("{{BASE_PATH}}", getBasePath())
     .replaceAll("{{CONTACT_PATH}}", contactPath)
     .replaceAll("{{SERVICE_PATH}}", servicePath)
     .replaceAll("{{ADMIN_PATH}}", adminPath)
     .replaceAll("{{SECRETARY_PATH}}", secretaryPath)
-    .replaceAll("{{HOME_PATH}}", homePath);
+    .replaceAll("{{HOME_PATH}}", homePath)
+    .replaceAll("{{WHATSAPP_PHONE}}", whatsappPhone);
 }
 
 let siteData = {};

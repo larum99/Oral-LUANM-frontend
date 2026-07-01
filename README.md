@@ -1,19 +1,21 @@
-# Odonto-luanm-frontend
+# Oral-LUANM-frontend
 
 Proyecto frontend estatico de ORAL LUANM. Usa paginas HTML por seccion, componentes reutilizables para header/footer, Bootstrap y persistencia en `localStorage` para los flujos mockeados.
 
 ## Como Ejecutar
 
-Los componentes se cargan con `fetch`, por eso se debe abrir con servidor local y no como archivo `file://`.
-
-```bash
-python -m http.server 5500 --bind 127.0.0.1
-```
-
-Luego visitar:
+El proyecto esta hecho solo con HTML, CSS y JavaScript. Puedes abrirlo localmente desde:
 
 ```text
-http://127.0.0.1:5500/
+Oral-LUANM-frontend/index.html
+```
+
+Tambien puedes abrir directamente las paginas internas:
+
+```text
+contactanos/index.html
+servicios/index.html
+registro/index.html
 ```
 
 ## Accesos Mock
@@ -47,7 +49,7 @@ Panel secretario:      /registro/secretario/
 ## Estructura Actual
 
 ```text
-Odontologia/
+Oral-LUANM-frontend/
 +-- assets/
 |   +-- img/
 +-- componentes/
@@ -91,11 +93,13 @@ Odontologia/
 - Creacion de pacientes nuevos desde el formulario de citas.
 - Panel admin con vistas internas para usuarios, citas, especialistas y permisos.
 - Creacion de especialistas desde admin y disponibilidad posterior en la agenda del secretario.
-- Textos genericos centralizados en `js/datos.json`.
+- Textos genericos aplicados desde `js/app.js` para que funcione abriendo archivos locales.
 
-## Datos Centralizados
+## Textos Reutilizables
 
-El archivo `js/datos.json` contiene textos cambiables del proyecto, como:
+En modo local directo, `js/app.js` incluye los textos base para evitar errores de `fetch` al abrir archivos con doble clic. `js/datos.json` queda como referencia de estructura si mas adelante se decide usar un servidor local.
+
+Los textos cubren:
 
 - Marca.
 - Navegacion.
@@ -105,13 +109,13 @@ El archivo `js/datos.json` contiene textos cambiables del proyecto, como:
 - Titulos de secciones.
 - Labels y placeholders comunes.
 
-Para usar un texto del JSON en HTML:
+Para usar un texto reutilizable en HTML:
 
 ```html
 <span data-text="buttons.appointment">Agendar Cita</span>
 ```
 
-Para insertar HTML controlado desde el JSON:
+Para insertar HTML controlado desde los textos:
 
 ```html
 <p data-html="brand.copyright"></p>
@@ -146,6 +150,6 @@ oralLuanmTeamPermissions  permisos por usuario interno
 
 - `componentes/header.html`: navegacion, estado de sesion y botones principales.
 - `componentes/footer.html`: footer, login, registro y modal de agendar cita.
-- `js/app.js`: carga de componentes, datos JSON, login, sesiones, paneles, agenda y validaciones.
-- `js/datos.json`: textos configurables del sitio.
+- `js/app.js`: carga componentes locales, aplica textos, login, sesiones, paneles, agenda y validaciones.
+- `js/datos.json`: referencia de textos si despues se vuelve a usar carga por servidor.
 - `css/style.css`: estilos globales, registro, paneles internos y estados visuales.

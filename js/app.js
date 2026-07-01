@@ -1,9 +1,297 @@
+const PROJECT_ROOT_FOLDER = "Oral-LUANM-frontend";
+
+const DEFAULT_SITE_DATA = {
+  brand: {
+    name: "ORAL LUANM",
+    logoHtml: "ORAL<span> LUANM</span>",
+    description: "Clinica dental enfocada en brindar tratamientos con excelencia clinica, etica profesional y tecnologia medica innovadora.",
+    copyright: "&copy; 2026 ORAL LUANM. Todos los derechos reservados.",
+  },
+  navigation: {
+    contact: "Contacto",
+    services: "Servicios",
+  },
+  buttons: {
+    login: "Iniciar Sesion",
+    logout: "Cerrar Sesion",
+    appointment: "Agendar Cita",
+    submitAppointment: "Confirmar Solicitud",
+    loginSubmit: "Ingresar",
+    register: "Registrarse",
+    sendMessage: "Enviar Mensaje",
+    goContact: "Ir a contacto",
+  },
+  session: {
+    active: "Sesion activa",
+  },
+  contact: {
+    addressShort: "Av. Principal Nro 123-45, Bogota.",
+    addressLong: "Av. Principal Nro 123-45, Centro Medico Premium, Consultorio 502, Bogota, Colombia.",
+    phone: "+57 300 123 4567",
+    phoneLinesHtml: "PBX: (601) 123-4567<br>Movil: +57 300 123 4567",
+    email: "oral.luanm@gmail.com",
+    emailLinesHtml: "oral.luanm@gmail.com<br>info@oralluanm.com",
+    scheduleHtml: "Lunes a Viernes: 8:00 AM - 6:00 PM<br>Sabados: 9:00 AM - 1:00 PM",
+    mapTitle: "Mapa interactivo de ubicacion de la clinica ORAL LUANM",
+  },
+  home: {
+    tag: "ORAL LUANM",
+    title: "Atencion odontologica cercana y profesional",
+    lead: "Encuentra nuestros canales de atencion, horarios, ubicacion y formulario de contacto.",
+  },
+  contactPage: {
+    tag: "Canales de Atencion",
+    title: "Ponte en Contacto",
+    lead: "Tienes dudas, sugerencias o deseas agendar una consulta personalizada? Estamos listos para ayudarte a dar el primer paso.",
+    generalTitle: "Informacion General",
+    generalText: "Visitanos en nuestra sede o comunicate por cualquiera de nuestros canales de atencion al paciente.",
+    addressTitle: "Nuestra Sede",
+    phoneTitle: "Lineas de Atencion",
+    emailTitle: "Correo Electronico",
+    scheduleTitle: "Horarios de Consulta",
+    formTitle: "Envianos un Mensaje",
+    mapTag: "Ubicacion",
+    mapHeading: "Encuentranos facilmente",
+  },
+  forms: {
+    name: "Nombre Completo",
+    email: "Correo Electronico",
+    emailLower: "Correo electronico",
+    phone: "Telefono",
+    contactPhone: "Telefono de Contacto",
+    password: "Contrasena",
+    message: "Mensaje o Consulta",
+    forgotPassword: "Olvide mi contrasena",
+    fullNamePlaceholder: "Ej. Juan Perez",
+    emailPlaceholder: "Ej. juan@correo.com",
+    phonePlaceholder: "Ej. 3001234567",
+    messagePlaceholder: "Escribe aqui tus dudas detalladamente...",
+  },
+  modals: {
+    loginTitle: "Iniciar Sesion",
+    registerTitle: "Registra Tu Cuenta",
+    appointmentTitle: "Agendar Cita",
+  },
+  footer: {
+    navigationTitle: "Navegacion",
+    scheduleContactTitle: "Horarios & Contacto",
+  },
+};
+
+const LOCAL_COMPONENTS = {
+  header: `
+<header>
+  <nav class="navbar navbar-expand-lg fixed-top" aria-label="Menu principal de navegacion">
+    <div class="container">
+      <a class="navbar-brand" href="{{HOME_PATH}}">
+        <i class="bi bi-heart-pulse-fill text-primary" aria-hidden="true"></i>
+        <span data-html="brand.logoHtml">ORAL<span> LUANM</span></span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegacion">
+        <i class="bi bi-list fs-2 text-dark"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item nav-link-item me-lg-3"><a class="nav-link active" aria-current="page" href="{{CONTACT_PATH}}" data-text="navigation.contact">Contacto</a></li>
+          <li class="nav-item nav-link-item me-lg-3"><a class="nav-link active" aria-current="page" href="{{SERVICE_PATH}}" data-text="navigation.services">Servicios</a></li>
+          <li class="nav-item nav-action-item mt-3 mt-lg-0 me-lg-3">
+            <button class="btn btn-outline-primary" data-auth-login-button data-bs-toggle="modal" data-bs-target="#loginModal" data-text="buttons.login">Iniciar Sesion</button>
+          </li>
+          <li class="nav-item mt-3 mt-lg-0 ms-lg-3 d-none" data-header-session>
+            <div class="header-session-info">
+              <span data-text="session.active">Sesion activa</span>
+              <strong data-session-name></strong>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+`,
+  footer: `
+<footer class="footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4">
+        <a class="navbar-brand footer-brand mb-3" href="{{HOME_PATH}}">
+          <i class="bi bi-heart-pulse-fill text-primary" aria-hidden="true"></i>
+          <span data-html="brand.logoHtml">ORAL<span> LUANM</span></span>
+        </a>
+        <p class="small mt-3" data-text="brand.description">Clinica dental enfocada en brindar tratamientos con excelencia clinica, etica profesional y tecnologia medica innovadora.</p>
+        <div class="social-icons mt-4">
+          <a href="https://instagram.com/oral.luanm" class="social-btn" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a>
+          <a href="https://wa.me/573001234567" class="social-btn" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-2 offset-lg-1">
+        <h4 data-text="footer.navigationTitle">Navegacion</h4>
+        <ul class="footer-links">
+          <li><a href="{{CONTACT_PATH}}" data-text="navigation.contact">Contacto</a></li>
+        </ul>
+        <ul class="footer-links">
+          <li><a href="{{SERVICE_PATH}}" data-text="navigation.services">Servicios</a></li>
+        </ul>
+      </div>
+
+      <div class="col-md-6 col-lg-3">
+        <h4 data-text="footer.scheduleContactTitle">Horarios & Contacto</h4>
+        <ul class="footer-links footer-contact">
+          <li><i class="bi bi-geo-alt-fill text-primary" aria-hidden="true"></i><span data-text="contact.addressShort">Av. Principal Nro 123-45, Bogota.</span></li>
+          <li><i class="bi bi-telephone-fill text-primary" aria-hidden="true"></i><span data-text="contact.phone">+57 300 123 4567</span></li>
+          <li><i class="bi bi-envelope-fill text-primary" aria-hidden="true"></i><span data-text="contact.email">oral.luanm@gmail.com</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom text-center">
+      <p class="mb-0" data-html="brand.copyright">&copy; 2026 ORAL LUANM. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow-lg">
+      <div class="modal-header border-bottom-0 pb-0">
+        <h2 class="modal-title h5 fw-bold d-flex align-items-center gap-2" id="loginModalLabel">
+          <i class="bi bi-person-circle text-primary" aria-hidden="true"></i> <span data-text="modals.loginTitle">Iniciar Sesion</span>
+        </h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar modal"></button>
+      </div>
+      <div class="modal-body">
+        <form class="needs-validation auth-form" novalidate id="formModalLogin">
+          <div class="mb-3">
+            <label for="loginEmail" class="form-label fw-semibold"><span data-text="forms.emailLower">Correo electronico</span> <span class="text-danger">*</span></label>
+            <input type="email" class="form-control" id="loginEmail" placeholder="Ej. juan@correo.com" data-placeholder="forms.emailPlaceholder" required>
+            <div class="invalid-feedback">Por favor, ingresa tu correo electronico.</div>
+          </div>
+          <div class="mb-3">
+            <label for="loginPassword" class="form-label fw-semibold"><span data-text="forms.password">Contrasena</span> <span class="text-danger">*</span></label>
+            <input type="password" class="form-control" id="loginPassword" placeholder="********" required>
+            <div class="invalid-feedback">Por favor, ingresa tu contrasena.</div>
+          </div>
+          <a class="auth-link" href="{{RECOVERY_PATH}}" data-text="forms.forgotPassword">Olvide mi contrasena</a>
+          <button type="submit" class="btn btn-primary w-100" data-text="buttons.loginSubmit">Ingresar</button>
+        </form>
+        <button type="button" class="btn btn-outline-primary w-100 mt-3" id="btnOpenRegister">
+          <i class="bi bi-person-plus" aria-hidden="true"></i>
+          <span data-text="buttons.register">Registrarse</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow-lg">
+      <div class="modal-header border-bottom-0 pb-0">
+        <h2 class="modal-title h5 fw-bold d-flex align-items-center gap-2" id="registerModalLabel">
+          <i class="bi bi-person-vcard text-primary" aria-hidden="true"></i> <span data-text="modals.registerTitle">Registra Tu Cuenta</span>
+        </h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar modal"></button>
+      </div>
+      <div class="modal-body">
+        <form class="needs-validation auth-form" novalidate id="formModalRegister">
+          <div class="mb-3">
+            <label for="registerName" class="form-label fw-semibold">Nombre completo <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="registerName" placeholder="Ej. Juan Perez" required>
+            <div class="invalid-feedback">Por favor, ingresa tu nombre completo.</div>
+          </div>
+          <div class="mb-3">
+            <label for="registerEmail" class="form-label fw-semibold">Correo electronico <span class="text-danger">*</span></label>
+            <input type="email" class="form-control" id="registerEmail" placeholder="Ej. juan@correo.com" required>
+            <div class="invalid-feedback">Por favor, ingresa tu correo electronico.</div>
+          </div>
+          <div class="mb-3">
+            <label for="registerPhone" class="form-label fw-semibold">Telefono <span class="text-danger">*</span></label>
+            <input type="tel" class="form-control" id="registerPhone" placeholder="Ej. 3001234567" required pattern="[0-9]{7,15}">
+            <div class="invalid-feedback">Por favor, ingresa un telefono valido.</div>
+          </div>
+          <div class="mb-3">
+            <label for="registerPassword" class="form-label fw-semibold">Contrasena <span class="text-danger">*</span></label>
+            <input type="password" class="form-control" id="registerPassword" placeholder="********" required>
+            <div class="invalid-feedback">Por favor, ingresa tu contrasena.</div>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Registrarse</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="appointmentModal" tabindex="-1" aria-labelledby="appointmentModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow-lg">
+      <div class="modal-header border-bottom-0 pb-0">
+        <h2 class="modal-title h5 fw-bold d-flex align-items-center gap-2" id="appointmentModalLabel">
+                <i class="bi bi-calendar-check text-primary" aria-hidden="true"></i> <span data-text="modals.appointmentTitle">Agendar Cita</span>
+        </h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar modal"></button>
+      </div>
+      <div class="modal-body">
+        <form class="needs-validation" novalidate id="formModalAppointment">
+          <div class="mb-3">
+            <label for="modalName" class="form-label fw-semibold"><span data-text="forms.name">Nombre Completo</span> <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="modalName" required>
+            <div class="invalid-feedback">Por favor, ingresa tu nombre completo.</div>
+          </div>
+          <div class="row mb-3 g-3">
+            <div class="col-sm-6">
+              <label for="modalPhone" class="form-label fw-semibold"><span data-text="forms.phone">Telefono</span> <span class="text-danger">*</span></label>
+              <input type="tel" class="form-control" id="modalPhone" required pattern="[0-9]{7,15}">
+              <div class="invalid-feedback">Ingresa un telefono valido.</div>
+            </div>
+            <div class="col-sm-6">
+              <label for="modalEmail" class="form-label fw-semibold"><span data-text="forms.emailLower">Correo electronico</span> <span class="text-danger">*</span></label>
+              <input type="email" class="form-control" id="modalEmail" required>
+              <div class="invalid-feedback">Ingresa un correo valido.</div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary w-100" data-text="buttons.submitAppointment">Confirmar Solicitud</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+`,
+  whatsapp: `
+<a href="https://wa.me/{{WHATSAPP_PHONE}}?text=Hola,%20quiero%20agendar%20una%20cita." class="whatsapp-float"
+    target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+    <i class="bi bi-whatsapp"></i>
+</a>
+`,
+};
+
+const cloneDefaultSiteData = () => JSON.parse(JSON.stringify(DEFAULT_SITE_DATA));
+
+const isFilePage = () => window.location.protocol === "file:";
+
+const withLocalIndex = (path) => (
+  isFilePage() && path.endsWith("/") ? `${path}index.html` : path
+);
+
 const getBasePath = () => {
-  const depth = window.location.pathname
+  const parts = window.location.pathname
     .split("/")
     .filter(Boolean)
+    .map((part) => {
+      try {
+        return decodeURIComponent(part);
+      } catch {
+        return part;
+      }
+    });
+
+  const projectRootIndex = parts.lastIndexOf(PROJECT_ROOT_FOLDER);
+  const scopedParts = projectRootIndex >= 0
+    ? parts.slice(projectRootIndex + 1)
+    : parts;
+
+  const depth = scopedParts
     .filter((part) =>
-      part !== "Oral-LUANM-frontend" &&
       !part.endsWith(".html")
     ).length;
 
@@ -15,35 +303,42 @@ const fillTemplate = (html) => {
   const servicePath = `${getBasePath()}servicios/`;
   const adminPath = `${getBasePath()}registro/admin/`;
   const secretaryPath = `${getBasePath()}registro/secretario/`;
-  const homePath = `${getBasePath()}home/`;
-  console.log(homePath);
+  const homePath = getBasePath();
+  const recoveryPath = `${getBasePath()}registro/olvide-contrasena/`;
 
   const whatsappPhone = siteData.contact.phone.replace(/\D/g, "");
 
   return html
     .replaceAll("{{BASE_PATH}}", getBasePath())
-    .replaceAll("{{CONTACT_PATH}}", contactPath)
-    .replaceAll("{{SERVICE_PATH}}", servicePath)
-    .replaceAll("{{ADMIN_PATH}}", adminPath)
-    .replaceAll("{{SECRETARY_PATH}}", secretaryPath)
-    .replaceAll("{{HOME_PATH}}", homePath)
+    .replaceAll("{{CONTACT_PATH}}", withLocalIndex(contactPath))
+    .replaceAll("{{SERVICE_PATH}}", withLocalIndex(servicePath))
+    .replaceAll("{{ADMIN_PATH}}", withLocalIndex(adminPath))
+    .replaceAll("{{SECRETARY_PATH}}", withLocalIndex(secretaryPath))
+    .replaceAll("{{HOME_PATH}}", withLocalIndex(homePath))
+    .replaceAll("{{RECOVERY_PATH}}", withLocalIndex(recoveryPath))
     .replaceAll("{{WHATSAPP_PHONE}}", whatsappPhone);
 }
 
-let siteData = {};
+let siteData = cloneDefaultSiteData();
 
 const getDataValue = (path) => (
   path.split(".").reduce((value, key) => value?.[key], siteData)
 );
 
 const loadSiteData = async () => {
-  const response = await fetch(`${getBasePath()}js/datos.json`);
+  siteData = cloneDefaultSiteData();
 
-  if (!response.ok) {
-    throw new Error("No se pudo cargar js/datos.json");
+  if (isFilePage()) return;
+
+  try {
+    const response = await fetch(`${getBasePath()}js/datos.json`);
+
+    if (response.ok) {
+      siteData = await response.json();
+    }
+  } catch {
+    siteData = cloneDefaultSiteData();
   }
-
-  siteData = await response.json();
 };
 
 const applySiteData = () => {
@@ -87,13 +382,30 @@ const MOCK_USERS = [
 
 const loadComponent = async (target) => {
   const componentName = target.dataset.component;
-  const response = await fetch(`${getBasePath()}componentes/${componentName}.html`);
+  const localComponent = LOCAL_COMPONENTS[componentName];
 
-  if (!response.ok) {
-    throw new Error(`No se pudo cargar el componente: ${componentName}`);
+  if (isFilePage() && localComponent) {
+    target.innerHTML = fillTemplate(localComponent);
+    return;
   }
 
-  target.innerHTML = fillTemplate(await response.text());
+  try {
+    const response = await fetch(`${getBasePath()}componentes/${componentName}.html`);
+
+    if (response.ok) {
+      target.innerHTML = fillTemplate(await response.text());
+      return;
+    }
+  } catch {
+    // The local fallback keeps the static pages usable when opened as file://.
+  }
+
+  if (localComponent) {
+    target.innerHTML = fillTemplate(localComponent);
+    return;
+  }
+
+  throw new Error(`No se pudo cargar el componente: ${componentName}`);
 };
 
 const loadComponents = async () => {
@@ -228,7 +540,7 @@ const initAuthModals = () => {
     }
 
     localStorage.setItem("oralLuanmUser", JSON.stringify(user));
-    window.location.href = `${getBasePath()}${user.path}`;
+    window.location.href = withLocalIndex(`${getBasePath()}${user.path}`);
   });
 
   const searchParams = new URLSearchParams(window.location.search);
@@ -249,7 +561,7 @@ const initProtectedViews = () => {
   }
 
   if (requiredRole && (!currentUser || (requiredRole !== currentUser.role && currentUser.role !== "admin"))) {
-    window.location.href = `${getBasePath()}?login=required`;
+    window.location.href = `${withLocalIndex(getBasePath())}?login=required`;
     return;
   }
 
@@ -280,7 +592,7 @@ const initProtectedViews = () => {
   document.querySelectorAll("[data-logout]").forEach((button) => {
     button.addEventListener("click", () => {
       localStorage.removeItem("oralLuanmUser");
-      window.location.href = getBasePath();
+      window.location.href = withLocalIndex(getBasePath());
     });
   });
 };
@@ -925,7 +1237,7 @@ const initServices = () => {
 const initSpecialists = () => {
   const container = document.getElementById("especialistas-container");
 
-  if (!container || typeof SPECIALISTS === undefined) return;
+  if (!container || typeof SPECIALISTS === "undefined") return;
 
   SPECIALISTS.forEach((specialist) => {
     const card = document.createElement("article");

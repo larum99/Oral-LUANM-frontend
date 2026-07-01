@@ -1,0 +1,197 @@
+/* ==========================================================================
+   ANIMATIONS.CSS — ORAL LUANM
+   Animaciones de entrada del hero, scroll reveal y microinteracciones.
+   Se carga DESPUÉS de home.css. No modifica ninguna regla existente,
+   solo añade comportamiento nuevo.
+   ========================================================================== */
+
+/* Variables de tiempo y curva de animación, reutilizables en todo el archivo */
+:root {
+    --anim-duration: 2000ms;
+    --anim-duration-fast: 450ms;
+    --anim-ease: cubic-bezier(0.16, 1, 0.3, 1);
+    /* salida suave, sin rebote */
+}
+
+/* ==========================================================================
+   1. ENTRADA DEL HERO (se ejecuta una sola vez al cargar la página)
+   ========================================================================== */
+
+/* El hero ya trae la clase .reveal-on-scroll desde el HTML, pero tiene su
+   propia secuencia de entrada que no depende del scroll. Anulamos aquí el
+   comportamiento genérico para que no compita con las animaciones de abajo. */
+.hero.reveal-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+}
+
+/* Imagen + fondo morado entran juntos desde la derecha */
+.hero-image {
+    opacity: 0;
+    transform: translateX(40px);
+
+    animation: heroFromRight var(--anim-duration) var(--anim-ease) forwards;
+    animation-delay: .15s;
+}
+
+/* El bloque de texto entra ligeramente desde la izquierda */
+.hero-text {
+    opacity: 0;
+    transform: translateX(-30px);
+
+    animation: heroFromLeft var(--anim-duration) var(--anim-ease) forwards;
+    animation-delay: .05s;
+}
+
+/* Los botones aparecen un poco después del texto */
+.hero-text .botones {
+    opacity: 0;
+    animation: heroFadeIn var(--anim-duration-fast) var(--anim-ease) forwards;
+    animation-delay: 250ms;
+}
+
+/* Los indicadores (Pacientes, Experiencia, Calificación) aparecen en cascada */
+.hero-stats .stat {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: heroFadeUp var(--anim-duration-fast) var(--anim-ease) forwards;
+}
+
+.hero-stats .stat:nth-child(1) {
+    animation-delay: .45s;
+}
+
+.hero-stats .stat:nth-child(2) {
+    animation-delay: .60s;
+}
+
+.hero-stats .stat:nth-child(3) {
+    animation-delay: .75s;
+}
+
+@keyframes heroFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes heroFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes heroFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes heroFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================================
+   2. SCROLL REVEAL (se activa cuando cada sección/elemento entra al viewport)
+   ========================================================================== */
+
+/* Estado inicial: oculto y desplazado ligeramente hacia abajo (Fade Up, por defecto) */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity var(--anim-duration) var(--anim-ease),
+        transform var(--anim-duration) var(--anim-ease);
+}
+
+/* Variantes de dirección: se combinan agregando una clase extra en el HTML */
+.reveal-on-scroll.reveal-left {
+    transform: translateX(-30px);
+}
+
+.reveal-on-scroll.reveal-right {
+    transform: translateX(30px);
+}
+
+/* animations.js agrega esta clase cuando el elemento entra en pantalla */
+.reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+/* ==========================================================================
+   3. TARJETAS: microinteracción del ícono al hacer hover
+   home.css ya anima transform y box-shadow de las tarjetas; la transición
+   del ícono también ya existe en .stat-card i y .service-card i, así que
+   aquí solo agregamos el valor de escala que faltaba.
+   ========================================================================== */
+.stat-card:hover i,
+.service-card:hover i {
+    transform: 
+    scale(1.08)
+    rotate(3deg);
+}
+
+/* ==========================================================================
+   4. BOTONES: el ícono se desplaza levemente al hacer hover
+   El cambio de color y la sombra ya existen en home.css; aquí solo se
+   define la transición del ícono y su desplazamiento.
+   ========================================================================== */
+.btn-primario i,
+.btn-service i {
+    transition: transform var(--anim-duration-fast) var(--anim-ease);
+}
+
+.btn-primario:hover i,
+.btn-service:hover i {
+    transform: translateX(4px) scale(1.03);
+}
+
+/* ==========================================================================
+   5. NAVBAR: sombra y padding reducido al hacer scroll
+   La clase .navbar-scrolled la agrega animations.js cuando el usuario
+   se desplaza más allá del topbar (40px de altura, ver home.css).
+   ========================================================================== */
+.navbar {
+    transition:
+        background-color .4s ease,
+        box-shadow .4s ease,
+        backdrop-filter .4s ease;
+}
+
+.navbar.navbar-scrolled {
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+}
+
+/* ==========================================================================
+   NOTA: la reducción de movimiento para usuarios sensibles a animaciones ya
+   está cubierta por la regla @media (prefers-reduced-motion) que existe en
+   home.css, porque aplica a *, *::before y *::after — cubre también estos
+   estilos nuevos sin necesidad de repetirla aquí.
+   ========================================================================== */

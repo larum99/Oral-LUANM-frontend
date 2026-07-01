@@ -97,7 +97,7 @@ body {
 .hero {
     background-color: var(--bg-white);
     display: grid;
-    grid-template-columns: 1fr 480px;
+    grid-template-columns: 60% 40%;
     align-items: center;
     gap: 0;
     padding: 0 0 0 6rem;
@@ -137,8 +137,8 @@ body {
 .hero-content {
     position: relative;
     z-index: 2;
-    padding: 4rem 3rem 4rem 0;
-    max-width: 600px;
+    padding: 4rem 0rem 4rem 1rem;
+    max-width: 800px;
 }
 
 /* Badge "Tu sonrisa, nuestra prioridad" */
@@ -231,30 +231,33 @@ body {
     min-height: calc(100vh - 120px);
     display: flex;
     align-items: flex-end;
-    justify-content: center;
-    /* Fondo decorativo con forma ovalada y gradiente */
-    background: linear-gradient(160deg, var(--primary-light) 0%, #e8dff8 60%, #f5f0fd 100%);
+    justify-content: flex-start;
+    padding-left: 4rem;
+    background: linear-gradient(
+        160deg,
+        var(--primary-light) 0%,
+        #e8dff8 60%,
+        #f5f0fd 100%
+    );
     border-radius: 60% 0 0 60% / 50% 0 0 50%;
     overflow: hidden;
 }
 
 .hero-image img {
     width: 100%;
-    max-width: 440px;
-    height: 90%;
+    max-width: 500px;
+    height: 92%;
+    position: relative;
+    left: 45px;     
     object-fit: cover;
     object-position: top center;
-    display: block;
-    position: relative;
-    bottom: 0;
-    filter: drop-shadow(0 20px 40px rgba(122,19,199,0.15));
 }
 
 /* Badge flotante "★ 5.0" */
 .hero-badge {
     position: absolute;
     bottom: 80px;
-    left: 70px;
+    left: 25%;
     background: #fff;
     border-radius: 12px;
     box-shadow: 0 8px 28px rgba(15,23,42,0.12);
@@ -295,7 +298,7 @@ body {
 .hero-badge-2{
     position:absolute;
     top:90px;
-    right:-25px;
+    right: 1%;
 
     background:#fff;
     padding:1rem 1.4rem;
@@ -559,6 +562,9 @@ body {
     position: relative;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .service-card:hover {
     transform: translateY(-5px);
@@ -607,21 +613,29 @@ body {
     line-height: 1.7;
     position: relative;
     z-index: 1;
+    margin-bottom: 2rem;
 }
-.btn-service {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    color: var(--primary);
-    font-weight: var(--weight-semibold);
-    font-size: var(--size-sm);
-    padding: 0.5rem 1.25rem;
-    border-radius: 999px;
-    border: 1.5px solid var(--primary);
-    transition: all 0.25s ease;
-    text-decoration: none;
-    position: relative;
-    z-index: 1;
+.btn-service{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:.6rem;
+    padding:.8rem 1.5rem;
+    border:2px solid var(--primary);
+    border-radius:999px;
+    text-decoration:none;
+    color:var(--primary);
+    font-weight:700;
+    margin-top: auto;
+}
+.btn-service i{
+    background:none;
+    width:auto;
+    height:auto;
+    padding:0;
+    border-radius:0;
+    font-size:1rem;
+    margin-top: 20px;
 }
 .btn-service:hover { background-color: var(--primary); color: #fff; }
 

@@ -153,3 +153,5 @@ oralLuanmTeamPermissions  permisos por usuario interno
 - `js/app.js`: carga componentes locales, aplica textos, login, sesiones, paneles, agenda y validaciones.
 - `js/datos.json`: referencia de textos si despues se vuelve a usar carga por servidor.
 - `css/style.css`: estilos globales, registro, paneles internos y estados visuales.
+- `docs/modelo-base-datos.md`: diagrama entidad-relacion y contrato minimo de API.
+- `database/schema.sql`: esquema PostgreSQL ejecutable para el futuro backend.

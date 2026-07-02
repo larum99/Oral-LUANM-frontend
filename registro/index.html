@@ -9,14 +9,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/whatsapp.css">
+    <link rel="stylesheet" href="../css/animations.css">
 </head>
 
 <body>
     <div data-component="header"></div>
     <div class="registro-wrapper page-main">
         <main class="registro">
-            <section class="registro-formulario">
-                <div class="crear-cuenta">
+            <section class="registro-formulario reveal-on-scroll">
+                <div class="crear-cuenta reveal-on-scroll reveal-left">
                     <img src="../img/Reserva-citas-oral-luanm.png" alt="Registro de usuario">
                     <h2>Crear cuenta</h2>
                     <p>
@@ -34,131 +35,146 @@
                     </div>
                     <p>o con tu correo</p>
                     <div class="pasos">
-                        <span>1. Datos personales</span>
-                        <span>2. Acceso</span>
-                        <span>3. Confirmación</span>
+                        <span class="paso activo" id="paso-1">
+                            1. Datos personales
+                        </span>
+                        <span class="paso" id="paso-2">
+                            2. Acceso
+                        </span>
                     </div>
-                    <form action="" method="post">
-                        <div class="datos-personales">
-                            <h3>Datos personales</h3>
-                            <div class="fila">
-                                <div class="campo">
-                                    <label for="nombre">Nombre *</label>
-                                    <input type="text" id="nombre" name="nombre" required>
+                    <form id="registro-form" novalidate>
+                        <section class="registro-step active" id="step-1">
+                            <div class="datos-personales">
+                                <h3>Datos personales</h3>
+                                <div class="fila">
+                                    <div class="campo">
+                                        <label for="nombre">Nombre *</label>
+                                        <input type="text" id="nombre" name="nombre" required>
+                                    </div>
+                                    <div class="campo">
+                                        <label for="apellido">Apellido *</label>
+                                        <input type="text" id="apellido" name="apellido" required>
+                                    </div>
                                 </div>
                                 <div class="campo">
-                                    <label for="apellido">Apellido *</label>
-                                    <input type="text" id="apellido" name="apellido" required>
+                                    <label for="correo">Correo electrónico *</label>
+                                    <input type="email" id="correo" name="correo" required>
+                                </div>
+                                <div class="campo">
+                                    <label for="telefono">Teléfono *</label>
+                                    <input type="tel" id="telefono" name="telefono" required>
+                                </div>
+                                <div class="campo">
+                                    <label for="fecha">Fecha de nacimiento</label>
+                                    <input type="date" id="fecha" name="fecha">
+                                </div>
+                                <div class="campo">
+                                    <label for="tipo-documento">Tipo de documento</label>
+                                    <select id="tipo-documento" name="tipo-documento" required>
+                                        <option value="" selected disabled>
+                                            Selecciona un tipo de documento
+                                        </option>
+                                        <option value="cc">Cédula de ciudadanía</option>
+                                        <option value="ti">Tarjeta de identidad</option>
+                                        <option value="pasaporte">Pasaporte</option>
+                                        <option value="ce">Cédula de extranjería</option>
+                                    </select>
+                                </div>
+                                <div class="campo">
+                                    <label for="documento">Número de documento *</label>
+                                    <input type="text" id="documento" name="documento" required>
                                 </div>
                             </div>
-                            <div class="campo">
-                                <label for="correo">Correo electrónico *</label>
-                                <input type="email" id="correo" name="correo" required>
+                            <button type="button" class="btn-crear-cuenta" id="btn-siguiente">
+                                Siguiente
+                                <i class="bi bi-arrow-right"></i>
+                            </button>
+                        </section>
+                        <section class="registro-step" id="step-2">
+                            <div class="datos-acceso">
+                                <h3>Datos de acceso</h3>
+                                <div class="campo">
+                                    <label for="password">Contraseña *</label>
+                                    <input type="password" id="password" name="password" required>
+                                </div>
+                                <span class="seguridad-contrasena">
+                                    Fortaleza de la contraseña
+                                </span>
+                                <span class="minimo-contrasena">
+                                    Usa mínimo 8 caracteres, números y letras.
+                                </span>
+                                <div class="campo">
+                                    <label for="confirmar-password">
+                                        Confirmar contraseña *
+                                    </label>
+                                    <input type="password" id="confirmar-password" name="confirmar-password" required>
+                                </div>
                             </div>
-                            <div class="campo">
-                                <label for="telefono">Teléfono *</label>
-                                <input type="tel" id="telefono" name="telefono" required>
-                            </div>
-                            <div class="campo">
-                                <label for="fecha">Fecha de nacimiento</label>
-                                <input type="date" id="fecha" name="fecha">
-                            </div>
-                            <div class="campo">
-                                <label for="tipo-documento">
-                                    Tipo de documento
+                            <div class="terminos">
+                                <label>
+                                    <input type="checkbox" required>
+                                    Acepto los términos y condiciones
                                 </label>
-                                <select id="tipo-documento" name="tipo-documento">
-                                    <option>Cédula de ciudadanía</option>
-                                    <option>Tarjeta de identidad</option>
-                                    <option>Pasaporte</option>
-                                    <option>Cédula de extranjería</option>
-                                </select>
-                            </div>
-                            <div class="campo">
-                                <label for="documento">
-                                    Número de documento *
+                                <label>
+                                    <input type="checkbox" required>
+                                    Acepto la política de tratamiento de datos
                                 </label>
-                                <input type="text" id="documento" name="documento" required>
-                            </div>
-                        </div>
-                        <div class="datos-acceso">
-                            <h3>Datos de acceso</h3>
-                            <div class="campo">
-                                <label for="password">
-                                    Contraseña *
+                                <label>
+                                    <input type="checkbox">
+                                    Deseo recibir promociones y novedades
                                 </label>
-                                <input type="password" id="password" name="password" required>
                             </div>
-                            <span class="seguridad-contrasena">
-                                Fortaleza de la contraseña
-                            </span>
-                            <span class="minimo-contrasena">
-                                Usa mínimo 8 caracteres, números y letras
-                            </span>
-                            <div class="campo">
-                                <label for="confirmar-password">
-                                    Confirmar contraseña *
-                                </label>
-                                <input type="password" id="confirmar-password" name="confirmar-password" required>
+                            <div class="acciones-step">
+                                <button type="button" class="btn-anterior" id="btn-anterior">
+                                    <i class="bi bi-arrow-left"></i>
+                                    Anterior
+                                </button>
+                                <button type="submit" class="btn-crear-cuenta">
+                                    Crear cuenta
+                                </button>
                             </div>
-                        </div>
-                        <div class="terminos">
-                            <label>
-                                <input type="checkbox" required>
-                                Acepto los términos y condiciones
-                            </label>
-                            <label>
-                                <input type="checkbox" required>
-                                Acepto la política de tratamiento de datos
-                            </label>
-                            <label>
-                                <input type="checkbox">
-                                Deseo recibir promociones y novedades
-                            </label>
-                        </div>
-                        <button type="submit" class="btn-crear-cuenta">
-                            Crear cuenta
-                        </button>
-                        <div class="login-link">
-                            <p>¿Ya tienes cuenta?</p>
-                            <a href="#" class="inicia-sesion">
-                                Inicia sesión
-                            </a>
-                        </div>
+                        </section>
+                    </form>
+                    <div class="login-link">
+                        <p>¿Ya tienes cuenta?</p>
+                        <a href="#" class="inicia-sesion">
+                            Inicia sesión
+                        </a>
+                    </div>
                     </form>
                 </div>
             </section>
-            <aside class="registro-info">
-                <div class="beneficios-cuenta card">
+            <aside class="registro-info reveal-on-scroll reveal-right">
+                <div class="beneficios-cuenta card reveal-on-scroll">
                     <h2>Beneficios de tu cuenta</h2>
                     <ul>
                         <li>
-                            <i class="fa-solid fa-check"></i>
+                            <i class="bi bi-check-circle-fill"></i>
                             Agenda citas en línea 24/7
                         </li>
                         <li>
-                            <i class="fa-solid fa-check"></i>
+                            <i class="bi bi-check-circle-fill"></i>
                             Historial de tratamientos
                         </li>
                         <li>
-                            <i class="fa-solid fa-check"></i>
+                            <i class="bi bi-check-circle-fill"></i>
                             Recordatorios automáticos
                         </li>
                         <li>
-                            <i class="fa-solid fa-check"></i>
+                            <i class="bi bi-check-circle-fill"></i>
                             Descarga de documentos clínicos
                         </li>
                         <li>
-                            <i class="fa-solid fa-check"></i>
+                            <i class="bi bi-check-circle-fill"></i>
                             Chat con tu especialista
                         </li>
                         <li>
-                            <i class="fa-solid fa-check"></i>
+                            <i class="bi bi-check-circle-fill"></i>
                             Acceso a promociones exclusivas
                         </li>
                     </ul>
                 </div>
-                <div class="testimonios card">
+                <div class="testimonios card reveal-on-scroll reveal-left">
                     <h3>Experiencia de pacientes</h3>
                     <div class="estrellas">
                         <i class="fa-solid fa-star"></i>
@@ -173,11 +189,11 @@
                     </p>
                     <span>Paciente verificado</span>
                 </div>
-                <div class="confirmar-seguridad card">
+                <div class="confirmar-seguridad card reveal-on-scroll">
                     <i class="fa-solid fa-lock"></i>
                     <span>
-                        Tus datos están protegidos. Nunca compartiremos tu
-                        información con terceros.
+                        Protegemos la confidencialidad de tu información para brindarte una experiencia segura y
+                        confiable en cada etapa de tu atención.
                     </span>
                 </div>
             </aside>
@@ -188,6 +204,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/app.js"></script>
+    <script src="../js/animations.js"></script>
+    <script src="../js/registro.js"></script>
 </body>
 
 </html>

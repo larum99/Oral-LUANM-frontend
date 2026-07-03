@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="../../css/style.css">
 </head>
+
 <body data-required-role="secretario">
   <div data-component="header"></div>
 
@@ -19,7 +21,8 @@
         <div>
           <span class="section-tag">Panel de Secretaria</span>
           <h1 class="section-title mb-2">Agendamiento de citas</h1>
-          <p class="text-muted mb-0">Asigna pacientes a especialistas, confirma horarios y registra observaciones del servicio.</p>
+          <p class="text-muted mb-0">Asigna pacientes a especialistas, confirma horarios y registra observaciones del
+            servicio.</p>
         </div>
       </div>
     </section>
@@ -39,11 +42,12 @@
                 <div class="mb-3">
                   <label for="patientSelect" class="form-label fw-semibold">Paciente</label>
                   <select class="form-select" id="patientSelect" required>
-                    <option value="" selected disabled>Seleccionar paciente</option>
-                    <option value="new-patient">Paciente nuevo</option>
-                    <option>Laura Perez - laura.paciente@correo.com</option>
-                    <option>Carlos Rojas - carlos.rojas@correo.com</option>
-                    <option>Ana Torres - ana.torres@correo.com</option>
+                    <option value="" selected disabled>
+                      Seleccionar paciente
+                    </option>
+                    <option value="new-patient">
+                      Paciente nuevo
+                    </option>
                   </select>
                   <div class="invalid-feedback">Selecciona un paciente.</div>
                 </div>
@@ -63,7 +67,8 @@
                   <div class="row g-3 mb-3">
                     <div class="col-sm-6">
                       <label for="newPatientPhone" class="form-label fw-semibold">Telefono</label>
-                      <input type="tel" class="form-control" id="newPatientPhone" placeholder="3001234567" pattern="[0-9]{7,15}">
+                      <input type="tel" class="form-control" id="newPatientPhone" placeholder="3001234567"
+                        pattern="[0-9]{7,15}">
                       <div class="invalid-feedback">Ingresa un telefono valido.</div>
                     </div>
                     <div class="col-sm-6">
@@ -92,7 +97,8 @@
                   <div class="col-sm-6">
                     <label for="appointmentTime" class="form-label fw-semibold">Hora</label>
                     <input type="time" class="form-control" id="appointmentTime" required>
-                    <div class="invalid-feedback">Selecciona una hora valida, minimo 15 minutos despues de la actual.</div>
+                    <div class="invalid-feedback">Selecciona una hora valida, minimo 15 minutos despues de la actual.
+                    </div>
                   </div>
                 </div>
                 <div class="mb-3">
@@ -109,12 +115,14 @@
                 </div>
                 <div class="mb-4">
                   <label for="appointmentNotes" class="form-label fw-semibold">Observaciones</label>
-                  <textarea class="form-control" id="appointmentNotes" rows="4" placeholder="Notas para el especialista"></textarea>
+                  <textarea class="form-control" id="appointmentNotes" rows="4"
+                    placeholder="Notas para el especialista"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary w-100" id="appointmentSubmitButton">Asignar Cita</button>
                 <div class="appointment-actions mt-3 d-none" id="appointmentEditActions">
                   <button type="button" class="btn btn-outline-primary" id="clearAppointmentSelection">Limpiar</button>
-                  <button type="button" class="btn btn-outline-danger" id="cancelAppointmentButton">Cancelar Cita</button>
+                  <button type="button" class="btn btn-outline-danger" id="cancelAppointmentButton">Cancelar
+                    Cita</button>
                 </div>
               </form>
             </section>
@@ -139,19 +147,26 @@
                     </tr>
                   </thead>
                   <tbody id="appointmentsTable">
-                    <tr class="appointment-row" data-patient="Laura Perez - laura.paciente@correo.com" data-specialist="Dra. Maudy Luanm - Ortodoncia" data-date="2026-06-26" data-time="09:30" data-reason="Ortodoncia" data-notes="Control de ortodoncia mensual." data-status="Confirmada">
+                    <tr class="appointment-row" data-patient="Laura Perez - laura.paciente@correo.com"
+                      data-specialist="Dra. Maudy Luanm - Ortodoncia" data-date="2026-06-26" data-time="09:30"
+                      data-reason="Ortodoncia" data-notes="Control de ortodoncia mensual." data-status="Confirmada">
                       <td>09:30</td>
                       <td>Laura Perez</td>
                       <td>Dra. Maudy</td>
                       <td><span class="status-pill status-active">Confirmada</span></td>
                     </tr>
-                    <tr class="appointment-row" data-patient="Carlos Rojas - carlos.rojas@correo.com" data-specialist="Dr. Ramirez - Implantologia" data-date="2026-06-26" data-time="11:00" data-reason="Implantes" data-notes="Valoracion para implante dental." data-status="Pendiente">
+                    <tr class="appointment-row" data-patient="Carlos Rojas - carlos.rojas@correo.com"
+                      data-specialist="Dr. Ramirez - Implantologia" data-date="2026-06-26" data-time="11:00"
+                      data-reason="Implantes" data-notes="Valoracion para implante dental." data-status="Pendiente">
                       <td>11:00</td>
                       <td>Carlos Rojas</td>
                       <td>Dr. Ramirez</td>
                       <td><span class="status-pill status-pending">Pendiente</span></td>
                     </tr>
-                    <tr class="appointment-row" data-patient="Ana Torres - ana.torres@correo.com" data-specialist="Dra. Gomez - Higiene oral" data-date="2026-06-26" data-time="14:00" data-reason="Limpieza dental" data-notes="Limpieza de control semestral." data-status="Confirmada">
+                    <tr class="appointment-row" data-patient="Ana Torres - ana.torres@correo.com"
+                      data-specialist="Dra. Gomez - Higiene oral" data-date="2026-06-26" data-time="14:00"
+                      data-reason="Limpieza dental" data-notes="Limpieza de control semestral."
+                      data-status="Confirmada">
                       <td>14:00</td>
                       <td>Ana Torres</td>
                       <td>Dra. Gomez</td>
@@ -189,4 +204,5 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../../js/app.js"></script>
 </body>
+
 </html>

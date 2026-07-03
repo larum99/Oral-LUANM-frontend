@@ -427,6 +427,25 @@ const MOCK_USERS = [
   }
 ];
 
+const initializeUsersStorage = () => {
+
+  const users = localStorage.getItem("oralLuanmUsers");
+
+  if (users) {
+    return;
+  }
+
+  const clientUsers = MOCK_USERS.filter(
+    (user) => user.role === "cliente"
+  );
+
+  localStorage.setItem(
+    "oralLuanmUsers",
+    JSON.stringify(clientUsers)
+  );
+
+};
+
 const loadComponent = async (target) => {
   const componentName = target.dataset.component;
   const localComponent = LOCAL_COMPONENTS[componentName];
@@ -784,9 +803,48 @@ const initSecretaryAppointments = () => {
     }
   };
 
+  const loadPatientOptions = () => {
+
+    const storedUsers = localStorage.getItem("oralLuanmUsers");
+
+    if (!storedUsers) return;
+
+    try {
+
+      const users = JSON.parse(storedUsers);
+
+      users
+        .filter((user) => user.role === "cliente")
+        .forEach((user) => {
+
+          const value = `${user.nombre} ${user.apellido} - ${user.email}`;
+
+          if ([...patientInput.options].some(
+            (option) => option.value === value
+          )) {
+            return;
+          }
+
+          const option = document.createElement("option");
+          option.value = value;
+          option.textContent = value;
+
+          patientInput.appendChild(option);
+
+        });
+
+    } catch {
+
+      localStorage.removeItem("oralLuanmUsers");
+
+    }
+
+  };
+
   const getAppointmentsFromTable = () => (
     [...table.querySelectorAll(".appointment-row")].map((row) => ({
       patient: row.dataset.patient,
+      patientEmail: row.dataset.patientEmail,
       specialist: row.dataset.specialist,
       date: row.dataset.date,
       time: row.dataset.time,
@@ -817,12 +875,22 @@ const initSecretaryAppointments = () => {
     updateAppointmentLimits();
   };
 
-  const buildAppointmentRow = ({ patient, specialist, date, time, reason, notes, status = "Pendiente" }) => {
+  const buildAppointmentRow = ({
+    patient,
+    patientEmail,
+    specialist,
+    date,
+    time,
+    reason,
+    notes,
+    status = "Pendiente"
+  }) => {
     const row = document.createElement("tr");
     const isConfirmed = status === "Confirmada";
 
     row.className = "appointment-row";
     row.dataset.patient = patient;
+    row.dataset.patientEmail = patientEmail;
     row.dataset.specialist = specialist;
     row.dataset.date = date;
     row.dataset.time = time;
@@ -886,6 +954,7 @@ const initSecretaryAppointments = () => {
   };
 
   updateAppointmentLimits();
+  loadPatientOptions();
   loadSpecialistOptions();
   loadAppointments();
   dateInput.addEventListener("change", validateAppointmentDateTime);
@@ -938,15 +1007,20 @@ const initSecretaryAppointments = () => {
       patientInput.value = patient;
     }
 
+    const patientEmail = patient.split(" - ")[1]?.trim().toLowerCase() ?? "";
+
     const appointment = {
+      id: crypto.randomUUID(),
       patient,
+      patientEmail,
       specialist: specialistInput.value,
       date: dateInput.value,
-      time: timeInput.value,
+      time: dateInput.value,
       reason: reasonInput.value,
       notes: notesInput.value,
       status: selectedAppointmentRow?.dataset.status ?? "Pendiente",
     };
+
     const row = buildAppointmentRow(appointment);
 
     if (selectedAppointmentRow) {
@@ -1254,59 +1328,142 @@ const initAdminDashboard = () => {
 };
 
 const initClientDashboard = () => {
+
   const sessionKey = "oralLuanmUser";
-  const usersKey = "oralLuanmUsers";
 
   const userName = document.getElementById("clientUserName");
   const userEmail = document.getElementById("clientUserEmail");
   const userPhone = document.getElementById("clientUserPhone");
   const userDocument = document.getElementById("clientUserDocument");
 
-  if (!userName && !userEmail && !userPhone && !userDocument) return;
+  const nextAppointment = document.getElementById("clientNextAppointment");
+  const treatments = document.getElementById("clientTreatments");
+  const specialist = document.getElementById("clientSpecialist");
+  const appointmentsCount = document.getElementById("clientAppointments");
+  const appointmentsTable = document.getElementById("clientAppointmentsTable");
+
+  if (!appointmentsTable || !userName) return;
 
   const readStorage = (key, fallback) => {
-    const storedValue = localStorage.getItem(key);
-
-    if (!storedValue) {
-      return fallback;
-    }
-
+    const data = localStorage.getItem(key);
+    if (!data) return fallback;
     try {
-      return JSON.parse(storedValue);
+      return JSON.parse(data);
     } catch {
       return fallback;
     }
   };
 
-  const session = readStorage(sessionKey, null);
+  const user = readStorage(sessionKey, null);
+  if (!user) return;
 
-  if (!session) {
-    return;
-  }
+  const getAppointments = () => readStorage("oralLuanmAppointments", []);
 
-  const users = readStorage(usersKey, []);
+  const getMyAppointments = () =>
+    getAppointments().filter(a => a.patientEmail === user.email);
 
-  const user = users.find((item) => item.email === session.email);
+  // =========================
+  // RENDER PRINCIPAL
+  // =========================
+  const renderClientAppointments = () => {
 
-  if (!user) {
-    return;
-  }
+    const myAppointments = getMyAppointments();
 
-  if (userName) {
-    userName.textContent = `${user.name} ${user.lastName}`;
-  }
+    appointmentsTable.innerHTML = myAppointments.length
+      ? myAppointments.map(a => `
+          <tr>
+            <td>${a.date}</td>
+            <td>${a.time}</td>
+            <td>${a.specialist.split(" - ")[0]}</td>
+            <td>
+              <span class="status-pill ${a.status === "Confirmada"
+          ? "status-active"
+          : "status-pending"
+        }">
+                ${a.status}
+              </span>
+            </td>
+            <td>
+              ${a.status !== "Cancelada"
+          ? `<button class="btn btn-outline-danger btn-sm client-cancel-btn"
+                      data-id="${a.id}">
+                      Cancelar
+                    </button>`
+          : "-"
+        }
+            </td>
+          </tr>
+        `).join("")
+      : `
+        <tr>
+          <td colspan="5" class="text-center">
+            Aún no tienes citas registradas.
+          </td>
+        </tr>
+      `;
+  };
 
-  if (userEmail) {
-    userEmail.textContent = user.email;
-  }
+  // =========================
+  // INFO USUARIO
+  // =========================
+  if (userName) userName.textContent = `${user.nombre} ${user.apellido}`;
+  if (userEmail) userEmail.textContent = user.email;
+  if (userPhone) userPhone.textContent = user.telefono;
+  if (userDocument) userDocument.textContent = `${user.tipoDocumento} ${user.documento}`;
 
-  if (userPhone) {
-    userPhone.textContent = user.phone;
-  }
+  // =========================
+  // MÉTRICAS
+  // =========================
+  const updateMetrics = () => {
+    const myAppointments = getMyAppointments();
 
-  if (userDocument) {
-    userDocument.textContent = `${user.documentType} ${user.document}`;
-  }
+    appointmentsCount.textContent = myAppointments.length;
+
+    const upcoming = [...myAppointments]
+      .sort((a, b) => new Date(`${a.date}T${a.time}`) - new Date(`${b.date}T${b.time}`))[0];
+
+    if (upcoming) {
+      nextAppointment.textContent = upcoming.date;
+      specialist.textContent = upcoming.specialist.split(" - ")[0];
+    } else {
+      nextAppointment.textContent = "--";
+      specialist.textContent = "--";
+    }
+
+    treatments.textContent = myAppointments.filter(a => a.status === "Confirmada").length;
+  };
+
+  // =========================
+  // CANCELAR CITA
+  // =========================
+  appointmentsTable.addEventListener("click", (event) => {
+
+    const btn = event.target.closest(".client-cancel-btn");
+    if (!btn) return;
+
+    const id = btn.dataset.id;
+
+    const appointments = getAppointments();
+
+    const appointment = appointments.find(a => String(a.id) === String(id));
+    if (!appointment) return;
+
+    appointment.status = "Cancelada";
+
+    localStorage.setItem(
+      "oralLuanmAppointments",
+      JSON.stringify(appointments)
+    );
+
+    renderClientAppointments();
+    updateMetrics();
+  });
+
+  // =========================
+  // INIT
+  // =========================
+  renderClientAppointments();
+  updateMetrics();
 };
 
 const initServices = () => {
@@ -1392,6 +1549,7 @@ const initApp = async () => {
   initProtectedViews();
   initFormValidation();
   initAuthModals();
+  initializeUsersStorage();
   initSecretaryAppointments();
   initClientDashboard();
   initAdminDashboard();

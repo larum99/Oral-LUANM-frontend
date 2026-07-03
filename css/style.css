@@ -242,6 +242,10 @@ a:hover {
   background: var(--primary-light);
 }
 
+.client-cancel-btn {
+  white-space: nowrap;
+}
+
 /* ==========================================================================
    FIN: Botones
    ========================================================================== */
@@ -566,6 +570,11 @@ a:hover {
 .status-pending {
   background-color: #fef3c7;
   color: #92400e;
+}
+
+.status-cancelled {
+  background-color: #fee2e2;
+  color: #b91c1c;
 }
 
 .permission-list,
@@ -1246,6 +1255,15 @@ a:hover {
     font-size: var(--size-xs);
     padding: 0.5rem 0.25rem;
   }
+
+  .admin-table td {
+    white-space: normal;
+  }
+
+  .client-cancel-btn {
+    width: 100%;
+  }
+
 }
 
 /* ==========================================================================

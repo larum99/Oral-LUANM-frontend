@@ -363,21 +363,68 @@ const applySiteData = () => {
   });
 };
 
+const USERS_STORAGE_KEY = "oralLuanmUsers";
+
+const getRegisteredUsers = () => {
+  return JSON.parse(localStorage.getItem(USERS_STORAGE_KEY)) || [];
+};
+
+
+const saveRegisteredUsers = (users) => {
+  localStorage.setItem(
+    USERS_STORAGE_KEY,
+    JSON.stringify(users)
+  );
+};
+
+const registerUser = (user) => {
+  const users = getRegisteredUsers();
+
+  users.push(user);
+
+  saveRegisteredUsers(users);
+};
+
 const MOCK_USERS = [
   {
+    id: 1,
+    nombre: "Juan",
+    apellido: "Administrador",
     email: "juan@correo.com",
+    telefono: "3001234567",
+    fechaNacimiento: "1985-08-15",
+    tipoDocumento: "Cédula de ciudadanía",
+    documento: "100000001",
     password: "123456",
-    name: "Juan Administrador",
     role: "admin",
-    path: "registro/admin/",
+    path: "registro/admin/index.html"
   },
   {
+    id: 2,
+    nombre: "Ana",
+    apellido: "Secretaria",
     email: "secre@correo.com",
+    telefono: "3007654321",
+    fechaNacimiento: "1992-04-10",
+    tipoDocumento: "Cédula de ciudadanía",
+    documento: "100000002",
     password: "654321",
-    name: "Secretaria Clinica",
     role: "secretario",
-    path: "registro/secretario/",
+    path: "registro/secretario/index.html"
   },
+  {
+    id: 3,
+    nombre: "Laura",
+    apellido: "Paciente",
+    email: "laura@correo.com",
+    telefono: "3009876543",
+    fechaNacimiento: "2000-09-22",
+    tipoDocumento: "Cédula de ciudadanía",
+    documento: "100000003",
+    password: "123456",
+    role: "cliente",
+    path: "registro/cliente/index.html"
+  }
 ];
 
 const loadComponent = async (target) => {
@@ -1206,6 +1253,62 @@ const initAdminDashboard = () => {
   renderUsers();
 };
 
+const initClientDashboard = () => {
+  const sessionKey = "oralLuanmUser";
+  const usersKey = "oralLuanmUsers";
+
+  const userName = document.getElementById("clientUserName");
+  const userEmail = document.getElementById("clientUserEmail");
+  const userPhone = document.getElementById("clientUserPhone");
+  const userDocument = document.getElementById("clientUserDocument");
+
+  if (!userName && !userEmail && !userPhone && !userDocument) return;
+
+  const readStorage = (key, fallback) => {
+    const storedValue = localStorage.getItem(key);
+
+    if (!storedValue) {
+      return fallback;
+    }
+
+    try {
+      return JSON.parse(storedValue);
+    } catch {
+      return fallback;
+    }
+  };
+
+  const session = readStorage(sessionKey, null);
+
+  if (!session) {
+    return;
+  }
+
+  const users = readStorage(usersKey, []);
+
+  const user = users.find((item) => item.email === session.email);
+
+  if (!user) {
+    return;
+  }
+
+  if (userName) {
+    userName.textContent = `${user.name} ${user.lastName}`;
+  }
+
+  if (userEmail) {
+    userEmail.textContent = user.email;
+  }
+
+  if (userPhone) {
+    userPhone.textContent = user.phone;
+  }
+
+  if (userDocument) {
+    userDocument.textContent = `${user.documentType} ${user.document}`;
+  }
+};
+
 const initServices = () => {
   const container = document.getElementById("servicios-container");
 
@@ -1290,6 +1393,7 @@ const initApp = async () => {
   initFormValidation();
   initAuthModals();
   initSecretaryAppointments();
+  initClientDashboard();
   initAdminDashboard();
   initServices();
   initSpecialists();

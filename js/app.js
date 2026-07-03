@@ -1362,9 +1362,7 @@ const initClientDashboard = () => {
   const getMyAppointments = () =>
     getAppointments().filter(a => a.patientEmail === user.email);
 
-  // =========================
-  // RENDER PRINCIPAL
-  // =========================
+
   const renderClientAppointments = () => {
 
     const myAppointments = getMyAppointments();
@@ -1403,17 +1401,11 @@ const initClientDashboard = () => {
       `;
   };
 
-  // =========================
-  // INFO USUARIO
-  // =========================
   if (userName) userName.textContent = `${user.nombre} ${user.apellido}`;
   if (userEmail) userEmail.textContent = user.email;
   if (userPhone) userPhone.textContent = user.telefono;
   if (userDocument) userDocument.textContent = `${user.tipoDocumento} ${user.documento}`;
 
-  // =========================
-  // MÉTRICAS
-  // =========================
   const updateMetrics = () => {
     const myAppointments = getMyAppointments();
 
@@ -1433,9 +1425,6 @@ const initClientDashboard = () => {
     treatments.textContent = myAppointments.filter(a => a.status === "Confirmada").length;
   };
 
-  // =========================
-  // CANCELAR CITA
-  // =========================
   appointmentsTable.addEventListener("click", (event) => {
 
     const btn = event.target.closest(".client-cancel-btn");
@@ -1459,9 +1448,6 @@ const initClientDashboard = () => {
     updateMetrics();
   });
 
-  // =========================
-  // INIT
-  // =========================
   renderClientAppointments();
   updateMetrics();
 };

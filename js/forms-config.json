@@ -1,0 +1,143 @@
+{
+  "forms": {
+    "formPageContact": {
+      "entity": "contact_message",
+      "draftKey": "oralLuanmContactDraft",
+      "submissionKey": "oralLuanmContactSubmissions",
+      "successMessage": "Tu mensaje quedo guardado localmente y listo para integrarse con el backend.",
+      "backend": {
+        "endpoint": "/api/contact",
+        "method": "POST"
+      },
+      "fields": [
+        { "name": "fullName", "source": "fullName" },
+        { "name": "phone", "source": "phone" },
+        { "name": "email", "source": "email" },
+        { "name": "message", "source": "message" }
+      ]
+    },
+    "formHomeAppointment": {
+      "entity": "appointment_request",
+      "draftKey": "oralLuanmHomeAppointmentDraft",
+      "submissionKey": "oralLuanmHomeAppointmentSubmissions",
+      "successMessage": "La solicitud de cita quedo guardada localmente y preparada para enviarse al backend.",
+      "backend": {
+        "endpoint": "/api/appointments/request",
+        "method": "POST"
+      },
+      "fields": [
+        { "name": "fullName", "source": "fullName" },
+        { "name": "phone", "source": "phone" },
+        { "name": "email", "source": "email" },
+        { "name": "service", "source": "service" },
+        { "name": "message", "source": "message" }
+      ]
+    },
+    "registrationForm": {
+      "entity": "patient_registration",
+      "draftKey": "oralLuanmRegistrationDraft",
+      "submissionKey": "oralLuanmRegistrationSubmissions",
+      "successMessage": "El registro quedo guardado localmente. El payload ya esta preparado para conectarlo al backend.",
+      "backend": {
+        "endpoint": "/api/patients/register",
+        "method": "POST"
+      },
+      "fields": [
+        { "name": "firstName", "source": "firstName" },
+        { "name": "lastName", "source": "lastName" },
+        { "name": "email", "source": "email" },
+        { "name": "phone", "source": "phone" },
+        { "name": "birthDate", "source": "birthDate" },
+        { "name": "documentType", "source": "documentType" },
+        { "name": "documentNumber", "source": "documentNumber" },
+        { "name": "password", "source": "password", "sensitive": true },
+        { "name": "confirmPassword", "source": "confirmPassword", "sensitive": true },
+        { "name": "acceptTerms", "source": "acceptTerms" },
+        { "name": "acceptDataPolicy", "source": "acceptDataPolicy" },
+        { "name": "receiveUpdates", "source": "receiveUpdates" }
+      ]
+    },
+    "formModalRegister": {
+      "entity": "quick_registration",
+      "draftKey": "oralLuanmModalRegistrationDraft",
+      "submissionKey": "oralLuanmModalRegistrationSubmissions",
+      "successMessage": "El registro rapido quedo guardado localmente y listo para integrarse con el backend.",
+      "backend": {
+        "endpoint": "/api/auth/register",
+        "method": "POST"
+      },
+      "fields": [
+        { "name": "fullName", "source": "fullName" },
+        { "name": "email", "source": "email" },
+        { "name": "phone", "source": "phone" },
+        { "name": "password", "source": "password", "sensitive": true }
+      ]
+    },
+    "formModalAppointment": {
+      "entity": "modal_appointment_request",
+      "draftKey": "oralLuanmModalAppointmentDraft",
+      "submissionKey": "oralLuanmModalAppointmentSubmissions",
+      "successMessage": "La solicitud de cita del modal quedo guardada localmente y lista para integrarse con el backend.",
+      "backend": {
+        "endpoint": "/api/appointments/modal-request",
+        "method": "POST"
+      },
+      "fields": [
+        { "name": "fullName", "source": "fullName" },
+        { "name": "phone", "source": "phone" },
+        { "name": "email", "source": "email" }
+      ]
+    },
+    "recoveryForm": {
+      "entity": "password_recovery_request",
+      "draftKey": "oralLuanmRecoveryDraft",
+      "submissionKey": "oralLuanmRecoverySubmissions",
+      "successMessage": "La solicitud de recuperacion quedo guardada localmente y preparada para enviarse al backend.",
+      "backend": {
+        "endpoint": "/api/auth/recovery",
+        "method": "POST"
+      },
+      "fields": [
+        { "name": "email", "source": "email" }
+      ]
+    },
+    "secretaryAppointmentForm": {
+      "entity": "internal_secretary_appointment",
+      "draftKey": "oralLuanmSecretaryAppointmentDraft",
+      "backend": {
+        "endpoint": "/api/internal/appointments",
+        "method": "POST"
+      },
+      "fields": [
+        { "name": "patient", "source": "patient" },
+        { "name": "newPatientName", "source": "newPatientName" },
+        { "name": "newPatientEmail", "source": "newPatientEmail" },
+        { "name": "newPatientPhone", "source": "newPatientPhone" },
+        { "name": "newPatientDocument", "source": "newPatientDocument" },
+        { "name": "specialist", "source": "specialist" },
+        { "name": "appointmentDate", "source": "appointmentDate" },
+        { "name": "appointmentTime", "source": "appointmentTime" },
+        { "name": "appointmentReason", "source": "appointmentReason" },
+        { "name": "appointmentNotes", "source": "appointmentNotes" }
+      ]
+    },
+    "clientAppointmentForm": {
+      "entity": "client_dashboard_appointment",
+      "draftKey": "oralLuanmClientAppointmentDraft",
+      "submissionKey": "oralLuanmClientAppointmentSubmissions",
+      "backend": {
+        "endpoint": "/api/client/appointments",
+        "method": "POST"
+      },
+      "fields": [
+        { "name": "patientName", "source": "patientName" },
+        { "name": "patientEmail", "source": "patientEmail" },
+        { "name": "specialist", "source": "specialist" },
+        { "name": "appointmentDate", "source": "appointmentDate" },
+        { "name": "appointmentTime", "source": "appointmentTime" },
+        { "name": "appointmentReason", "source": "appointmentReason" },
+        { "name": "appointmentNotes", "source": "appointmentNotes" }
+      ]
+    }
+  }
+}

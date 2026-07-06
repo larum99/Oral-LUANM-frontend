@@ -32,6 +32,13 @@ usuario: secre@correo.com
 clave: 654321
 ```
 
+Cliente:
+
+```text
+usuario: sara@correo.com
+clave: 7654321
+```
+
 ## Rutas Principales
 
 ```text
@@ -41,7 +48,44 @@ Servicios:             /servicios/
 Registro:              /registro/
 Recuperar contrasena:  /registro/olvide-contrasena/
 Panel admin:           /registro/admin/
+Portal cliente:        /registro/cliente/
 Panel secretario:      /registro/secretario/
+```
+
+## Mapa de Navegacion
+
+```text
+Publico
++-- /
+|   +-- header reutilizable
+|   |   +-- Inicio
+|   |   +-- Contacto
+|   |   +-- Servicios
+|   |   +-- Iniciar Sesion / Cerrar Sesion
+|   |   +-- Sesion activa -> acceso al panel interno segun rol
+|   +-- Home
+|   +-- Footer
+|       +-- Login modal
+|       +-- Registro modal
+|       +-- Solicitud de cita modal
++-- /contactanos/
++-- /servicios/
++-- /registro/
+|   +-- formulario de registro
++-- /registro/olvide-contrasena/
+
+Interno
++-- /registro/admin/
+|   +-- usuarios
+|   +-- citas
+|   +-- especialistas
+|   +-- permisos
++-- /registro/secretario/
+|   +-- crear / editar / cancelar citas
+|   +-- agenda compartida
++-- /registro/cliente/
+    +-- agendar cita
+    +-- ver mis citas
 ```
 
 ## Estructura Actual
@@ -58,6 +102,8 @@ Odontologia/
 +-- css/
 |   +-- servicios.css
 |   +-- style.css
++-- database/
++-- docs/
 +-- img/
 +-- js/
 |   +-- app.js
@@ -65,6 +111,8 @@ Odontologia/
 |   +-- servicios-data.js
 +-- registro/
 |   +-- admin/
+|   |   +-- index.html
+|   +-- cliente/
 |   |   +-- index.html
 |   +-- olvide-contrasena/
 |   |   +-- index.html
@@ -84,13 +132,16 @@ Odontologia/
 - Estado de sesion visible en el header.
 - Boton de login que cambia a `Cerrar Sesion` cuando hay usuario activo.
 - Panel admin dentro de `registro/admin/`.
+- Portal cliente dentro de `registro/cliente/`.
 - Panel secretario dentro de `registro/secretario/`.
 - Recuperacion de contrasena dentro de `registro/olvide-contrasena/`.
 - Agenda de citas con crear, editar, cancelar y persistir.
 - Validacion de citas para impedir fecha/hora anterior a la actual + 15 minutos.
+- Validacion de citas para impedir domingos, festivos de Colombia y choques de horario por especialista.
 - Creacion de pacientes nuevos desde el formulario de citas.
 - Panel admin con vistas internas para usuarios, citas, especialistas y permisos.
 - Creacion de especialistas desde admin y disponibilidad posterior en la agenda del secretario.
+- Portal cliente conectado a la misma agenda local para que admin y secretario vean las mismas citas.
 - Textos genericos centralizados en `js/datos.json`.
 
 ## Datos Centralizados
@@ -133,6 +184,7 @@ oralLuanmAppointments     citas creadas o editadas
 oralLuanmAdminUsers       usuarios creados desde admin
 oralLuanmSpecialists      especialistas creados desde admin
 oralLuanmTeamPermissions  permisos por usuario interno
+oralLuanmSyncQueue        cola local lista para futura sincronizacion con backend
 ```
 
 ## Librerias Usadas

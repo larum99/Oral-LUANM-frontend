@@ -38,7 +38,7 @@
               <form class="needs-validation" novalidate id="secretaryAppointmentForm">
                 <div class="mb-3">
                   <label for="patientSelect" class="form-label fw-semibold">Paciente</label>
-                  <select class="form-select" id="patientSelect" required>
+                  <select class="form-select" id="patientSelect" name="patient" required>
                     <option value="" selected disabled>Seleccionar paciente</option>
                     <option value="new-patient">Paciente nuevo</option>
                     <option>Laura Perez - laura.paciente@correo.com</option>
@@ -51,31 +51,31 @@
                   <div class="row g-3 mb-3">
                     <div class="col-sm-6">
                       <label for="newPatientName" class="form-label fw-semibold">Nombre del paciente</label>
-                      <input type="text" class="form-control" id="newPatientName" placeholder="Ej. Maria Lopez">
+                      <input type="text" class="form-control" id="newPatientName" name="newPatientName" minlength="3" maxlength="80" placeholder="Ej. Maria Lopez">
                       <div class="invalid-feedback">Ingresa el nombre del paciente.</div>
                     </div>
                     <div class="col-sm-6">
                       <label for="newPatientEmail" class="form-label fw-semibold">Correo del paciente</label>
-                      <input type="email" class="form-control" id="newPatientEmail" placeholder="maria@correo.com">
+                      <input type="email" class="form-control" id="newPatientEmail" name="newPatientEmail" autocomplete="email" placeholder="maria@correo.com">
                       <div class="invalid-feedback">Ingresa un correo valido.</div>
                     </div>
                   </div>
                   <div class="row g-3 mb-3">
                     <div class="col-sm-6">
                       <label for="newPatientPhone" class="form-label fw-semibold">Telefono</label>
-                      <input type="tel" class="form-control" id="newPatientPhone" placeholder="3001234567" pattern="[0-9]{7,15}">
+                      <input type="tel" class="form-control" id="newPatientPhone" name="newPatientPhone" autocomplete="tel" inputmode="numeric" data-digits-only maxlength="15" placeholder="3001234567" pattern="[0-9]{7,15}">
                       <div class="invalid-feedback">Ingresa un telefono valido.</div>
                     </div>
                     <div class="col-sm-6">
                       <label for="newPatientDocument" class="form-label fw-semibold">Documento</label>
-                      <input type="text" class="form-control" id="newPatientDocument" placeholder="Numero de documento">
+                      <input type="text" class="form-control" id="newPatientDocument" name="newPatientDocument" inputmode="numeric" data-digits-only maxlength="15" placeholder="Numero de documento" pattern="[0-9]{6,15}">
                       <div class="invalid-feedback">Ingresa el documento.</div>
                     </div>
                   </div>
                 </div>
                 <div class="mb-3">
                   <label for="specialistSelect" class="form-label fw-semibold">Especialista</label>
-                  <select class="form-select" id="specialistSelect" required>
+                  <select class="form-select" id="specialistSelect" name="specialist" required>
                     <option value="">Seleccionar especialista</option>
                     <option>Dra. Maudy Luanm - Ortodoncia</option>
                     <option>Dr. Ramirez - Implantologia</option>
@@ -86,18 +86,18 @@
                 <div class="row g-3 mb-3">
                   <div class="col-sm-6">
                     <label for="appointmentDate" class="form-label fw-semibold">Fecha</label>
-                    <input type="date" class="form-control" id="appointmentDate" required>
+                    <input type="date" class="form-control" id="appointmentDate" name="appointmentDate" required>
                     <div class="invalid-feedback">Selecciona una fecha.</div>
                   </div>
                   <div class="col-sm-6">
                     <label for="appointmentTime" class="form-label fw-semibold">Hora</label>
-                    <input type="time" class="form-control" id="appointmentTime" required>
+                    <input type="time" class="form-control" id="appointmentTime" name="appointmentTime" required>
                     <div class="invalid-feedback">Selecciona una hora valida, minimo 15 minutos despues de la actual.</div>
                   </div>
                 </div>
                 <div class="mb-3">
                   <label for="appointmentReason" class="form-label fw-semibold">Motivo</label>
-                  <select class="form-select" id="appointmentReason" required>
+                  <select class="form-select" id="appointmentReason" name="appointmentReason" required>
                     <option value="">Seleccionar motivo</option>
                     <option>Consulta general</option>
                     <option>Ortodoncia</option>
@@ -109,7 +109,7 @@
                 </div>
                 <div class="mb-4">
                   <label for="appointmentNotes" class="form-label fw-semibold">Observaciones</label>
-                  <textarea class="form-control" id="appointmentNotes" rows="4" placeholder="Notas para el especialista"></textarea>
+                  <textarea class="form-control" id="appointmentNotes" name="appointmentNotes" rows="4" placeholder="Notas para el especialista"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary w-100" id="appointmentSubmitButton">Asignar Cita</button>
                 <div class="appointment-actions mt-3 d-none" id="appointmentEditActions">

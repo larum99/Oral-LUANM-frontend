@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Panel de secretaria para agenda de citas ORAL LUANM.">
+  <meta name="author" content="ORAL LUANM">
+  <title>Agenda Secretaria | ORAL LUANM</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body data-required-role="secretario">
+  <div data-component="header"></div>
+
+  <main class="page-main admin-page">
+    <section class="section-padding section-bg-white border-bottom">
+      <div class="container">
+        <div>
+          <span class="section-tag">Panel de Secretaria</span>
+          <h1 class="section-title mb-2">Agendamiento de citas</h1>
+          <p class="text-muted mb-0">Asigna pacientes a especialistas, confirma horarios y registra observaciones del servicio.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding section-bg-light">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-5">
+            <section class="admin-panel">
+              <div class="panel-heading">
+                <div>
+                  <h2>Nueva cita</h2>
+                  <p>Selecciona usuario, especialista y motivo de consulta.</p>
+                </div>
+              </div>
+              <form class="needs-validation" novalidate id="secretaryAppointmentForm">
+                <div class="mb-3">
+                  <label for="patientSelect" class="form-label fw-semibold">Paciente</label>
+                  <select class="form-select" id="patientSelect" required>
+                    <option value="" selected disabled>Seleccionar paciente</option>
+                    <option value="new-patient">Paciente nuevo</option>
+                    <option>Laura Perez - laura.paciente@correo.com</option>
+                    <option>Carlos Rojas - carlos.rojas@correo.com</option>
+                    <option>Ana Torres - ana.torres@correo.com</option>
+                  </select>
+                  <div class="invalid-feedback">Selecciona un paciente.</div>
+                </div>
+                <div class="new-patient-fields d-none" id="newPatientFields">
+                  <div class="row g-3 mb-3">
+                    <div class="col-sm-6">
+                      <label for="newPatientName" class="form-label fw-semibold">Nombre del paciente</label>
+                      <input type="text" class="form-control" id="newPatientName" placeholder="Ej. Maria Lopez">
+                      <div class="invalid-feedback">Ingresa el nombre del paciente.</div>
+                    </div>
+                    <div class="col-sm-6">
+                      <label for="newPatientEmail" class="form-label fw-semibold">Correo del paciente</label>
+                      <input type="email" class="form-control" id="newPatientEmail" placeholder="maria@correo.com">
+                      <div class="invalid-feedback">Ingresa un correo valido.</div>
+                    </div>
+                  </div>
+                  <div class="row g-3 mb-3">
+                    <div class="col-sm-6">
+                      <label for="newPatientPhone" class="form-label fw-semibold">Telefono</label>
+                      <input type="tel" class="form-control" id="newPatientPhone" placeholder="3001234567" pattern="[0-9]{7,15}">
+                      <div class="invalid-feedback">Ingresa un telefono valido.</div>
+                    </div>
+                    <div class="col-sm-6">
+                      <label for="newPatientDocument" class="form-label fw-semibold">Documento</label>
+                      <input type="text" class="form-control" id="newPatientDocument" placeholder="Numero de documento">
+                      <div class="invalid-feedback">Ingresa el documento.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="specialistSelect" class="form-label fw-semibold">Especialista</label>
+                  <select class="form-select" id="specialistSelect" required>
+                    <option value="">Seleccionar especialista</option>
+                    <option>Dra. Maudy Luanm - Ortodoncia</option>
+                    <option>Dr. Ramirez - Implantologia</option>
+                    <option>Dra. Gomez - Higiene oral</option>
+                  </select>
+                  <div class="invalid-feedback">Selecciona un especialista.</div>
+                </div>
+                <div class="row g-3 mb-3">
+                  <div class="col-sm-6">
+                    <label for="appointmentDate" class="form-label fw-semibold">Fecha</label>
+                    <input type="date" class="form-control" id="appointmentDate" required>
+                    <div class="invalid-feedback">Selecciona una fecha.</div>
+                  </div>
+                  <div class="col-sm-6">
+                    <label for="appointmentTime" class="form-label fw-semibold">Hora</label>
+                    <input type="time" class="form-control" id="appointmentTime" required>
+                    <div class="invalid-feedback">Selecciona una hora valida, minimo 15 minutos despues de la actual.</div>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="appointmentReason" class="form-label fw-semibold">Motivo</label>
+                  <select class="form-select" id="appointmentReason" required>
+                    <option value="">Seleccionar motivo</option>
+                    <option>Consulta general</option>
+                    <option>Ortodoncia</option>
+                    <option>Implantes</option>
+                    <option>Limpieza dental</option>
+                    <option>Control postoperatorio</option>
+                  </select>
+                  <div class="invalid-feedback">Selecciona el motivo.</div>
+                </div>
+                <div class="mb-4">
+                  <label for="appointmentNotes" class="form-label fw-semibold">Observaciones</label>
+                  <textarea class="form-control" id="appointmentNotes" rows="4" placeholder="Notas para el especialista"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-100" id="appointmentSubmitButton">Asignar Cita</button>
+                <div class="appointment-actions mt-3 d-none" id="appointmentEditActions">
+                  <button type="button" class="btn btn-outline-primary" id="clearAppointmentSelection">Limpiar</button>
+                  <button type="button" class="btn btn-outline-danger" id="cancelAppointmentButton">Cancelar Cita</button>
+                </div>
+              </form>
+            </section>
+          </div>
+
+          <div class="col-lg-7">
+            <section class="admin-panel">
+              <div class="panel-heading">
+                <div>
+                  <h2>Agenda del dia</h2>
+                  <p>Citas confirmadas y pendientes por especialista.</p>
+                </div>
+              </div>
+              <div class="table-responsive">
+                <table class="table admin-table align-middle">
+                  <thead>
+                    <tr>
+                      <th>Hora</th>
+                      <th>Paciente</th>
+                      <th>Especialista</th>
+                      <th>Estado</th>
+                    </tr>
+                  </thead>
+                  <tbody id="appointmentsTable">
+                    <tr class="appointment-row" data-patient="Laura Perez - laura.paciente@correo.com" data-specialist="Dra. Maudy Luanm - Ortodoncia" data-date="2026-06-26" data-time="09:30" data-reason="Ortodoncia" data-notes="Control de ortodoncia mensual." data-status="Confirmada">
+                      <td>09:30</td>
+                      <td>Laura Perez</td>
+                      <td>Dra. Maudy</td>
+                      <td><span class="status-pill status-active">Confirmada</span></td>
+                    </tr>
+                    <tr class="appointment-row" data-patient="Carlos Rojas - carlos.rojas@correo.com" data-specialist="Dr. Ramirez - Implantologia" data-date="2026-06-26" data-time="11:00" data-reason="Implantes" data-notes="Valoracion para implante dental." data-status="Pendiente">
+                      <td>11:00</td>
+                      <td>Carlos Rojas</td>
+                      <td>Dr. Ramirez</td>
+                      <td><span class="status-pill status-pending">Pendiente</span></td>
+                    </tr>
+                    <tr class="appointment-row" data-patient="Ana Torres - ana.torres@correo.com" data-specialist="Dra. Gomez - Higiene oral" data-date="2026-06-26" data-time="14:00" data-reason="Limpieza dental" data-notes="Limpieza de control semestral." data-status="Confirmada">
+                      <td>14:00</td>
+                      <td>Ana Torres</td>
+                      <td>Dra. Gomez</td>
+                      <td><span class="status-pill status-active">Confirmada</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <section class="admin-panel mt-4">
+              <div class="panel-heading">
+                <div>
+                  <h2>Disponibilidad</h2>
+                  <p>Bloques visibles para asignacion rapida.</p>
+                </div>
+              </div>
+              <div class="availability-grid">
+                <span>08:00 Disponible</span>
+                <span>09:30 Ocupado</span>
+                <span>10:30 Disponible</span>
+                <span>11:00 Ocupado</span>
+                <span>15:00 Disponible</span>
+                <span>16:30 Disponible</span>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div data-component="footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../js/app.js"></script>
+</body>
+</html>

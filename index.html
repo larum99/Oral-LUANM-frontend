@@ -279,34 +279,38 @@
 
         <div class="contact-form reveal-on-scroll reveal-right">
           <h3>Agenda tu cita</h3>
-          <form class="needs-validation" novalidate>
+          <form class="needs-validation" novalidate id="formHomeAppointment">
             <div class="form-row">
               <div class="form-group">
-                <label for="homeName">Nombre completo</label>
-                <input type="text" id="homeName" placeholder="Ej. Juan Perez" required>
+                <label for="homeAppointmentName">Nombre completo</label>
+                <input class="form-control" type="text" id="homeAppointmentName" name="fullName" autocomplete="name" minlength="3" maxlength="80" placeholder="Ej. Maria Gonzalez" required>
+                <div class="invalid-feedback">Ingresa tu nombre completo.</div>
               </div>
               <div class="form-group">
-                <label for="homePhone">Telefono</label>
-                <input type="tel" id="homePhone" placeholder="300 123 4567" pattern="[0-9 ]{7,15}" required>
+                <label for="homeAppointmentPhone">Telefono</label>
+                <input class="form-control" type="tel" id="homeAppointmentPhone" name="phone" autocomplete="tel" inputmode="numeric" data-digits-only maxlength="15" pattern="[0-9]{7,15}" placeholder="3100000000" required>
+                <div class="invalid-feedback">Ingresa un telefono valido.</div>
               </div>
             </div>
             <div class="form-group">
-              <label for="homeEmail">Correo electronico</label>
-              <input type="email" id="homeEmail" placeholder="tu@correo.com" required>
+              <label for="homeAppointmentEmail">Correo electronico</label>
+              <input class="form-control" type="email" id="homeAppointmentEmail" name="email" autocomplete="email" placeholder="tu@correo.com" required>
+              <div class="invalid-feedback">Ingresa un correo electronico valido.</div>
             </div>
             <div class="form-group">
-              <label for="homeService">Servicio de interes</label>
-              <select id="homeService" required>
-                <option value="">Selecciona un servicio</option>
-                <option>Gingivectomia</option>
-                <option>Implantes Dentales</option>
-                <option>Frenillectomia</option>
-                <option>Ventana Quirurgica</option>
+              <label for="homeAppointmentService">Servicio de interes</label>
+              <select class="form-select" id="homeAppointmentService" name="service" required>
+                <option value="" selected disabled>Selecciona un servicio</option>
+                <option>Odontologia general</option>
+                <option>Ortodoncia</option>
+                <option>Estetica dental</option>
+                <option>Implantes dentales</option>
               </select>
+              <div class="invalid-feedback">Selecciona un servicio.</div>
             </div>
             <div class="form-group">
-              <label for="homeMessage">Mensaje opcional</label>
-              <textarea id="homeMessage" rows="5" placeholder="Escribe aqui tu consulta..."></textarea>
+              <label for="homeAppointmentMessage">Mensaje (opcional)</label>
+              <textarea class="form-control" id="homeAppointmentMessage" name="message" rows="6" placeholder="Escribe aqui tu consulta..."></textarea>
             </div>
             <button type="submit" class="btn-contact">
               <i class="bi bi-send-fill" aria-hidden="true"></i>

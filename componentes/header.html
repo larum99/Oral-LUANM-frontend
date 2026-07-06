@@ -10,16 +10,17 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
-          <li class="nav-item nav-link-item me-lg-3"><a class="nav-link active" aria-current="page" href="{{CONTACT_PATH}}" data-text="navigation.contact">Contacto</a></li>
-          <li class="nav-item nav-link-item me-lg-3"><a class="nav-link active" aria-current="page" href="{{SERVICE_PATH}}" data-text="navigation.services">Servicios</a></li>
+          <li class="nav-item nav-link-item me-lg-3"><a class="nav-link" href="{{HOME_PATH}}" data-text="navigation.home">Inicio</a></li>
+          <li class="nav-item nav-link-item me-lg-3"><a class="nav-link" href="{{CONTACT_PATH}}" data-text="navigation.contact">Contacto</a></li>
+          <li class="nav-item nav-link-item me-lg-3"><a class="nav-link" href="{{SERVICE_PATH}}" data-text="navigation.services">Servicios</a></li>
           <li class="nav-item nav-action-item mt-3 mt-lg-0 me-lg-3">
             <button class="btn btn-outline-primary" data-auth-login-button data-bs-toggle="modal" data-bs-target="#loginModal" data-text="buttons.login">Iniciar Sesion</button>
           </li>
           <li class="nav-item mt-3 mt-lg-0 ms-lg-3 d-none" data-header-session>
-            <div class="header-session-info">
+            <a class="header-session-link header-session-info" data-session-link href="{{HOME_PATH}}">
               <span data-text="session.active">Sesion activa</span>
               <strong data-session-name></strong>
-            </div>
+            </a>
           </li>
         </ul>
       </div>

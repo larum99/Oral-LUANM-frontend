@@ -71,23 +71,23 @@
                 <div class="row g-3 mb-3">
                   <div class="col-md-6">
                     <label for="contactName" class="form-label fw-semibold"><span data-text="forms.name">Nombre Completo</span> <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="contactName" placeholder="Ej. Juan Perez" data-placeholder="forms.fullNamePlaceholder" required>
+                    <input type="text" class="form-control" id="contactName" name="fullName" autocomplete="name" minlength="3" maxlength="80" placeholder="Ej. Juan Perez" data-placeholder="forms.fullNamePlaceholder" required>
                     <div class="invalid-feedback">Por favor, ingresa tu nombre.</div>
                   </div>
                   <div class="col-md-6">
                     <label for="contactPhone" class="form-label fw-semibold"><span data-text="forms.contactPhone">Telefono de Contacto</span> <span class="text-danger">*</span></label>
-                    <input type="tel" class="form-control" id="contactPhone" placeholder="Ej. 3001234567" data-placeholder="forms.phonePlaceholder" required pattern="[0-9]{7,15}">
+                    <input type="tel" class="form-control" id="contactPhone" name="phone" autocomplete="tel" inputmode="numeric" data-digits-only maxlength="15" placeholder="Ej. 3001234567" data-placeholder="forms.phonePlaceholder" required pattern="[0-9]{7,15}">
                     <div class="invalid-feedback">Ingresa un numero de telefono valido.</div>
                   </div>
                 </div>
                 <div class="mb-3">
                   <label for="contactEmail" class="form-label fw-semibold"><span data-text="forms.email">Correo Electronico</span> <span class="text-danger">*</span></label>
-                  <input type="email" class="form-control" id="contactEmail" placeholder="juan@correo.com" data-placeholder="forms.emailPlaceholder" required>
+                  <input type="email" class="form-control" id="contactEmail" name="email" autocomplete="email" placeholder="juan@correo.com" data-placeholder="forms.emailPlaceholder" required>
                   <div class="invalid-feedback">Ingresa una direccion de correo valida.</div>
                 </div>
                 <div class="mb-4">
                   <label for="contactMessage" class="form-label fw-semibold"><span data-text="forms.message">Mensaje o Consulta</span> <span class="text-danger">*</span></label>
-                  <textarea class="form-control" id="contactMessage" rows="5" placeholder="Escribe aqui tus dudas detalladamente..." data-placeholder="forms.messagePlaceholder" required></textarea>
+                  <textarea class="form-control" id="contactMessage" name="message" rows="5" minlength="10" placeholder="Escribe aqui tus dudas detalladamente..." data-placeholder="forms.messagePlaceholder" required></textarea>
                   <div class="invalid-feedback">Escribe el contenido de tu mensaje.</div>
                 </div>
                 <button type="submit" class="btn btn-primary w-100" data-text="buttons.sendMessage">Enviar Mensaje</button>

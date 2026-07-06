@@ -584,6 +584,16 @@ a:hover {
   color: #92400e;
 }
 
+.status-cancelled {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.client-cancel-btn {
+  min-width: auto;
+  padding: 0.45rem 0.85rem;
+}
+
 .permission-list,
 .appointment-list,
 .availability-grid {

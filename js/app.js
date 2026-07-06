@@ -854,6 +854,20 @@ const normalizeAppointment = (appointment) => {
   };
 };
 
+const getAppointmentStatusClass = (status) => {
+  const normalizedStatus = String(status ?? "").trim().toLowerCase();
+
+  if (normalizedStatus === "confirmada") {
+    return "status-active";
+  }
+
+  if (normalizedStatus === "cancelada") {
+    return "status-cancelled";
+  }
+
+  return "status-pending";
+};
+
 const getStoredUsers = () => getStorageArray(STORAGE_KEYS.users, DEFAULT_USERS);
 
 const saveStoredUsers = (users) => {
@@ -1443,7 +1457,6 @@ const initSecretaryAppointments = () => {
   const buildAppointmentRow = (appointment) => {
     const normalizedAppointment = normalizeAppointment(appointment);
     const row = document.createElement("tr");
-    const isConfirmed = normalizedAppointment.status === "Confirmada";
 
     row.className = "appointment-row";
     row.dataset.id = normalizedAppointment.id;
@@ -1466,7 +1479,7 @@ const initSecretaryAppointments = () => {
       <td>${normalizedAppointment.time}</td>
       <td>${getShortName(normalizedAppointment.patient)}</td>
       <td>${getShortName(normalizedAppointment.specialist)}</td>
-      <td><span class="status-pill ${isConfirmed ? "status-active" : "status-pending"}">${normalizedAppointment.status}</span></td>
+      <td><span class="status-pill ${getAppointmentStatusClass(normalizedAppointment.status)}">${normalizedAppointment.status}</span></td>
     `;
 
     return row;
@@ -1704,7 +1717,7 @@ const initClientDashboard = () => {
     const appointments = getUserAppointments();
 
     if (appointments.length === 0) {
-      table.innerHTML = '<tr><td colspan="5">No tienes citas registradas todavia.</td></tr>';
+      table.innerHTML = '<tr><td colspan="6">No tienes citas registradas todavia.</td></tr>';
       return;
     }
 
@@ -1714,7 +1727,12 @@ const initClientDashboard = () => {
         <td>${appointment.time}</td>
         <td>${getShortName(appointment.specialist)}</td>
         <td>${appointment.reason}</td>
-        <td><span class="status-pill ${appointment.status === "Confirmada" ? "status-active" : "status-pending"}">${appointment.status}</span></td>
+        <td><span class="status-pill ${getAppointmentStatusClass(appointment.status)}">${appointment.status}</span></td>
+        <td>
+          ${appointment.status !== "Cancelada"
+            ? `<button type="button" class="btn btn-outline-danger btn-sm client-cancel-btn" data-id="${appointment.id}">Cancelar</button>`
+            : '<span class="text-muted">-</span>'}
+        </td>
       </tr>
     `).join("");
   };
@@ -1737,6 +1755,26 @@ const initClientDashboard = () => {
   dateInput.addEventListener("change", () => validateAppointmentSchedule(dateInput, timeInput));
   timeInput.addEventListener("change", () => validateAppointmentSchedule(dateInput, timeInput));
   timeInput.addEventListener("input", () => validateAppointmentSchedule(dateInput, timeInput));
+  table.addEventListener("click", (event) => {
+    const cancelButton = event.target.closest(".client-cancel-btn");
+
+    if (!cancelButton) {
+      return;
+    }
+
+    const appointmentId = cancelButton.dataset.id;
+    const appointments = getStoredAppointments();
+    const appointment = appointments.find((item) => item.id === appointmentId);
+
+    if (!appointment || appointment.status === "Cancelada") {
+      return;
+    }
+
+    appointment.status = "Cancelada";
+    saveStoredAppointments(appointments);
+    showFormAlert(form, "La cita fue cancelada y el cambio ya esta visible para administracion y secretaria.");
+    renderAppointments();
+  });
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -1946,7 +1984,7 @@ const initAdminDashboard = () => {
                 <td>${appointment.patient}</td>
                 <td>${appointment.specialist}</td>
                 <td>${appointment.reason}</td>
-                <td><span class="status-pill ${appointment.status === "Confirmada" ? "status-active" : "status-pending"}">${appointment.status}</span></td>
+                <td><span class="status-pill ${getAppointmentStatusClass(appointment.status)}">${appointment.status}</span></td>
               </tr>
             `).join("") || `<tr><td colspan="6">No hay citas registradas.</td></tr>`}
           </tbody>

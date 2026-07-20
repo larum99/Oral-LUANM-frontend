@@ -579,6 +579,7 @@ body {
     background: linear-gradient(135deg, var(--primary-light) 0%, transparent 55%);
     opacity: 0;
     transition: opacity 0.3s ease;
+    pointer-events: none;
 }
 .service-card:hover::before { opacity: 1; }
 .service-card i {
@@ -628,6 +629,8 @@ body {
     color:var(--primary);
     font-weight:700;
     margin-top: auto;
+    position: relative;
+    z-index: 2;
 }
 .btn-service i{
     background:none;

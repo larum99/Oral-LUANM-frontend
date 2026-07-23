@@ -549,6 +549,7 @@ body {
 .service-especializados {
     display: grid;
     grid-template-columns: repeat(2, minmax(300px, 1fr));
+    grid-auto-rows: 1fr;
     gap: 1.75rem;
     max-width: 1060px;
     margin: 0 auto;
@@ -578,6 +579,7 @@ body {
     background: linear-gradient(135deg, var(--primary-light) 0%, transparent 55%);
     opacity: 0;
     transition: opacity 0.3s ease;
+    pointer-events: none;
 }
 .service-card:hover::before { opacity: 1; }
 .service-card i {
@@ -627,6 +629,8 @@ body {
     color:var(--primary);
     font-weight:700;
     margin-top: auto;
+    position: relative;
+    z-index: 2;
 }
 .btn-service i{
     background:none;

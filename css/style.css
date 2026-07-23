@@ -135,11 +135,11 @@ a:hover {
   color: var(--primary);
 }
 
-.navbar-brand > span[data-html] {
+.navbar-brand>span[data-html] {
   color: var(--secondary);
 }
 
-.footer-brand > span[data-html] {
+.footer-brand>span[data-html] {
   color: var(--bg-white);
 }
 
@@ -184,21 +184,6 @@ a:hover {
   line-height: 1.2;
 }
 
-.header-session-link {
-  border-radius: 1rem;
-  color: inherit;
-  display: block;
-  padding: 0.55rem 0.85rem;
-  text-decoration: none;
-  transition: background-color 0.25s ease, transform 0.25s ease;
-}
-
-.header-session-link:hover,
-.header-session-link:focus {
-  background-color: var(--primary-light);
-  color: inherit;
-  transform: translateY(-1px);
-}
 
 /* ==========================================================================
    FIN: Header y navegacion
@@ -249,6 +234,21 @@ a:hover {
   background-color: var(--primary);
   border-color: var(--primary);
   color: var(--bg-white);
+}
+
+.btn-anterior {
+  background: transparent;
+  border: 2px solid var(--primary);
+  border-radius: var(--radius-md);
+  color: var(--primary);
+  cursor: pointer;
+  font-weight: var(--weight-bold);
+  padding: .9rem 1.5rem;
+  transition: .25s ease;
+}
+
+.btn-anterior:hover {
+  background: var(--primary-light);
 }
 
 /* ==========================================================================
@@ -722,21 +722,28 @@ a:hover {
   padding: 1.5rem;
 }
 
-.crear-cuenta > img {
+.crear-cuenta {
+  background: var(--bg-white);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-md);
+}
+
+.crear-cuenta>img {
   display: block;
   height: auto;
   margin: 0 auto 1rem;
   width: 80px;
 }
 
-.crear-cuenta > h2 {
+.crear-cuenta>h2 {
   color: var(--primary);
   font-size: var(--size-xl);
   margin-bottom: 0.25rem;
   text-align: center;
 }
 
-.crear-cuenta > p {
+.crear-cuenta>p {
   color: var(--text-muted);
   font-size: var(--size-sm);
   margin-bottom: 1.5rem;
@@ -783,7 +790,7 @@ a:hover {
   overflow: hidden;
 }
 
-.pasos span {
+.paso {
   background-color: var(--bg-white);
   border-right: 1px solid var(--border-color);
   color: var(--text-muted);
@@ -792,15 +799,16 @@ a:hover {
   font-weight: var(--weight-semibold);
   padding: 0.6rem 0.5rem;
   text-align: center;
+  transition: background-color .3s ease, color .3s ease;
 }
 
-.pasos span:first-child {
+.paso:last-child {
+  border-right: 0;
+}
+
+.paso.activo {
   background-color: var(--primary);
   color: var(--bg-white);
-}
-
-.pasos span:last-child {
-  border-right: 0;
 }
 
 .datos-personales,
@@ -820,6 +828,32 @@ a:hover {
   font-size: var(--size-lg);
   margin-bottom: 1.25rem;
   padding-bottom: 0.75rem;
+}
+
+
+.acciones-step {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.acciones-step button {
+  flex: 1;
+}
+
+/* ==========================================================================
+   Registro por pasos
+   ========================================================================== */
+
+.registro-step {
+  display: none;
+  animation: fadeStep .35s ease;
+  width: 100%;
+}
+
+.registro-step.active {
+  display: block;
 }
 
 .fila {
@@ -1108,6 +1142,8 @@ a:hover {
    FIN: Redes sociales
    ========================================================================== */
 
+
+
 /* ==========================================================================
    INICIO: Animaciones
    ========================================================================== */
@@ -1124,6 +1160,18 @@ a:hover {
 
 .reveal-delay-2 {
   transition-delay: 0.15s;
+}
+
+@keyframes fadeStep {
+  from {
+    opacity: 0;
+    transform: translateX(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 /* ==========================================================================
@@ -1162,7 +1210,7 @@ a:hover {
     width: 100%;
   }
 
-  .navbar-collapse .nav-link-item + .nav-link-item .nav-link {
+  .navbar-collapse .nav-link-item+.nav-link-item .nav-link {
     border-top: 2px solid var(--bg-white);
   }
 
@@ -1177,7 +1225,7 @@ a:hover {
     width: 100%;
   }
 
-  .navbar-collapse .nav-action-item + .nav-action-item {
+  .navbar-collapse .nav-action-item+.nav-action-item {
     padding-left: 0.75rem;
   }
 

@@ -26,13 +26,20 @@
     transition: none;
 }
 
-/* Imagen + fondo morado entran juntos desde la derecha */
-.hero-image {
+/* La doctora aparece con fade + translateY de 20px (estilo Apple) */
+.hero-photo {
     opacity: 0;
-    transform: translateX(40px);
+    transform: translateY(20px);
 
-    animation: heroFromRight var(--anim-duration) var(--anim-ease) forwards;
-    animation-delay: .15s;
+    animation: heroPhotoIn 900ms var(--anim-ease) forwards;
+    animation-delay: .1s;
+}
+
+/* El halo aparece ligeramente después que la figura */
+.hero-photo::before {
+    opacity: 0;
+    animation: haloIn 900ms var(--anim-ease) forwards;
+    animation-delay: .35s;
 }
 
 /* El bloque de texto entra ligeramente desde la izquierda */
@@ -70,16 +77,21 @@
     animation-delay: .75s;
 }
 
-@keyframes heroFromRight {
+@keyframes heroPhotoIn {
     from {
         opacity: 0;
-        transform: translateX(40px);
+        transform: translateY(20px);
     }
 
     to {
         opacity: 1;
-        transform: translateX(0);
+        transform: translateY(0);
     }
+}
+
+@keyframes haloIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 @keyframes heroFromLeft {

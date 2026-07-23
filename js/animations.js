@@ -71,6 +71,54 @@ document.addEventListener("DOMContentLoaded", () => {
 
     revealElements.forEach((element) => revealObserver.observe(element));
 
+    // ---- TITULO DEL HERO: reveal palabra por palabra (bloque a bloque) ----
+    // Envuelve cada palabra en un span en tiempo de ejecución (no toca el HTML)
+    // y dispara el reveal con IntersectionObserver, solo transform/opacity.
+    const heroTitle = document.querySelector(".hero-text h1");
+
+    if (heroTitle) {
+        const wrapWordsInTextNodes = (node) => {
+            node.childNodes.forEach((child) => {
+                if (child.nodeType === Node.TEXT_NODE) {
+                    const fragment = document.createDocumentFragment();
+
+                    child.textContent.split(/(\s+)/).forEach((piece) => {
+                        if (piece.trim() === "") {
+                            fragment.appendChild(document.createTextNode(piece));
+                            return;
+                        }
+                        const wordSpan = document.createElement("span");
+                        wordSpan.className = "word-reveal";
+                        wordSpan.textContent = piece;
+                        fragment.appendChild(wordSpan);
+                    });
+
+                    child.replaceWith(fragment);
+                } else if (child.nodeType === Node.ELEMENT_NODE) {
+                    wrapWordsInTextNodes(child);
+                }
+            });
+        };
+
+        wrapWordsInTextNodes(heroTitle);
+
+        const words = heroTitle.querySelectorAll(".word-reveal");
+        words.forEach((word, index) => {
+            word.style.transitionDelay = `${index * 45}ms`;
+        });
+
+        const titleObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    heroTitle.classList.add("is-revealed");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        titleObserver.observe(heroTitle);
+    }
+
     // ---- NAVBAR: sombra y padding reducido al hacer scroll ----
     const scrollThreshold = 40;
     let ticking = false;

@@ -96,49 +96,26 @@ body {
    ======================================== */
 .hero {
     background-color: var(--bg-white);
+    background-image: radial-gradient(120% 100% at 92% 0%, rgba(122, 19, 199, 0.045) 0%, transparent 55%);
     display: grid;
-    grid-template-columns: 60% 40%;
-    align-items: center;
+    grid-template-columns: 50% 42%;
+    align-items: stretch;
     gap: 0;
-    padding: 0 0 0 6rem;
+    padding: 0 0 0 4rem;
     min-height: calc(100vh - 84px);
     position: relative;
     overflow: hidden;
 }
 
-/* Blob violeta arriba-derecha */
-.hero::before {
-    content: '';
-    position: absolute;
-    top: -160px;
-    right: -160px;
-    width: 680px;
-    height: 680px;
-    background: radial-gradient(circle at 50% 50%, var(--primary-light) 0%, transparent 65%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* Blob acento abajo-izquierda */
-.hero::after {
-    content: '';
-    position: absolute;
-    bottom: -80px;
-    left: 30%;
-    width: 360px;
-    height: 360px;
-    background: radial-gradient(circle, rgba(56,189,248,0.10) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
-}
-
+/* Sin max-width propio: la columna de texto es más ancha y el título/
+   párrafo crecen para ocupar ese espacio, en vez de dejarlo vacío. */
 .hero-content {
     position: relative;
     z-index: 2;
-    padding: 4rem 0rem 4rem 1rem;
-    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem 2.5rem 3rem 0;
 }
 
 /* Badge "Tu sonrisa, nuestra prioridad" */
@@ -166,7 +143,7 @@ body {
 }
 
 .hero-text h1 {
-    font-size: clamp(2.4rem, 4.2vw, 3.6rem);
+    font-size: clamp(2.6rem, 5.2vw, 4.6rem);
     font-family: var(--font-headings);
     font-weight: 800;
     line-height: 1.1;
@@ -179,12 +156,24 @@ body {
     font-style: normal;
 }
 
+/* Reveal palabra por palabra (spans inyectados por animations.js) */
+.hero-text h1 .word-reveal {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.55s var(--anim-ease, ease), transform 0.55s var(--anim-ease, ease);
+}
+.hero-text h1.is-revealed .word-reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .hero-text > p {
     font-size: var(--size-lg);
     color: var(--text-muted);
     line-height: 1.8;
     margin-bottom: 2.2rem;
-    max-width: 500px;
+    max-width: 640px;
 }
 
 .botones {
@@ -228,36 +217,62 @@ body {
     position: relative;
     z-index: 1;
     height: 100%;
-    min-height: calc(100vh - 84px);
     display: flex;
     align-items: flex-end;
-    justify-content: flex-start;
-    padding-left: 4rem;
-    background: linear-gradient(
-        160deg,
-        var(--primary-light) 0%,
-        #e8dff8 60%,
-        #f5f0fd 100%
-    );
-    border-radius: 60% 0 0 60% / 50% 0 0 50%;
-    overflow: hidden;
+    justify-content: flex-end;
+    overflow: visible;
 }
 
-.hero-image img {
-    width: 100%;
-    max-width: 500px;
-    height: 92%;
+/* Zona de la foto: recorte editorial a medio muslo. La doctora llena entre
+   el 80% y el 90% de la altura del Hero -> protagonista absoluta.
+   Se adelanta hacia el centro invadiendo el hueco entre columnas, en vez
+   de quedar encerrada dentro del ancho de su propia columna. */
+.hero-photo {
     position: relative;
-    left: 45px;     
-    object-fit: cover;
+    z-index: 1;
+    height: 90%;
+    max-height: 840px;
+    width: auto;
+    max-width: 104%;
+    aspect-ratio: 4 / 5;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin-bottom: 3.5rem;
+}
+
+/* Único halo, extremadamente sutil, nacido detrás del rostro: solo separa
+   la figura del blanco del fondo, sin llamar la atención */
+.hero-photo::before {
+    content: '';
+    position: absolute;
+    inset: 2% -6% 20%;
+    background: radial-gradient(50% 46% at 50% 26%, rgba(122, 19, 199, 0.06) 0%, transparent 72%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.hero-photo-frame {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    padding: 3%;
+}
+
+.hero-photo-frame img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
     object-position: top center;
 }
 
-/* Badge flotante "★ 5.0" */
+/* Badge flotante "★ 5.0" -> alineada con el antebrazo derecho, sin tocar el borde inferior */
 .hero-badge {
     position: absolute;
-    bottom: 80px;
-    left: 25%;
+    right: -6%;
+    bottom: 38%;
     background: #fff;
     border-radius: 12px;
     box-shadow: 0 8px 28px rgba(15,23,42,0.12);
@@ -268,6 +283,28 @@ body {
     border-left: 3px solid var(--accent);
     z-index: 3;
     white-space: nowrap;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-badge,
+.hero-badge-2 {
+    animation: badgeFloat 3.8s ease-in-out infinite;
+    animation-delay: 1.1s;
+}
+
+.hero-badge:hover,
+.hero-badge-2:hover {
+    animation-play-state: paused;
+    transform: translateY(-4px);
+}
+
+@keyframes badgeFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-badge, .hero-badge-2 { animation: none; }
 }
 .hero-badge .badge-icon {
     color: var(--warning);
@@ -294,11 +331,11 @@ body {
     letter-spacing: 0.05em;
 }
 
-/* Badge flotante "2.000+ pacientes" */
+/* Badge flotante "Atención segura" -> alineada con el hombro izquierdo, fuera del rostro */
 .hero-badge-2{
     position:absolute;
-    top:90px;
-    right: 1%;
+    left: -4%;
+    top: 26%;
 
     background:#fff;
     padding:1rem 1.4rem;
@@ -311,7 +348,8 @@ body {
     align-items:center;
     gap:.8rem;
 
-    z-index:20;
+    z-index:3;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .hero-badge-2 .badge-icon {
     color: var(--primary);
@@ -355,7 +393,7 @@ body {
 
 .about-header {
     text-align: center;
-    margin-bottom: 4.5rem;
+    margin-bottom: 3rem;
 }
 .about-tag {
     display: inline-flex;
@@ -393,60 +431,109 @@ body {
     border-radius: 2px;
     margin: 0 auto;
 }
+/* Grid asimétrico y con stretch: ambas columnas comparten la misma altura
+   real (la que marca el bloque de texto), y la foto la aprovecha entera
+   en vez de flotar centrada con aire de sobra alrededor. */
 .about-content {
-    display: flex;
-    gap: 5rem;
-    align-items: center;
-    margin-bottom: 4.5rem;
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    align-items: stretch;
+    gap: 3rem;
+    margin-bottom: 4rem;
     position: relative;
     z-index: 1;
 }
+
+/* Columna imagen: la foto ocupa ~88% de la altura disponible de su
+   columna, con una lámina de color detrás a modo de marco editorial
+   (no es una imagen "incrustada", tiene profundidad y capas). */
 .about-left {
-    flex: 1;
+    position: relative;
+    min-height: 420px;
     display: flex;
+    align-items: center;
     justify-content: center;
 }
+.about-left::before {
+    content: '';
+    position: absolute;
+    inset: 6% -1rem 6% auto;
+    left: -1rem;
+    right: 2rem;
+    background: linear-gradient(160deg, var(--primary-light) 0%, var(--bg-white) 100%);
+    border-radius: var(--radius-lg);
+    z-index: 0;
+}
 .about-left img {
+    position: relative;
+    z-index: 1;
     width: 100%;
-    max-width: 400px;
+    height: 88%;
+    max-height: 560px;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lg);
     object-fit: cover;
 }
-.about-right { flex: 1; }
+
+.about-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 .about-right h3 {
     font-size: var(--size-xl);
     font-family: var(--font-headings);
     font-weight: 700;
     color: var(--text-dark);
-    margin-bottom: 1rem;
+    margin-bottom: 0.85rem;
     line-height: 1.3;
     letter-spacing: -0.01em;
 }
 .about-right > p {
     color: var(--text-muted);
-    margin-bottom: 2rem;
+    margin-bottom: 1.75rem;
     line-height: 1.85;
 }
+
+/* Checklist con presencia real: cada beneficio es una tarjeta propia,
+   con ícono en badge circular, en vez de una lista de texto plano. */
 .sesiones-especialidades {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.85rem;
+    gap: 0.75rem;
 }
 .sesiones-especialidades li {
     display: flex;
     align-items: center;
-    gap: 0.9rem;
+    gap: 1rem;
+    padding: 0.9rem 1.15rem;
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
     font-size: var(--size-base);
     color: var(--text-main);
     font-weight: var(--weight-semibold);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.sesiones-especialidades li:hover {
+    transform: translateX(4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary);
 }
 .sesiones-especialidades li i {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-light);
     color: var(--primary);
-    font-size: 1.1rem;
+    border-radius: 50%;
+    font-size: 1rem;
     flex-shrink: 0;
 }
 .about-stats {
@@ -954,21 +1041,18 @@ body {
         min-height: auto;
         text-align: center;
     }
-    .hero::before, .hero::after { display: none; }
-    .hero-content { padding: 2rem 0 2.5rem; max-width: 100%; }
-    .hero-image {
-        min-height: 420px;
-        border-radius: var(--radius-lg);
-        order: -1;
-    }
-    .hero-image img { max-width: 280px; height: auto; }
-    .hero-badge { left: 50%; transform: translateX(-60%); bottom: 20px; }
-    .hero-badge-2 { right: 10px; top: 20px; }
+    .hero-content { padding: 2rem 0 1.5rem; }
+    .hero-image { order: -1; height: 60vh; justify-content: center; }
+    .hero-photo { height: 92%; max-width: 90%; margin-left: 0; margin-bottom: 0; }
+    .hero-badge { right: 0%; bottom: 32%; }
+    .hero-badge-2 { left: 0%; top: 22%; }
     .hero-text > p { max-width: 100%; }
     .botones { justify-content: center; }
     .hero-stats { justify-content: center; }
     .about { padding: 5rem 2.5rem; }
-    .about-content { flex-direction: column; gap: 3rem; }
+    .about-content { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about-left { min-height: 320px; }
+    .about-left img { height: 85%; }
     .about-stats { grid-template-columns: repeat(3, 1fr); }
     .services { padding: 5rem 2.5rem; }
     .service-especializados { grid-template-columns: repeat(2, 1fr); }
@@ -983,9 +1067,13 @@ body {
    ======================================== */
 @media (max-width: 575.98px) {
     .hero { padding: 2rem 1.5rem 0; }
-    .hero-image { min-height: 320px; }
-    .hero-image img { max-width: 220px; }
+    .hero-image { height: 48vh; }
+    .hero-photo { height: 94%; max-width: 94%; }
+    .hero-badge { right: 2%; bottom: 28%; padding: 0.6rem 0.9rem; }
+    .hero-badge-2 { left: 2%; top: 18%; padding: 0.75rem 1rem; }
     .about, .services, .testimonials, .contact-home { padding: 4rem 1.5rem; }
+    .about-left { min-height: 260px; }
+    .about-left img { height: 88%; }
     .about-stats { grid-template-columns: 1fr; }
     .service-especializados { grid-template-columns: 1fr; }
     .testimonials-cards { grid-template-columns: 1fr; }
